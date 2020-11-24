@@ -24,7 +24,7 @@
 <meta name="author" content="Karine Villeneuve" />
 
 
-<meta name="date" content="2020-11-23" />
+<meta name="date" content="2020-11-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,6 +142,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#getting-bookdown-started"><i class="fa fa-check"></i><b>2.1</b> Getting Bookdown started</a></li>
 <li class="chapter" data-level="2.2" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#github-repository"><i class="fa fa-check"></i><b>2.2</b> Github Repository</a></li>
+<li class="chapter" data-level="2.3" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#from-bookdown-to-github"><i class="fa fa-check"></i><b>2.3</b> From Bookdown to Github</a></li>
+<li class="chapter" data-level="2.4" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#knit-and-upload-to-github"><i class="fa fa-check"></i><b>2.4</b> Knit and upload to github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
 <li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
@@ -288,12 +290,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Create a directory called <code>genome_mapping</code> under <code>/home/username/</code></p></li>
 <li><p>Clone the Github repository in the genome mapping directory</p></li>
 </ol>
-<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="bin-cleaning.html#cb58-1"></a><span class="fu">git</span> clone https://github.com/imrambo/genome_mapping.git</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="bin-cleaning.html#cb57-1"></a><span class="fu">git</span> clone https://github.com/imrambo/genome_mapping.git</span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Install miniconda</li>
 </ol>
-<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="bin-cleaning.html#cb59-1"></a><span class="fu">wget</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span></code></pre></div>
-<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="bin-cleaning.html#cb60-1"></a><span class="fu">bash</span> Miniconda3-latest-Linux-x86_64.sh</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="bin-cleaning.html#cb58-1"></a><span class="fu">wget</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="bin-cleaning.html#cb59-1"></a><span class="fu">bash</span> Miniconda3-latest-Linux-x86_64.sh</span></code></pre></div>
 <p>Restart your terminal window</p>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>See the SCons and local options while in genome_maping with <code>scons -h</code></li>
@@ -304,18 +306,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>In this folder make a nano text and paste the bin id of the bins you need to clean</p></li>
 <li><p>Add .fa at the end of each bin id with the folling command</p></li>
 </ol>
-<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="bin-cleaning.html#cb61-1"></a><span class="fu">sed</span> <span class="st">&#39;s/$/.fa/g&#39;</span> bin_list.txt</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="bin-cleaning.html#cb60-1"></a><span class="fu">sed</span> <span class="st">&#39;s/$/.fa/g&#39;</span> bin_list.txt</span></code></pre></div>
 <ol start="8" style="list-style-type: lower-alpha">
 <li>Check to see if everything is in order. If yes use <code>-i</code> to apply the changes</li>
 </ol>
-<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="bin-cleaning.html#cb62-1"></a><span class="fu">sed</span> -i <span class="st">&#39;s/$/.fa/g&#39;</span> bin_list.txt</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="bin-cleaning.html#cb61-1"></a><span class="fu">sed</span> -i <span class="st">&#39;s/$/.fa/g&#39;</span> bin_list.txt</span></code></pre></div>
 <ol style="list-style-type: lower-roman">
 <li>Go to <code>bins_dir</code> and use this command to copy the bins that need cleaning in the folder <code>bin_cleaning</code></li>
 </ol>
-<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="bin-cleaning.html#cb63-1"></a><span class="kw">for</span> <span class="ex">i</span> in <span class="kw">`</span><span class="fu">cat</span> bin_list.txt<span class="kw">`;</span> <span class="kw">do</span> <span class="fu">cp</span> <span class="va">$i</span> ../bin_cleaning/ <span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="bin-cleaning.html#cb62-1"></a><span class="kw">for</span> <span class="ex">i</span> in <span class="kw">`</span><span class="fu">cat</span> bin_list.txt<span class="kw">`;</span> <span class="kw">do</span> <span class="fu">cp</span> <span class="va">$i</span> ../bin_cleaning/ <span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
 <p>The Fastq files need to be gzip and in an other directory alone (fastq_compressed). The compression will take a lot of time so run it in <code>screen</code></p>
 <p>The fastq_compressed is created in the Fastq directory.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="bin-cleaning.html#cb64-1"></a><span class="fu">gzip</span> -c MF_combined_trimmed_fastq <span class="op">&gt;</span> fastq_compressed/MF_combined_trimmed_fastq.gz </span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="bin-cleaning.html#cb63-1"></a><span class="fu">gzip</span> -c MF_combined_trimmed_fastq <span class="op">&gt;</span> fastq_compressed/MF_combined_trimmed_fastq.gz </span></code></pre></div>
 </div>
 <div id="vizbin-1" class="section level2" number="13.2">
 <h2><span class="header-section-number">13.2</span> Vizbin</h2>
@@ -326,30 +328,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.3</span> Depth file</h2>
 <p>In this example we are manually cleaning bin.9.fa</p>
 <p><strong>a. Copy the bin (bin.9.fa) that you want to clean to a new folder called <code>test_bin_cleaning</code>in the fastq directory (you need to be in the <code>bins_directory</code>)</strong></p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="bin-cleaning.html#cb65-1"></a><span class="fu">cp</span> bin.9.fa /home/karine/fastq/test_bin_cleaning/</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="bin-cleaning.html#cb64-1"></a><span class="fu">cp</span> bin.9.fa /home/karine/fastq/test_bin_cleaning/</span></code></pre></div>
 <p><strong>b. Index the fasta file using bwa</strong></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="bin-cleaning.html#cb66-1"></a><span class="ex">bwa</span> index bin.9.fa</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="bin-cleaning.html#cb65-1"></a><span class="ex">bwa</span> index bin.9.fa</span></code></pre></div>
 <p><strong>c. Align the fasta file against the <code>combined_trimmed.fastq</code> file</strong></p>
 <ul>
 <li>Create a vi file named <code>mapping.sh</code> with the folling script</li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="bin-cleaning.html#cb67-1"></a>  <span class="co">#!/bin/bash</span></span>
-<span id="cb67-2"><a href="bin-cleaning.html#cb67-2"></a><span class="ex">bwa</span> mem -t 30 bin.9.fa -p /home/karine/fastq/MF_combined_trimmed_fastq <span class="op">&gt;</span> bin.9.sam </span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="bin-cleaning.html#cb66-1"></a>  <span class="co">#!/bin/bash</span></span>
+<span id="cb66-2"><a href="bin-cleaning.html#cb66-2"></a><span class="ex">bwa</span> mem -t 30 bin.9.fa -p /home/karine/fastq/MF_combined_trimmed_fastq <span class="op">&gt;</span> bin.9.sam </span></code></pre></div>
 <ul>
 <li>Run the script in the background using <code>nohup ./</code> and <code>&amp;</code></li>
 </ul>
-<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="bin-cleaning.html#cb68-1"></a><span class="fu">nohup</span> ./mapping.sh <span class="kw">&amp;</span> </span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="bin-cleaning.html#cb67-1"></a><span class="fu">nohup</span> ./mapping.sh <span class="kw">&amp;</span> </span></code></pre></div>
 <p><strong>d. Convert <code>.sam</code> file to <code>.bam</code> file with</strong> <a href="http://www.metagenomics.wiki/tools/samtools">samtools</a></p>
 <p><em>Use a vi script</em></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="bin-cleaning.html#cb69-1"></a><span class="ex">samtools</span> view -b -S bin.9.sam <span class="op">&gt;</span> bin.9.bam</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="bin-cleaning.html#cb68-1"></a><span class="ex">samtools</span> view -b -S bin.9.sam <span class="op">&gt;</span> bin.9.bam</span></code></pre></div>
 <p><code>-S</code>input is a <code>.sam</code> file</p>
 <p><code>-b</code>output is a <code>.bam</code>file</p>
 <p><strong>e. Sort the bam file</strong></p>
 <p>Required in order to use the script to generate a depth file</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="bin-cleaning.html#cb70-1"></a><span class="ex">samtools</span> sort -o bin.9.sorted.bam bin.9.bam</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="bin-cleaning.html#cb69-1"></a><span class="ex">samtools</span> sort -o bin.9.sorted.bam bin.9.bam</span></code></pre></div>
 <p><strong>f. Create the depth file</strong></p>
 <p>You will need the <code>jgi_summarize_bam_contig_depths</code> (was located in midgard - SCP it to your folder</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="bin-cleaning.html#cb71-1"></a><span class="ex">./jgi_summarize_bam_contig_depths</span> --outputDepth depth.txt --pairedContigs paired.txt bin.9.sorted.bam</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="bin-cleaning.html#cb70-1"></a><span class="ex">./jgi_summarize_bam_contig_depths</span> --outputDepth depth.txt --pairedContigs paired.txt bin.9.sorted.bam</span></code></pre></div>
 <p>To open the depth file <code>less depth.txt</code></p>
 <hr />
 </div>

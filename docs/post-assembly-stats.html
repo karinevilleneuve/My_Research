@@ -24,7 +24,7 @@
 <meta name="author" content="Karine Villeneuve" />
 
 
-<meta name="date" content="2020-11-23" />
+<meta name="date" content="2020-11-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,6 +142,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#getting-bookdown-started"><i class="fa fa-check"></i><b>2.1</b> Getting Bookdown started</a></li>
 <li class="chapter" data-level="2.2" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#github-repository"><i class="fa fa-check"></i><b>2.2</b> Github Repository</a></li>
+<li class="chapter" data-level="2.3" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#from-bookdown-to-github"><i class="fa fa-check"></i><b>2.3</b> From Bookdown to Github</a></li>
+<li class="chapter" data-level="2.4" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#knit-and-upload-to-github"><i class="fa fa-check"></i><b>2.4</b> Knit and upload to github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
 <li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
@@ -281,23 +283,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Section 10</span> POST ASSEMBLY STATS</h1>
 <div id="number-of-contigs" class="section level2" number="10.1">
 <h2><span class="header-section-number">10.1</span> Number of contigs</h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="post-assembly-stats.html#cb35-1"></a><span class="fu">grep</span> -c <span class="st">&quot;&gt;&quot;</span> contig.fa </span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="post-assembly-stats.html#cb34-1"></a><span class="fu">grep</span> -c <span class="st">&quot;&gt;&quot;</span> contig.fa </span></code></pre></div>
 </div>
 <div id="lenght-of-contigs" class="section level2" number="10.2">
 <h2><span class="header-section-number">10.2</span> Lenght of contigs</h2>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="post-assembly-stats.html#cb36-1"></a><span class="ex">seqkit</span> fx2tab --length --name --header-line contig.fa</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="post-assembly-stats.html#cb35-1"></a><span class="ex">seqkit</span> fx2tab --length --name --header-line contig.fa</span></code></pre></div>
 </div>
 <div id="histogram" class="section level2" number="10.3">
 <h2><span class="header-section-number">10.3</span> Histogram</h2>
 <ol style="list-style-type: lower-alpha">
 <li>To obtain a histogram of the lenght of your contigs we first need to extract the column <code>lenght</code> from the document <code>contig.fa</code> with the command <code>cut -f 4 length.tab</code> into a new document called <code>lenghts</code></li>
 </ol>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="post-assembly-stats.html#cb37-1"></a><span class="fu">cut</span> -f 4 length.tab <span class="op">&gt;</span> lengths</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="post-assembly-stats.html#cb36-1"></a><span class="fu">cut</span> -f 4 length.tab <span class="op">&gt;</span> lengths</span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li><p>Remove the first row of the document lenghts using <code>nano</code></p></li>
 <li><p>Use pipeline to create histogram with the <code>lentghs</code> documents</p></li>
 </ol>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="post-assembly-stats.html#cb38-1"></a><span class="fu">less</span> lenghts <span class="kw">|</span> <span class="ex">Rscript</span> -e <span class="st">&#39;data=abs(scan(file=&quot;stdin&quot;)); png(&quot;seq.png&quot;); hist(data,xlab=&quot;sequences&quot;, xlim=c(0,20000))&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="post-assembly-stats.html#cb37-1"></a><span class="fu">less</span> lenghts <span class="kw">|</span> <span class="ex">Rscript</span> -e <span class="st">&#39;data=abs(scan(file=&quot;stdin&quot;)); png(&quot;seq.png&quot;); hist(data,xlab=&quot;sequences&quot;, xlim=c(0,20000))&#39;</span></span></code></pre></div>
 <ul>
 <li><p>The output is a png file called “seq.png”</p></li>
 <li><p>If x axis of the histogram is not right change the <code>xlim=c(x,x)</code> values</p></li>
@@ -305,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Copy the file to your local computer to view it (in your local computer terminal navigate to the local directory where you want the file to be copied)</li>
 </ol>
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="post-assembly-stats.html#cb39-1"></a><span class="fu">scp</span> karine@146.6.184.205:/home/karine/fastq/assembly/seq.png .</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="post-assembly-stats.html#cb38-1"></a><span class="fu">scp</span> karine@146.6.184.205:/home/karine/fastq/assembly/seq.png .</span></code></pre></div>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>Open document and confirm how many sequences are greater than 2000</li>
 </ol>
@@ -318,7 +320,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li>Run the script <font color='green'>length+GC.pl</font></li>
 </ol>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="post-assembly-stats.html#cb40-1"></a><span class="ex">/home/karine/fastq/assembly/length+GC.pl</span> contig.fa <span class="op">&gt;</span> contig_GC.txt</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="post-assembly-stats.html#cb39-1"></a><span class="ex">/home/karine/fastq/assembly/length+GC.pl</span> contig.fa <span class="op">&gt;</span> contig_GC.txt</span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>To view the GC content</li>
 </ol>
@@ -327,15 +329,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="obtainning-script-from-midgard" class="section level3" number="10.4.2">
 <h3><span class="header-section-number">10.4.2</span> obtainning script from Midgard</h3>
 <p>Copy the script from midgard to local computer to asgard</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="post-assembly-stats.html#cb41-1"></a><span class="fu">scp</span> -P 2022 karine@146.6.184.138:/home/scripts/length+GC.pl .</span>
-<span id="cb41-2"><a href="post-assembly-stats.html#cb41-2"></a><span class="fu">scp</span> length+GC.pl karine@146.6.184.205:/home/karine/fastq/assembly/</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="post-assembly-stats.html#cb40-1"></a><span class="fu">scp</span> -P 2022 karine@146.6.184.138:/home/scripts/length+GC.pl .</span>
+<span id="cb40-2"><a href="post-assembly-stats.html#cb40-2"></a><span class="fu">scp</span> length+GC.pl karine@146.6.184.205:/home/karine/fastq/assembly/</span></code></pre></div>
 </div>
 </div>
 <div id="keeping-sequence-above-2000kb" class="section level2" number="10.5">
 <h2><span class="header-section-number">10.5</span> Keeping sequence above 2000kb</h2>
-<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="post-assembly-stats.html#cb42-1"></a><span class="fu">perl</span> -lne <span class="st">&#39;if(/^(&gt;.*)/){ $head=$1 } else { $fa{$head} .= $_ } END{ foreach $s (keys(%fa)){ print &quot;$s\n$fa{$s}\n&quot; if(length($fa{$s})&gt;2000) }}&#39;</span> contig.fa <span class="op">&gt;</span> 2000kb.fa</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="post-assembly-stats.html#cb41-1"></a><span class="fu">perl</span> -lne <span class="st">&#39;if(/^(&gt;.*)/){ $head=$1 } else { $fa{$head} .= $_ } END{ foreach $s (keys(%fa)){ print &quot;$s\n$fa{$s}\n&quot; if(length($fa{$s})&gt;2000) }}&#39;</span> contig.fa <span class="op">&gt;</span> 2000kb.fa</span></code></pre></div>
 <p>To count how many you have above 2000 kb</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="post-assembly-stats.html#cb43-1"></a><span class="fu">grep</span> -c <span class="st">&quot;&gt;&quot;</span> 2000kb.fa</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="post-assembly-stats.html#cb42-1"></a><span class="fu">grep</span> -c <span class="st">&quot;&gt;&quot;</span> 2000kb.fa</span></code></pre></div>
 </div>
 </div>
             </section>

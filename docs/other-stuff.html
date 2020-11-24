@@ -24,7 +24,7 @@
 <meta name="author" content="Karine Villeneuve" />
 
 
-<meta name="date" content="2020-11-23" />
+<meta name="date" content="2020-11-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,6 +142,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#getting-bookdown-started"><i class="fa fa-check"></i><b>2.1</b> Getting Bookdown started</a></li>
 <li class="chapter" data-level="2.2" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#github-repository"><i class="fa fa-check"></i><b>2.2</b> Github Repository</a></li>
+<li class="chapter" data-level="2.3" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#from-bookdown-to-github"><i class="fa fa-check"></i><b>2.3</b> From Bookdown to Github</a></li>
+<li class="chapter" data-level="2.4" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#knit-and-upload-to-github"><i class="fa fa-check"></i><b>2.4</b> Knit and upload to github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
 <li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
@@ -282,36 +284,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Create MetabatContig_list.tsv list needed for DAStool</p>
 <div id="one-file" class="section level2" number="17.1">
 <h2><span class="header-section-number">17.1</span> One file</h2>
-<div class="sourceCode" id="cb118"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb118-1"><a href="other-stuff.html#cb118-1"></a><span class="fu">awk</span> <span class="st">&#39;/&gt;/{sub(&quot;&gt;&quot;,&quot;&amp;&quot;2000kb.fa&quot;_&quot;);sub(/\.fa/,x)}1&#39;</span></span></code></pre></div>
-<div class="sourceCode" id="cb119"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb119-1"><a href="other-stuff.html#cb119-1"></a><span class="fu">grep</span> <span class="st">&quot;&gt;&quot;</span> concat.fasta <span class="op">&gt;</span> concat.txt</span></code></pre></div>
-<div class="sourceCode" id="cb120"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb120-1"><a href="other-stuff.html#cb120-1"></a><span class="fu">sed</span> -i <span class="st">&#39;s/\.//g&#39;</span> concat.txt</span>
-<span id="cb120-2"><a href="other-stuff.html#cb120-2"></a><span class="fu">sed</span> -i <span class="st">&#39;s/&gt;//g&#39;</span> concat.txt</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb117-1"><a href="other-stuff.html#cb117-1"></a><span class="fu">awk</span> <span class="st">&#39;/&gt;/{sub(&quot;&gt;&quot;,&quot;&amp;&quot;2000kb.fa&quot;_&quot;);sub(/\.fa/,x)}1&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb118-1"><a href="other-stuff.html#cb118-1"></a><span class="fu">grep</span> <span class="st">&quot;&gt;&quot;</span> concat.fasta <span class="op">&gt;</span> concat.txt</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb119-1"><a href="other-stuff.html#cb119-1"></a><span class="fu">sed</span> -i <span class="st">&#39;s/\.//g&#39;</span> concat.txt</span>
+<span id="cb119-2"><a href="other-stuff.html#cb119-2"></a><span class="fu">sed</span> -i <span class="st">&#39;s/&gt;//g&#39;</span> concat.txt</span></code></pre></div>
 </div>
 <div id="bash-script-2" class="section level2" number="17.2">
 <h2><span class="header-section-number">17.2</span> Bash script</h2>
-<div class="sourceCode" id="cb121"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb121-1"><a href="other-stuff.html#cb121-1"></a><span class="kw">`</span>#!<span class="ex">/bin/bash</span></span>
-<span id="cb121-2"><a href="other-stuff.html#cb121-2"></a></span>
-<span id="cb121-3"><a href="other-stuff.html#cb121-3"></a><span class="kw">for</span> <span class="ex">i</span> in *.faa </span>
-<span id="cb121-4"><a href="other-stuff.html#cb121-4"></a></span>
-<span id="cb121-5"><a href="other-stuff.html#cb121-5"></a><span class="kw">do</span></span>
-<span id="cb121-6"><a href="other-stuff.html#cb121-6"></a></span>
-<span id="cb121-7"><a href="other-stuff.html#cb121-7"></a><span class="ex">VIBRANT_run.py</span> -i <span class="va">$i</span> -f nucl -t 10 -l 10000</span>
-<span id="cb121-8"><a href="other-stuff.html#cb121-8"></a></span>
-<span id="cb121-9"><a href="other-stuff.html#cb121-9"></a><span class="kw">done</span> </span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb120-1"><a href="other-stuff.html#cb120-1"></a><span class="kw">`</span>#!<span class="ex">/bin/bash</span></span>
+<span id="cb120-2"><a href="other-stuff.html#cb120-2"></a></span>
+<span id="cb120-3"><a href="other-stuff.html#cb120-3"></a><span class="kw">for</span> <span class="ex">i</span> in *.faa </span>
+<span id="cb120-4"><a href="other-stuff.html#cb120-4"></a></span>
+<span id="cb120-5"><a href="other-stuff.html#cb120-5"></a><span class="kw">do</span></span>
+<span id="cb120-6"><a href="other-stuff.html#cb120-6"></a></span>
+<span id="cb120-7"><a href="other-stuff.html#cb120-7"></a><span class="ex">VIBRANT_run.py</span> -i <span class="va">$i</span> -f nucl -t 10 -l 10000</span>
+<span id="cb120-8"><a href="other-stuff.html#cb120-8"></a></span>
+<span id="cb120-9"><a href="other-stuff.html#cb120-9"></a><span class="kw">done</span> </span></code></pre></div>
 <p><strong>Next separate names in concat.txt so have scaffold name followed by sample and bin name example .tsv:</strong></p>
 <p>scaffold_1326 AB_69_metabat_bin_100</p>
 <p>scaffold_1711 AB_69_metabat_bin_100</p>
 <p>scaffold_2201 AB_69_metabat_bin_100</p>
 <p>scaffold_2419 AB_69_metabat_bin_10</p>
 
-<div id="refs" class="references hanging-indent">
-<div>
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.</p>
-</div>
-<div>
-<p>———. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
-</div>
-</div>
 </div>
 </div>
             </section>

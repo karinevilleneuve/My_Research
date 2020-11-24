@@ -24,7 +24,7 @@
 <meta name="author" content="Karine Villeneuve" />
 
 
-<meta name="date" content="2020-11-23" />
+<meta name="date" content="2020-11-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,6 +142,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#getting-bookdown-started"><i class="fa fa-check"></i><b>2.1</b> Getting Bookdown started</a></li>
 <li class="chapter" data-level="2.2" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#github-repository"><i class="fa fa-check"></i><b>2.2</b> Github Repository</a></li>
+<li class="chapter" data-level="2.3" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#from-bookdown-to-github"><i class="fa fa-check"></i><b>2.3</b> From Bookdown to Github</a></li>
+<li class="chapter" data-level="2.4" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#knit-and-upload-to-github"><i class="fa fa-check"></i><b>2.4</b> Knit and upload to github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
 <li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
@@ -285,16 +287,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li>Make sure there is no space between the name of you bins and the scaffhold</li>
 </ol>
-<div class="sourceCode" id="cb96"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb96-1"><a href="metabolic-pathway.html#cb96-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.fna <span class="kw">;</span> <span class="kw">do</span> <span class="fu">sed</span> -i <span class="st">&#39;s/ /_/g&#39;</span> <span class="va">$i</span> <span class="kw">;</span> <span class="kw">done</span> </span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb95-1"><a href="metabolic-pathway.html#cb95-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.fna <span class="kw">;</span> <span class="kw">do</span> <span class="fu">sed</span> -i <span class="st">&#39;s/ /_/g&#39;</span> <span class="va">$i</span> <span class="kw">;</span> <span class="kw">done</span> </span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Run <code>prodigal</code> to convert your bins to amino acid sequence</li>
 </ol>
-<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="metabolic-pathway.html#cb97-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.fna <span class="kw">;</span> <span class="kw">do</span> <span class="ex">prodigal</span> -i <span class="va">$i</span> -o output.txt -a <span class="va">$i</span>.faa <span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb96-1"><a href="metabolic-pathway.html#cb96-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.fna <span class="kw">;</span> <span class="kw">do</span> <span class="ex">prodigal</span> -i <span class="va">$i</span> -o output.txt -a <span class="va">$i</span>.faa <span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li><p>Move all the files ending with .faa to another folder <code>mkdir faa ; mv *.faa /home/karine/Bins/all_clean/fna/faa</code></p></li>
 <li><p>Remove all the characters after the first space in the header</p></li>
 </ol>
-<div class="sourceCode" id="cb98"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb98-1"><a href="metabolic-pathway.html#cb98-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.faa<span class="kw">;</span> <span class="kw">do</span> <span class="fu">sed</span> -i <span class="st">&#39;s/\s.*$//&#39;</span> <span class="va">$i</span><span class="kw">;</span> <span class="kw">done</span> <span class="kw">&amp;</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="metabolic-pathway.html#cb97-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.faa<span class="kw">;</span> <span class="kw">do</span> <span class="fu">sed</span> -i <span class="st">&#39;s/\s.*$//&#39;</span> <span class="va">$i</span><span class="kw">;</span> <span class="kw">done</span> <span class="kw">&amp;</span></span></code></pre></div>
 <ol start="5" style="list-style-type: lower-alpha">
 <li><p>Tranfer the files to your local computer</p></li>
 <li><p>Submit the files to <a href="https://www.genome.jp/tools/kofamkoala/">kofamKOALA</a> and <a href="https://services.birc.au.dk/hyddb/">HydDB</a> - you can only submit one file at a time</p></li>
@@ -322,41 +324,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li>In the server (takes a lot of memory) concatenate all your .faa files</li>
 </ol>
-<div class="sourceCode" id="cb99"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb99-1"><a href="metabolic-pathway.html#cb99-1"></a><span class="fu">cat</span> *.faa <span class="op">&gt;</span> concat_faa.faa </span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb98-1"><a href="metabolic-pathway.html#cb98-1"></a><span class="fu">cat</span> *.faa <span class="op">&gt;</span> concat_faa.faa </span></code></pre></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li><p>Create a vi document call <code>hydDB_contigs.txt</code> and copy the name of the sequence from your the excel document containing the name of the contigs identified as hydrogenase</p></li>
 <li><p>Extract those sequence from the concatenated file (count after using grep -c “&gt;” to make sure the numbers match)</p></li>
 </ol>
 <p><strong>Option 1 - La plus rapide</strong></p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb100-1"><a href="metabolic-pathway.html#cb100-1"></a><span class="ex">pullseq</span> -i concat_faa.faa -n hydDB_contigs.txt<span class="op">&gt;&gt;</span> hydDB_sequence.faa</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb99-1"><a href="metabolic-pathway.html#cb99-1"></a><span class="ex">pullseq</span> -i concat_faa.faa -n hydDB_contigs.txt<span class="op">&gt;&gt;</span> hydDB_sequence.faa</span></code></pre></div>
 <ol start="6" style="list-style-type: lower-alpha">
 <li>View the lenght of the extracted sequences</li>
 </ol>
-<div class="sourceCode" id="cb101"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb101-1"><a href="metabolic-pathway.html#cb101-1"></a><span class="ex">seqkit</span> fx2tab --length --name --header-line hydDB_sequence.faa <span class="op">&gt;&gt;</span> hydDB_sequence.faa.fasta.lenght</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb100-1"><a href="metabolic-pathway.html#cb100-1"></a><span class="ex">seqkit</span> fx2tab --length --name --header-line hydDB_sequence.faa <span class="op">&gt;&gt;</span> hydDB_sequence.faa.fasta.lenght</span></code></pre></div>
 <ol start="7" style="list-style-type: lower-alpha">
 <li>Remove all the smaller sequences (&lt;140)</li>
 </ol>
-<div class="sourceCode" id="cb102"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb102-1"><a href="metabolic-pathway.html#cb102-1"></a><span class="fu">perl</span> -lne <span class="st">&#39;if(/^(&gt;.*)/){ $head=$1 } else { $fa{$head} .= $_ } END{ foreach $s (keys(%fa)){ print &quot;$s\n$fa{$s}\n&quot; if(length($fa{$s})&gt;140) }}&#39;</span> hydDB_sequence.faa <span class="op">&gt;</span> long_sequence.faa</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb101-1"><a href="metabolic-pathway.html#cb101-1"></a><span class="fu">perl</span> -lne <span class="st">&#39;if(/^(&gt;.*)/){ $head=$1 } else { $fa{$head} .= $_ } END{ foreach $s (keys(%fa)){ print &quot;$s\n$fa{$s}\n&quot; if(length($fa{$s})&gt;140) }}&#39;</span> hydDB_sequence.faa <span class="op">&gt;</span> long_sequence.faa</span></code></pre></div>
 <ol start="8" style="list-style-type: lower-alpha">
 <li>Count how many you have</li>
 </ol>
-<div class="sourceCode" id="cb103"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb103-1"><a href="metabolic-pathway.html#cb103-1"></a><span class="fu">grep</span> -c <span class="st">&quot;&gt;&quot;</span> long_sequence.faa</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb102-1"><a href="metabolic-pathway.html#cb102-1"></a><span class="fu">grep</span> -c <span class="st">&quot;&gt;&quot;</span> long_sequence.faa</span></code></pre></div>
 <ol style="list-style-type: lower-roman">
 <li>Download the HydrogenaseDataBase fasta file located on the Google Drive</li>
 </ol>
 <ol start="10" style="list-style-type: lower-alpha">
 <li>Use diamond to compared your sequences with the onces in the DataBase</li>
 </ol>
-<div class="sourceCode" id="cb104"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb104-1"><a href="metabolic-pathway.html#cb104-1"></a><span class="ex">diamond</span> makedb --in HydroDB.fasta  -d hydroDB</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb103-1"><a href="metabolic-pathway.html#cb103-1"></a><span class="ex">diamond</span> makedb --in HydroDB.fasta  -d hydroDB</span></code></pre></div>
 <ol start="11" style="list-style-type: lower-alpha">
 <li>Modify your .faa files to remove any space and turn them into 1 liner</li>
 </ol>
-<div class="sourceCode" id="cb105"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb105-1"><a href="metabolic-pathway.html#cb105-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.faa<span class="kw">;</span> <span class="kw">do</span> <span class="fu">sed</span> -i  <span class="st">&#39;s/\s.*$//&#39;</span> <span class="va">$i</span><span class="kw">;</span> <span class="kw">done</span> <span class="kw">&amp;</span>  </span></code></pre></div>
-<div class="sourceCode" id="cb106"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb106-1"><a href="metabolic-pathway.html#cb106-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.faa <span class="kw">;</span> <span class="kw">do</span> <span class="fu">perl</span> -lne <span class="st">&#39;if(/^(&gt;.*)/){ $head=$1 } else { $fa{$head} .= $_ } END{ foreach $s (sort(keys(%fa))){ print &quot;$s\n$fa{$s}\n&quot; }}&#39;</span> <span class="va">$i</span> <span class="op">&gt;&gt;</span> <span class="va">$i</span>.1L.faa <span class="kw">;</span> <span class="kw">done</span> </span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb104-1"><a href="metabolic-pathway.html#cb104-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.faa<span class="kw">;</span> <span class="kw">do</span> <span class="fu">sed</span> -i  <span class="st">&#39;s/\s.*$//&#39;</span> <span class="va">$i</span><span class="kw">;</span> <span class="kw">done</span> <span class="kw">&amp;</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb105-1"><a href="metabolic-pathway.html#cb105-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.faa <span class="kw">;</span> <span class="kw">do</span> <span class="fu">perl</span> -lne <span class="st">&#39;if(/^(&gt;.*)/){ $head=$1 } else { $fa{$head} .= $_ } END{ foreach $s (sort(keys(%fa))){ print &quot;$s\n$fa{$s}\n&quot; }}&#39;</span> <span class="va">$i</span> <span class="op">&gt;&gt;</span> <span class="va">$i</span>.1L.faa <span class="kw">;</span> <span class="kw">done</span> </span></code></pre></div>
 <ol start="12" style="list-style-type: lower-alpha">
 <li>In the folder with all your .faa bins</li>
 </ol>
-<div class="sourceCode" id="cb107"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb107-1"><a href="metabolic-pathway.html#cb107-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.faa<span class="kw">;</span> <span class="kw">do</span> <span class="ex">diamond</span> blastp --db hydroDB.dmd --query <span class="va">$i</span> --out <span class="va">$i</span>.hyd.tab --threads 3 --outfmt 6 qtitle stitle pident length qstart qend sstart send evalue bitscore --max-target-seqs 1 <span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb106-1"><a href="metabolic-pathway.html#cb106-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.faa<span class="kw">;</span> <span class="kw">do</span> <span class="ex">diamond</span> blastp --db hydroDB.dmd --query <span class="va">$i</span> --out <span class="va">$i</span>.hyd.tab --threads 3 --outfmt 6 qtitle stitle pident length qstart qend sstart send evalue bitscore --max-target-seqs 1 <span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
 <ol start="13" style="list-style-type: lower-alpha">
 <li>Concat all the <code>.hyd.tab</code> files and open the file with excel. Add these as headers for your document</li>
 </ol>
@@ -366,28 +368,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Keep only the sequence with an alignment length cutoff &gt; 40 amino acid residues and sequence identity &gt; 50% and Remove Group 4 Hydrogenase hit with sequence identity &lt; 60%</p></li>
 <li><p>Create a vi document call good_sequences.txt and extract (pullseq) those sequence from the file with all your sequence</p></li>
 </ol>
-<div class="sourceCode" id="cb108"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb108-1"><a href="metabolic-pathway.html#cb108-1"></a><span class="ex">pullseq</span> -i all_sequence.faa -n good_sequence.txt<span class="op">&gt;&gt;</span> hydDB_diamond_filtered_sequences.faa</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb107-1"><a href="metabolic-pathway.html#cb107-1"></a><span class="ex">pullseq</span> -i all_sequence.faa -n good_sequence.txt<span class="op">&gt;&gt;</span> hydDB_diamond_filtered_sequences.faa</span></code></pre></div>
 <ol start="17" style="list-style-type: lower-alpha">
 <li><p>Concat those sequences with the original GoogleDrive data base (I need to open the text document and search for <code>bin</code>, in order to do a manuel <code>enter</code> at the end of the data base sequence and the begining of my sequence, otherwise muscle won’t work because there will be <code>&gt;</code> in a sequence)</p></li>
 <li><p>Muscle align your sequences in the server (takes a lot of time on the computer)</p></li>
 </ol>
-<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="metabolic-pathway.html#cb109-1"></a><span class="ex">muscle</span> -in long_sequence.faa -out aligned_long_sequence.faa -log log.txt -maxiters 2</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb108-1"><a href="metabolic-pathway.html#cb108-1"></a><span class="ex">muscle</span> -in long_sequence.faa -out aligned_long_sequence.faa -log log.txt -maxiters 2</span></code></pre></div>
 <ol start="19" style="list-style-type: lower-alpha">
 <li><p>Transfer files to geneious MAFFT and Mask align</p></li>
 <li><p>Eport the file as a Fasta to run fasttree</p></li>
 <li><p>Run fasttree command using <code>nohup ./</code> and <code>&amp;</code></p></li>
 </ol>
-<div class="sourceCode" id="cb110"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb110-1"><a href="metabolic-pathway.html#cb110-1"></a><span class="kw">`</span>#!<span class="ex">/bin/bash</span></span>
-<span id="cb110-2"><a href="metabolic-pathway.html#cb110-2"></a></span>
-<span id="cb110-3"><a href="metabolic-pathway.html#cb110-3"></a><span class="ex">fasttree</span> hyd_align_comp.fasta <span class="op">&gt;</span> hyd.tree</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="metabolic-pathway.html#cb109-1"></a><span class="kw">`</span>#!<span class="ex">/bin/bash</span></span>
+<span id="cb109-2"><a href="metabolic-pathway.html#cb109-2"></a></span>
+<span id="cb109-3"><a href="metabolic-pathway.html#cb109-3"></a><span class="ex">fasttree</span> hyd_align_comp.fasta <span class="op">&gt;</span> hyd.tree</span></code></pre></div>
 <div id="hydrogrenase-database-sequence-lenght" class="section level4" number="16.2.0.1">
 <h4><span class="header-section-number">16.2.0.1</span> Hydrogrenase Database sequence lenght</h4>
 <p>To know the lenght of the sequence in the DataBase</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb111-1"><a href="metabolic-pathway.html#cb111-1"></a><span class="ex">seqkit</span> fx2tab --length --name --header-line hydroDB.faa <span class="op">&gt;&gt;</span> HydroDB_length.faa</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb110-1"><a href="metabolic-pathway.html#cb110-1"></a><span class="ex">seqkit</span> fx2tab --length --name --header-line hydroDB.faa <span class="op">&gt;&gt;</span> HydroDB_length.faa</span></code></pre></div>
 <p>Create a histogram</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb112-1"><a href="metabolic-pathway.html#cb112-1"></a><span class="fu">cut</span> -f 4 hydroDB_length <span class="op">&gt;</span> DBlengths</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb111-1"><a href="metabolic-pathway.html#cb111-1"></a><span class="fu">cut</span> -f 4 hydroDB_length <span class="op">&gt;</span> DBlengths</span></code></pre></div>
 <p>Open DBlengths with vi to remove the first row and run this command to generate the histogram</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb113-1"><a href="metabolic-pathway.html#cb113-1"></a><span class="fu">less</span> DBlengths <span class="kw">|</span> <span class="ex">Rscript</span> -e <span class="st">&#39;data=abs(scan(file=&quot;stdin&quot;)); png(&quot;seq.png&quot;); hist(data,xlab=&quot;lengths&quot;, xlim=c(0,1000)) &#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb112-1"><a href="metabolic-pathway.html#cb112-1"></a><span class="fu">less</span> DBlengths <span class="kw">|</span> <span class="ex">Rscript</span> -e <span class="st">&#39;data=abs(scan(file=&quot;stdin&quot;)); png(&quot;seq.png&quot;); hist(data,xlab=&quot;lengths&quot;, xlim=c(0,1000)) &#39;</span></span></code></pre></div>
 </div>
 </div>
 <div id="mebs" class="section level2" number="16.3">
@@ -399,25 +401,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Mebs runs on python3 -&gt; download python3 on your computer (used <code>brew install python</code>)</p>
 <p>Once python3 is installed create a folder called Mebs containing all your .faa files</p>
 <p>Use <code>pip install</code> to download these four libraries</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb114-1"><a href="metabolic-pathway.html#cb114-1"></a><span class="ex">apt-get</span> install python3 python3-pip python3-matplotlib <span class="dt">\ </span>ipython3-notebook python3-mpltoolkits.basemap</span>
-<span id="cb114-2"><a href="metabolic-pathway.html#cb114-2"></a></span>
-<span id="cb114-3"><a href="metabolic-pathway.html#cb114-3"></a><span class="ex">pip3</span> install -U pip</span>
-<span id="cb114-4"><a href="metabolic-pathway.html#cb114-4"></a></span>
-<span id="cb114-5"><a href="metabolic-pathway.html#cb114-5"></a><span class="ex">pip3</span> install --upgrade pandas $ sudo -H pip3 install --upgrade numpy</span>
-<span id="cb114-6"><a href="metabolic-pathway.html#cb114-6"></a></span>
-<span id="cb114-7"><a href="metabolic-pathway.html#cb114-7"></a><span class="ex">pip3</span> install --upgrade scipy</span>
-<span id="cb114-8"><a href="metabolic-pathway.html#cb114-8"></a></span>
-<span id="cb114-9"><a href="metabolic-pathway.html#cb114-9"></a><span class="ex">pip3</span> install --upgrade seaborn $ sudo -H pip3 install -U scikit-learn</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb113-1"><a href="metabolic-pathway.html#cb113-1"></a><span class="ex">apt-get</span> install python3 python3-pip python3-matplotlib <span class="dt">\ </span>ipython3-notebook python3-mpltoolkits.basemap</span>
+<span id="cb113-2"><a href="metabolic-pathway.html#cb113-2"></a></span>
+<span id="cb113-3"><a href="metabolic-pathway.html#cb113-3"></a><span class="ex">pip3</span> install -U pip</span>
+<span id="cb113-4"><a href="metabolic-pathway.html#cb113-4"></a></span>
+<span id="cb113-5"><a href="metabolic-pathway.html#cb113-5"></a><span class="ex">pip3</span> install --upgrade pandas $ sudo -H pip3 install --upgrade numpy</span>
+<span id="cb113-6"><a href="metabolic-pathway.html#cb113-6"></a></span>
+<span id="cb113-7"><a href="metabolic-pathway.html#cb113-7"></a><span class="ex">pip3</span> install --upgrade scipy</span>
+<span id="cb113-8"><a href="metabolic-pathway.html#cb113-8"></a></span>
+<span id="cb113-9"><a href="metabolic-pathway.html#cb113-9"></a><span class="ex">pip3</span> install --upgrade seaborn $ sudo -H pip3 install -U scikit-learn</span></code></pre></div>
 <p>Run mebs using perl</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb115-1"><a href="metabolic-pathway.html#cb115-1"></a><span class="fu">perl</span> mebs.pl -input /home/karine/tree/faa -type genomic -comp <span class="op">&gt;</span> MF_karine.tsv</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb114-1"><a href="metabolic-pathway.html#cb114-1"></a><span class="fu">perl</span> mebs.pl -input /home/karine/tree/faa -type genomic -comp <span class="op">&gt;</span> MF_karine.tsv</span></code></pre></div>
 <p>In the folder with the output file.tsv run the mebs python script</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb116-1"><a href="metabolic-pathway.html#cb116-1"></a><span class="ex">python3</span> mebs_vis.py Phylo_5.tsv</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb115-1"><a href="metabolic-pathway.html#cb115-1"></a><span class="ex">python3</span> mebs_vis.py Phylo_5.tsv</span></code></pre></div>
 </div>
 <div id="metabolic" class="section level2" number="16.4">
 <h2><span class="header-section-number">16.4</span> Metabolic</h2>
 <p><a href="https://github.com/AnantharamanLab/METABOLIC">Githib</a></p>
 <p>Metabolic was run from the Student folder, with the following command within the folder with the FAA files</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb117-1"><a href="metabolic-pathway.html#cb117-1"></a><span class="fu">perl</span> /home/students2020/Tools/METABOLIC/METABOLiC-G.pl -in-gn /home/students2020/karine/folderwithFAA -o output/ -m /home/students2020/Tools/METABOLIC</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb116-1"><a href="metabolic-pathway.html#cb116-1"></a><span class="fu">perl</span> /home/students2020/Tools/METABOLIC/METABOLiC-G.pl -in-gn /home/students2020/karine/folderwithFAA -o output/ -m /home/students2020/Tools/METABOLIC</span></code></pre></div>
 </div>
 </div>
             </section>

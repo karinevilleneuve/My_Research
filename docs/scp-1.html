@@ -24,7 +24,7 @@
 <meta name="author" content="Karine Villeneuve" />
 
 
-<meta name="date" content="2020-11-23" />
+<meta name="date" content="2020-11-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,6 +142,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#getting-bookdown-started"><i class="fa fa-check"></i><b>2.1</b> Getting Bookdown started</a></li>
 <li class="chapter" data-level="2.2" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#github-repository"><i class="fa fa-check"></i><b>2.2</b> Github Repository</a></li>
+<li class="chapter" data-level="2.3" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#from-bookdown-to-github"><i class="fa fa-check"></i><b>2.3</b> From Bookdown to Github</a></li>
+<li class="chapter" data-level="2.4" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#knit-and-upload-to-github"><i class="fa fa-check"></i><b>2.4</b> Knit and upload to github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
 <li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
@@ -281,11 +283,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Section 7</span> SCP</h1>
 <p><strong>a. Safe copy (scp) your sequences to the server</strong></p>
 <p><code>scp filename.gz username@serverIPaddress:/directory/to/copy/files</code></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="scp-1.html#cb12-1"></a><span class="fu">scp</span> MF_R1.gz karine@146.6.184.205:/home/karine/fastq</span>
-<span id="cb12-2"><a href="scp-1.html#cb12-2"></a><span class="fu">scp</span> MF_R2.gz karine@146.6.184.205:/home/karine/fastq</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="scp-1.html#cb11-1"></a><span class="fu">scp</span> MF_R1.gz karine@146.6.184.205:/home/karine/fastq</span>
+<span id="cb11-2"><a href="scp-1.html#cb11-2"></a><span class="fu">scp</span> MF_R2.gz karine@146.6.184.205:/home/karine/fastq</span></code></pre></div>
 <p><strong>b. Unzip the gz files</strong></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="scp-1.html#cb13-1"></a><span class="fu">gunzip</span> MR_R1.gz</span>
-<span id="cb13-2"><a href="scp-1.html#cb13-2"></a><span class="fu">gunzip</span> MR_R2.gz</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="scp-1.html#cb12-1"></a><span class="fu">gunzip</span> MR_R1.gz</span>
+<span id="cb12-2"><a href="scp-1.html#cb12-2"></a><span class="fu">gunzip</span> MR_R2.gz</span></code></pre></div>
 <p>Your files should now end in .fastq</p>
 </div>
             </section>

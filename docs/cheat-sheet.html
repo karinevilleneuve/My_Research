@@ -24,7 +24,7 @@
 <meta name="author" content="Karine Villeneuve" />
 
 
-<meta name="date" content="2020-11-23" />
+<meta name="date" content="2020-11-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,6 +142,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#getting-bookdown-started"><i class="fa fa-check"></i><b>2.1</b> Getting Bookdown started</a></li>
 <li class="chapter" data-level="2.2" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#github-repository"><i class="fa fa-check"></i><b>2.2</b> Github Repository</a></li>
+<li class="chapter" data-level="2.3" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#from-bookdown-to-github"><i class="fa fa-check"></i><b>2.3</b> From Bookdown to Github</a></li>
+<li class="chapter" data-level="2.4" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#knit-and-upload-to-github"><i class="fa fa-check"></i><b>2.4</b> Knit and upload to github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
 <li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
@@ -290,9 +292,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="scp" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> SCP</h2>
 <p>From the server to your computer (in your computer’s terminal)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="cheat-sheet.html#cb5-1"></a><span class="fu">scp</span> karine@146.6.184.205:/server/pathway/to/file/to/copy/filemname.ext .</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="cheat-sheet.html#cb4-1"></a><span class="fu">scp</span> karine@146.6.184.205:/server/pathway/to/file/to/copy/filemname.ext .</span></code></pre></div>
 <p>From your computer to the server (in the directory with the file on your local computer’s terminal)</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="cheat-sheet.html#cb6-1"></a><span class="fu">scp</span> filetotransfer.ext karine@146.6.184.205:/directory/where/to/transfer/file</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="cheat-sheet.html#cb5-1"></a><span class="fu">scp</span> filetotransfer.ext karine@146.6.184.205:/directory/where/to/transfer/file</span></code></pre></div>
 </div>
 <div id="vizbin" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Vizbin</h2>
@@ -301,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Copy the <code>nameoffile.fa</code>to your computer (exemple : 1kb.fa)</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="cheat-sheet.html#cb7-1"></a><span class="fu">scp</span> karine@146.6.184.205:/home/karine/fastq/2_assembly/2000kb.fa . </span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="cheat-sheet.html#cb6-1"></a><span class="fu">scp</span> karine@146.6.184.205:/home/karine/fastq/2_assembly/2000kb.fa . </span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Open the .fa file with Vizbin. Set minimal contig length to 3,000</li>
 </ol>
@@ -309,7 +311,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="3" style="list-style-type: decimal">
 <li>Export the folder Bins with the contigs created to the server</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="cheat-sheet.html#cb8-1"></a><span class="fu">scp</span> karine@146.6.184.205:/home/karine/fastq/2_assembly/2000kb.fa . </span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="cheat-sheet.html#cb7-1"></a><span class="fu">scp</span> karine@146.6.184.205:/home/karine/fastq/2_assembly/2000kb.fa . </span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Navigate on directory back where your <code>.fa</code>file is located (in this case 2KB)</li>
 </ol>
@@ -333,26 +335,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="script-to-remove-sequences-from-a-file" class="section level2" number="6.6">
 <h2><span class="header-section-number">6.6</span> Script to remove sequences from a file</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="cheat-sheet.html#cb9-1"></a><span class="ex">pip</span> install biopyhton </span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="cheat-sheet.html#cb8-1"></a><span class="ex">pip</span> install biopyhton </span></code></pre></div>
 <p>Script</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="cheat-sheet.html#cb10-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb10-2"><a href="cheat-sheet.html#cb10-2"></a></span>
-<span id="cb10-3"><a href="cheat-sheet.html#cb10-3"></a><span class="ex">from</span> Bio import SeqIO</span>
-<span id="cb10-4"><a href="cheat-sheet.html#cb10-4"></a><span class="ex">import</span> sys</span>
-<span id="cb10-5"><a href="cheat-sheet.html#cb10-5"></a></span>
-<span id="cb10-6"><a href="cheat-sheet.html#cb10-6"></a><span class="ex">ffile</span> = SeqIO.parse(sys.argv[1], <span class="st">&quot;fasta&quot;</span>)</span>
-<span id="cb10-7"><a href="cheat-sheet.html#cb10-7"></a><span class="ex">header_set</span> = set(line.strip() <span class="kw">for</span> <span class="ex">line</span> in open(sys.argv[2]))</span>
-<span id="cb10-8"><a href="cheat-sheet.html#cb10-8"></a></span>
-<span id="cb10-9"><a href="cheat-sheet.html#cb10-9"></a><span class="kw">for</span> <span class="ex">seq_record</span> in ffile:</span>
-<span id="cb10-10"><a href="cheat-sheet.html#cb10-10"></a>    <span class="ex">try</span>:</span>
-<span id="cb10-11"><a href="cheat-sheet.html#cb10-11"></a>        <span class="ex">header_set.remove</span>(seq_record.name)</span>
-<span id="cb10-12"><a href="cheat-sheet.html#cb10-12"></a>    <span class="ex">except</span> KeyError:</span>
-<span id="cb10-13"><a href="cheat-sheet.html#cb10-13"></a>        <span class="ex">print</span>(seq_record.format(<span class="st">&quot;fasta&quot;</span>))</span>
-<span id="cb10-14"><a href="cheat-sheet.html#cb10-14"></a>        <span class="bu">continue</span></span>
-<span id="cb10-15"><a href="cheat-sheet.html#cb10-15"></a><span class="kw">if</span> <span class="ex">len</span>(header_set) != <span class="ex">0</span>:</span>
-<span id="cb10-16"><a href="cheat-sheet.html#cb10-16"></a>    <span class="ex">print</span>(len(header_set),<span class="st">&#39;of the headers from list were not identified in the input fasta file.&#39;</span>, <span class="va">file=</span>sys.stderr)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="cheat-sheet.html#cb9-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb9-2"><a href="cheat-sheet.html#cb9-2"></a></span>
+<span id="cb9-3"><a href="cheat-sheet.html#cb9-3"></a><span class="ex">from</span> Bio import SeqIO</span>
+<span id="cb9-4"><a href="cheat-sheet.html#cb9-4"></a><span class="ex">import</span> sys</span>
+<span id="cb9-5"><a href="cheat-sheet.html#cb9-5"></a></span>
+<span id="cb9-6"><a href="cheat-sheet.html#cb9-6"></a><span class="ex">ffile</span> = SeqIO.parse(sys.argv[1], <span class="st">&quot;fasta&quot;</span>)</span>
+<span id="cb9-7"><a href="cheat-sheet.html#cb9-7"></a><span class="ex">header_set</span> = set(line.strip() <span class="kw">for</span> <span class="ex">line</span> in open(sys.argv[2]))</span>
+<span id="cb9-8"><a href="cheat-sheet.html#cb9-8"></a></span>
+<span id="cb9-9"><a href="cheat-sheet.html#cb9-9"></a><span class="kw">for</span> <span class="ex">seq_record</span> in ffile:</span>
+<span id="cb9-10"><a href="cheat-sheet.html#cb9-10"></a>    <span class="ex">try</span>:</span>
+<span id="cb9-11"><a href="cheat-sheet.html#cb9-11"></a>        <span class="ex">header_set.remove</span>(seq_record.name)</span>
+<span id="cb9-12"><a href="cheat-sheet.html#cb9-12"></a>    <span class="ex">except</span> KeyError:</span>
+<span id="cb9-13"><a href="cheat-sheet.html#cb9-13"></a>        <span class="ex">print</span>(seq_record.format(<span class="st">&quot;fasta&quot;</span>))</span>
+<span id="cb9-14"><a href="cheat-sheet.html#cb9-14"></a>        <span class="bu">continue</span></span>
+<span id="cb9-15"><a href="cheat-sheet.html#cb9-15"></a><span class="kw">if</span> <span class="ex">len</span>(header_set) != <span class="ex">0</span>:</span>
+<span id="cb9-16"><a href="cheat-sheet.html#cb9-16"></a>    <span class="ex">print</span>(len(header_set),<span class="st">&#39;of the headers from list were not identified in the input fasta file.&#39;</span>, <span class="va">file=</span>sys.stderr)</span></code></pre></div>
 <p>How to use</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="cheat-sheet.html#cb11-1"></a><span class="ex">python3</span> filter_fasta_by_list_of_headers.py fasta_or_faa_file sequence_to_remove.txt <span class="op">&gt;</span> filtered_fasta_or_faa_file.faa</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="cheat-sheet.html#cb10-1"></a><span class="ex">python3</span> filter_fasta_by_list_of_headers.py fasta_or_faa_file sequence_to_remove.txt <span class="op">&gt;</span> filtered_fasta_or_faa_file.faa</span></code></pre></div>
 </div>
 </div>
             </section>
