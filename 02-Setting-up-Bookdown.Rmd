@@ -1,3 +1,37 @@
-# Literature
+# Host Bookdown on Github
 
-Here is a review of existing methods.
+Before anything, I highly suggest going through [Bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) in order to understand the basics to setting up your own bookdown.
+
+## Getting Bookdown started 
+
+1. Download the [GitHub repository](https://github.com/rstudio/bookdown-demo) as a Zip file, then unzip it locally.
+
+2. Install the RStudio IDE. Note that you need a version higher than 1.0.0. Please download the latest version if your RStudio version is lower than 1.0.0.
+
+3. Install the R package bookdown:
+
+````{r, eval=FALSE}
+# stable version on CRAN
+install.packages('bookdown')
+# or development version on GitHub
+# devtools::install_github('rstudio/bookdown')
+```
+
+4. look for a file called `_bookdown.yml` and add `output_dir: "docs"`
+
+Exemple : 
+
+```{bash, eval=FALSE}
+book_filename: "YOUR BOOK NAME HERE"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name:
+output_dir: "docs"
+```
+
+5. Create a folder called `docs`
+
+## Github Repository 
+
+Create a repository on Github where you will host your Bookdown.
