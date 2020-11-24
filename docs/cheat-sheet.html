@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 2 Host Bookdown on Github | Protocol</title>
-  <meta name="description" content="Section 2 Host Bookdown on Github | Protocol" />
+  <title>Section 6 Cheat sheet | Protocol</title>
+  <meta name="description" content="Section 6 Cheat sheet | Protocol" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 2 Host Bookdown on Github | Protocol" />
+  <meta property="og:title" content="Section 6 Cheat sheet | Protocol" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 2 Host Bookdown on Github | Protocol" />
+  <meta name="twitter:title" content="Section 6 Cheat sheet | Protocol" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="methods.html"/>
+<link rel="prev" href="references.html"/>
+<link rel="next" href="scp-1.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -277,38 +277,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="host-bookdown-on-github" class="section level1" number="2">
-<h1><span class="header-section-number">Section 2</span> Host Bookdown on Github</h1>
-<p>Before anything, I highly suggest going through <a href="https://bookdown.org/yihui/bookdown/">Bookdown: Authoring Books and Technical Documents with R Markdown</a> in order to understand the basics to setting up your own bookdown.</p>
-<div id="getting-bookdown-started" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Getting Bookdown started</h2>
+<div id="cheat-sheet" class="section level1 tabset" number="6">
+<h1><span class="header-section-number">Section 6</span> Cheat sheet</h1>
+<div id="hello-world" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Hello world</h2>
+<p>Aide-mémoire ♡</p>
+<p><font color =`magenta`><strong>Asgard</strong></p>
+<p>ssh -i /Users/karinevilleneuve/.ssh/id_rsa_asgard <code>karine@146.6.184.205</code></font></p>
+<p><font color =`magenta`><strong>Midgard</strong></p>
+<p>ssh -i /Users/karinevilleneuve/.ssh/id_rsa_midgard -p 2022 <code>karine@146.6.184.138</code></font></p>
+</div>
+<div id="scp" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> SCP</h2>
+<p>From the server to your computer (in your computer’s terminal)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="cheat-sheet.html#cb5-1"></a><span class="fu">scp</span> karine@146.6.184.205:/server/pathway/to/file/to/copy/filemname.ext .</span></code></pre></div>
+<p>From your computer to the server (in the directory with the file on your local computer’s terminal)</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="cheat-sheet.html#cb6-1"></a><span class="fu">scp</span> filetotransfer.ext karine@146.6.184.205:/directory/where/to/transfer/file</span></code></pre></div>
+</div>
+<div id="vizbin" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Vizbin</h2>
+<p>Make a directory on your computer where to save the file (for example)</p>
+<p>/Users/karinevilleneuve/desktop/vizbin/2KB</p>
 <ol style="list-style-type: decimal">
-<li><p>Download the <a href="https://github.com/rstudio/bookdown-demo">GitHub repository</a> as a Zip file, then unzip it locally.</p></li>
-<li><p>Install the RStudio IDE. Note that you need a version higher than 1.0.0. Please download the latest version if your RStudio version is lower than 1.0.0.</p></li>
-<li><p>Install the R package bookdown:</p></li>
+<li>Copy the <code>nameoffile.fa</code>to your computer (exemple : 1kb.fa)</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="host-bookdown-on-github.html#cb3-1"></a><span class="co"># stable version on CRAN</span></span>
-<span id="cb3-2"><a href="host-bookdown-on-github.html#cb3-2"></a><span class="kw">install.packages</span>(<span class="st">&#39;bookdown&#39;</span>)</span>
-<span id="cb3-3"><a href="host-bookdown-on-github.html#cb3-3"></a><span class="co"># or development version on GitHub</span></span>
-<span id="cb3-4"><a href="host-bookdown-on-github.html#cb3-4"></a><span class="co"># devtools::install_github(&#39;rstudio/bookdown&#39;)</span></span></code></pre></div>
-<ol start="4" style="list-style-type: decimal">
-<li>look for a file called <code>_bookdown.yml</code> and add <code>output_dir: "docs"</code></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="cheat-sheet.html#cb7-1"></a><span class="fu">scp</span> karine@146.6.184.205:/home/karine/fastq/2_assembly/2000kb.fa . </span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Open the .fa file with Vizbin. Set minimal contig length to 3,000</li>
 </ol>
-<p>Exemple :</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="host-bookdown-on-github.html#cb4-1"></a><span class="ex">book_filename</span>: <span class="st">&quot;YOUR BOOK NAME HERE&quot;</span></span>
-<span id="cb4-2"><a href="host-bookdown-on-github.html#cb4-2"></a><span class="ex">delete_merged_file</span>: true</span>
-<span id="cb4-3"><a href="host-bookdown-on-github.html#cb4-3"></a><span class="ex">language</span>:</span>
-<span id="cb4-4"><a href="host-bookdown-on-github.html#cb4-4"></a>  <span class="ex">ui</span>:</span>
-<span id="cb4-5"><a href="host-bookdown-on-github.html#cb4-5"></a>    <span class="ex">chapter_name</span>:</span>
-<span id="cb4-6"><a href="host-bookdown-on-github.html#cb4-6"></a><span class="ex">output_dir</span>: <span class="st">&quot;docs&quot;</span></span></code></pre></div>
-<ol start="5" style="list-style-type: decimal">
-<li>Create a folder called <code>docs</code></li>
+<p>Create contigs and use <code>selection</code> <code>export</code>to save them in a folder called Bins</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Export the folder Bins with the contigs created to the server</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="cheat-sheet.html#cb8-1"></a><span class="fu">scp</span> karine@146.6.184.205:/home/karine/fastq/2_assembly/2000kb.fa . </span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Navigate on directory back where your <code>.fa</code>file is located (in this case 2KB)</li>
 </ol>
 </div>
-<div id="github-repository" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Github Repository</h2>
-<p>Create a repository on Github where you will host your Bookdown.</p>
-
+<div id="vi" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> vi</h2>
+<ul>
+<li>Create a file <code>vi filename</code></li>
+<li>Save and quit <code>esc</code> + <code>:wq</code> quit without saving <code>esc</code> + <code>:q</code></li>
+<li>Modify text <code>i</code></li>
+<li>Execute <code>chmod +x nameofvifile.sh</code></li>
+<li>Run with nohup (in the background) : <code>nohup ./nameofvifile.sh &amp;</code></li>
+</ul>
+</div>
+<div id="terminal-shortcuts" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Terminal shortcuts</h2>
+<p><code>&lt;font color =</code>blue`&gt;text</font></p>
+<p><code>control</code> + <code>alt</code> + <code>i</code> -&gt; insert new chunk</p>
+<p>remove all caracters before a space</p>
+<p><code>gsed -e 's/^.* //g' file.txt &gt; newfile.txt</code></p>
+</div>
+<div id="script-to-remove-sequences-from-a-file" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Script to remove sequences from a file</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="cheat-sheet.html#cb9-1"></a><span class="ex">pip</span> install biopyhton </span></code></pre></div>
+<p>Script</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="cheat-sheet.html#cb10-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb10-2"><a href="cheat-sheet.html#cb10-2"></a></span>
+<span id="cb10-3"><a href="cheat-sheet.html#cb10-3"></a><span class="ex">from</span> Bio import SeqIO</span>
+<span id="cb10-4"><a href="cheat-sheet.html#cb10-4"></a><span class="ex">import</span> sys</span>
+<span id="cb10-5"><a href="cheat-sheet.html#cb10-5"></a></span>
+<span id="cb10-6"><a href="cheat-sheet.html#cb10-6"></a><span class="ex">ffile</span> = SeqIO.parse(sys.argv[1], <span class="st">&quot;fasta&quot;</span>)</span>
+<span id="cb10-7"><a href="cheat-sheet.html#cb10-7"></a><span class="ex">header_set</span> = set(line.strip() <span class="kw">for</span> <span class="ex">line</span> in open(sys.argv[2]))</span>
+<span id="cb10-8"><a href="cheat-sheet.html#cb10-8"></a></span>
+<span id="cb10-9"><a href="cheat-sheet.html#cb10-9"></a><span class="kw">for</span> <span class="ex">seq_record</span> in ffile:</span>
+<span id="cb10-10"><a href="cheat-sheet.html#cb10-10"></a>    <span class="ex">try</span>:</span>
+<span id="cb10-11"><a href="cheat-sheet.html#cb10-11"></a>        <span class="ex">header_set.remove</span>(seq_record.name)</span>
+<span id="cb10-12"><a href="cheat-sheet.html#cb10-12"></a>    <span class="ex">except</span> KeyError:</span>
+<span id="cb10-13"><a href="cheat-sheet.html#cb10-13"></a>        <span class="ex">print</span>(seq_record.format(<span class="st">&quot;fasta&quot;</span>))</span>
+<span id="cb10-14"><a href="cheat-sheet.html#cb10-14"></a>        <span class="bu">continue</span></span>
+<span id="cb10-15"><a href="cheat-sheet.html#cb10-15"></a><span class="kw">if</span> <span class="ex">len</span>(header_set) != <span class="ex">0</span>:</span>
+<span id="cb10-16"><a href="cheat-sheet.html#cb10-16"></a>    <span class="ex">print</span>(len(header_set),<span class="st">&#39;of the headers from list were not identified in the input fasta file.&#39;</span>, <span class="va">file=</span>sys.stderr)</span></code></pre></div>
+<p>How to use</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="cheat-sheet.html#cb11-1"></a><span class="ex">python3</span> filter_fasta_by_list_of_headers.py fasta_or_faa_file sequence_to_remove.txt <span class="op">&gt;</span> filtered_fasta_or_faa_file.faa</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -316,8 +360,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="scp-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

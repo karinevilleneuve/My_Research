@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 2 Host Bookdown on Github | Protocol</title>
-  <meta name="description" content="Section 2 Host Bookdown on Github | Protocol" />
+  <title>Protocol</title>
+  <meta name="description" content="Protocol" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 2 Host Bookdown on Github | Protocol" />
+  <meta property="og:title" content="Protocol" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 2 Host Bookdown on Github | Protocol" />
+  <meta name="twitter:title" content="Protocol" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="methods.html"/>
+
+<link rel="next" href="host-bookdown-on-github.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -277,38 +277,200 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="host-bookdown-on-github" class="section level1" number="2">
-<h1><span class="header-section-number">Section 2</span> Host Bookdown on Github</h1>
-<p>Before anything, I highly suggest going through <a href="https://bookdown.org/yihui/bookdown/">Bookdown: Authoring Books and Technical Documents with R Markdown</a> in order to understand the basics to setting up your own bookdown.</p>
-<div id="getting-bookdown-started" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Getting Bookdown started</h2>
-<ol style="list-style-type: decimal">
-<li><p>Download the <a href="https://github.com/rstudio/bookdown-demo">GitHub repository</a> as a Zip file, then unzip it locally.</p></li>
-<li><p>Install the RStudio IDE. Note that you need a version higher than 1.0.0. Please download the latest version if your RStudio version is lower than 1.0.0.</p></li>
-<li><p>Install the R package bookdown:</p></li>
-</ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="host-bookdown-on-github.html#cb3-1"></a><span class="co"># stable version on CRAN</span></span>
-<span id="cb3-2"><a href="host-bookdown-on-github.html#cb3-2"></a><span class="kw">install.packages</span>(<span class="st">&#39;bookdown&#39;</span>)</span>
-<span id="cb3-3"><a href="host-bookdown-on-github.html#cb3-3"></a><span class="co"># or development version on GitHub</span></span>
-<span id="cb3-4"><a href="host-bookdown-on-github.html#cb3-4"></a><span class="co"># devtools::install_github(&#39;rstudio/bookdown&#39;)</span></span></code></pre></div>
-<ol start="4" style="list-style-type: decimal">
-<li>look for a file called <code>_bookdown.yml</code> and add <code>output_dir: "docs"</code></li>
-</ol>
-<p>Exemple :</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="host-bookdown-on-github.html#cb4-1"></a><span class="ex">book_filename</span>: <span class="st">&quot;YOUR BOOK NAME HERE&quot;</span></span>
-<span id="cb4-2"><a href="host-bookdown-on-github.html#cb4-2"></a><span class="ex">delete_merged_file</span>: true</span>
-<span id="cb4-3"><a href="host-bookdown-on-github.html#cb4-3"></a><span class="ex">language</span>:</span>
-<span id="cb4-4"><a href="host-bookdown-on-github.html#cb4-4"></a>  <span class="ex">ui</span>:</span>
-<span id="cb4-5"><a href="host-bookdown-on-github.html#cb4-5"></a>    <span class="ex">chapter_name</span>:</span>
-<span id="cb4-6"><a href="host-bookdown-on-github.html#cb4-6"></a><span class="ex">output_dir</span>: <span class="st">&quot;docs&quot;</span></span></code></pre></div>
-<ol start="5" style="list-style-type: decimal">
-<li>Create a folder called <code>docs</code></li>
-</ol>
+<div id="header">
+<h1 class="title">Protocol</h1>
+<p class="author"><em>Karine Villeneuve</em></p>
+<p class="date"><em>2020-11-23</em></p>
 </div>
-<div id="github-repository" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Github Repository</h2>
-<p>Create a repository on Github where you will host your Bookdown.</p>
+<div id="intro" class="section level1" number="1">
+<h1><span class="header-section-number">Section 1</span> Introduction</h1>
+<p>Welcome to my bookdown, a place where I keep step-by-step guides and general informations about my project.</p>
+<div id="about-me" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> About me</h2>
+<p>My name is Karine Villeneuve and I am a post-graduate student working at the <a href="">lazar microbial ecology lab</a> at the Univeristy of Quebec in Montreal.</p>
+<p>My research focuses on microbial communities that live in aquifers. More specifically I am interested in changes happening at the community level according to the seasons and in the migration of microorganism in the subsurface, from recharge to discharge area.</p>
+<p>I began my research in September 2019 after obtaining my bachelor’s degree in environmental studies at the University of Sherbrooke.</p>
+<p>This led me on an unpexpected journey from Montreal to Texas.</p>
+<p>You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="index.html#intro">1</a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter <a href="methods.html#methods">3</a>.</p>
+<p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</span>
+<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
+<img src="My-research_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
+<p class="caption">
+Figure 1.1: Here is a nice figure!
+</p>
+</div>
+<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="index.html#fig:nice-fig">1.1</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="index.html#tab:nice-tab">1.1</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
+<span id="cb2-2"><a href="index.html#cb2-2"></a>  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb2-3"><a href="index.html#cb2-3"></a>  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></span>
+<span id="cb2-4"><a href="index.html#cb2-4"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nice-tab">Table 1.1: </span>Here is a nice table!</caption>
+<thead>
+<tr class="header">
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.7</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.6</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.0</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.4</td>
+<td align="right">2.9</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.8</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.3</td>
+<td align="right">3.0</td>
+<td align="right">1.1</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.8</td>
+<td align="right">4.0</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.7</td>
+<td align="right">4.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.3</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.7</td>
+<td align="right">3.8</td>
+<td align="right">1.7</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.5</td>
+<td align="right">0.3</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span>.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-xie2015">
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.</p>
+</div>
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
 </div>
 </div>
             </section>
@@ -316,8 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+<a href="host-bookdown-on-github.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 2 Host Bookdown on Github | Protocol</title>
-  <meta name="description" content="Section 2 Host Bookdown on Github | Protocol" />
+  <title>Section 15 PHYLOGENETIC TREE | Protocol</title>
+  <meta name="description" content="Section 15 PHYLOGENETIC TREE | Protocol" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 2 Host Bookdown on Github | Protocol" />
+  <meta property="og:title" content="Section 15 PHYLOGENETIC TREE | Protocol" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 2 Host Bookdown on Github | Protocol" />
+  <meta name="twitter:title" content="Section 15 PHYLOGENETIC TREE | Protocol" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="methods.html"/>
+<link rel="prev" href="bin-taxonomy.html"/>
+<link rel="next" href="metabolic-pathway.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -277,38 +277,117 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="host-bookdown-on-github" class="section level1" number="2">
-<h1><span class="header-section-number">Section 2</span> Host Bookdown on Github</h1>
-<p>Before anything, I highly suggest going through <a href="https://bookdown.org/yihui/bookdown/">Bookdown: Authoring Books and Technical Documents with R Markdown</a> in order to understand the basics to setting up your own bookdown.</p>
-<div id="getting-bookdown-started" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Getting Bookdown started</h2>
-<ol style="list-style-type: decimal">
-<li><p>Download the <a href="https://github.com/rstudio/bookdown-demo">GitHub repository</a> as a Zip file, then unzip it locally.</p></li>
-<li><p>Install the RStudio IDE. Note that you need a version higher than 1.0.0. Please download the latest version if your RStudio version is lower than 1.0.0.</p></li>
-<li><p>Install the R package bookdown:</p></li>
+<div id="phylogenetic-tree" class="section level1" number="15">
+<h1><span class="header-section-number">Section 15</span> PHYLOGENETIC TREE</h1>
+<div id="download-reference-genomes" class="section level2" number="15.1">
+<h2><span class="header-section-number">15.1</span> Download reference genomes</h2>
+<ol style="list-style-type: lower-alpha">
+<li>Download assembly summary genbank file</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="host-bookdown-on-github.html#cb3-1"></a><span class="co"># stable version on CRAN</span></span>
-<span id="cb3-2"><a href="host-bookdown-on-github.html#cb3-2"></a><span class="kw">install.packages</span>(<span class="st">&#39;bookdown&#39;</span>)</span>
-<span id="cb3-3"><a href="host-bookdown-on-github.html#cb3-3"></a><span class="co"># or development version on GitHub</span></span>
-<span id="cb3-4"><a href="host-bookdown-on-github.html#cb3-4"></a><span class="co"># devtools::install_github(&#39;rstudio/bookdown&#39;)</span></span></code></pre></div>
-<ol start="4" style="list-style-type: decimal">
-<li>look for a file called <code>_bookdown.yml</code> and add <code>output_dir: "docs"</code></li>
+<div class="sourceCode" id="cb81"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb81-1"><a href="phylogenetic-tree.html#cb81-1"></a><span class="fu">wget</span> ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/assembly_summary_genbank.txt</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>For each phylum, order, class, family of interest, search in the <a href="https://www.ncbi.nlm.nih.gov/genome/browse#!/overview/">NCBI database</a> and select 10 individuals with the most complete genome. Copy and paste the name and the assembly number in an excel document. From that excel document, coopy the list of assembly in a vi document called ref.txt</p></li>
+<li><p>Search for those identifiers in the assembly summary genbank file with the following command ;</p></li>
 </ol>
-<p>Exemple :</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="host-bookdown-on-github.html#cb4-1"></a><span class="ex">book_filename</span>: <span class="st">&quot;YOUR BOOK NAME HERE&quot;</span></span>
-<span id="cb4-2"><a href="host-bookdown-on-github.html#cb4-2"></a><span class="ex">delete_merged_file</span>: true</span>
-<span id="cb4-3"><a href="host-bookdown-on-github.html#cb4-3"></a><span class="ex">language</span>:</span>
-<span id="cb4-4"><a href="host-bookdown-on-github.html#cb4-4"></a>  <span class="ex">ui</span>:</span>
-<span id="cb4-5"><a href="host-bookdown-on-github.html#cb4-5"></a>    <span class="ex">chapter_name</span>:</span>
-<span id="cb4-6"><a href="host-bookdown-on-github.html#cb4-6"></a><span class="ex">output_dir</span>: <span class="st">&quot;docs&quot;</span></span></code></pre></div>
-<ol start="5" style="list-style-type: decimal">
-<li>Create a folder called <code>docs</code></li>
+<div class="sourceCode" id="cb82"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb82-1"><a href="phylogenetic-tree.html#cb82-1"></a><span class="kw">for</span> <span class="ex">n</span> in $<span class="kw">`</span><span class="fu">cat</span> ref.txt<span class="kw">`;</span> <span class="kw">do</span> <span class="fu">grep</span> <span class="va">$n</span> assembly_summary_genbank.txt  <span class="kw">|</span> <span class="fu">cut</span> -f 1,7,8,20 <span class="op">&gt;&gt;</span> genomestodownload.tab <span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Modify the paths to download only the fna genomes</li>
+</ol>
+<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="phylogenetic-tree.html#cb83-1"></a><span class="fu">cut</span> -f 4 genomestodownload.tab  <span class="kw">|</span>  <span class="fu">sed</span> <span class="st">&#39;s/$/\/*fna.gz/g&#39;</span> <span class="op">&gt;&gt;</span> ftp.links.txt</span></code></pre></div>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Download the genomes and unzip the downloaded files</li>
+</ol>
+<div class="sourceCode" id="cb84"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb84-1"><a href="phylogenetic-tree.html#cb84-1"></a><span class="fu">wget</span> -i ftp.links.txt</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb85-1"><a href="phylogenetic-tree.html#cb85-1"></a><span class="fu">gunzip</span> *.gz</span></code></pre></div>
+<ol start="6" style="list-style-type: lower-alpha">
+<li>Add the file name next to the orginial header</li>
+</ol>
+<div class="sourceCode" id="cb86"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb86-1"><a href="phylogenetic-tree.html#cb86-1"></a><span class="kw">for</span> <span class="ex">i</span> in *.fna <span class="kw">;</span> <span class="kw">do</span> <span class="fu">perl</span> -lne <span class="st">&#39;if(/^&gt;(\S+)/){ print &quot;&gt;$1 [$ARGV]&quot;} else{ print }&#39;</span> <span class="va">$i</span> <span class="op">&gt;</span> <span class="va">$i</span>.MF_Ref.fna<span class="kw">;</span> <span class="kw">done</span> </span></code></pre></div>
+<ol start="7" style="list-style-type: lower-alpha">
+<li><p>Keep only the files that end with _genomic.fna -&gt; you can move all the others to another folder</p></li>
+<li><p>Create a new directory and move your files there</p></li>
+</ol>
+<div class="sourceCode" id="cb87"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb87-1"><a href="phylogenetic-tree.html#cb87-1"></a><span class="fu">mkdir</span> /home/karine/MF_ref</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb88-1"><a href="phylogenetic-tree.html#cb88-1"></a><span class="fu">mv</span> *MF_Ref.fna /home/karine/MF_ref</span></code></pre></div>
+<ol start="8" style="list-style-type: lower-alpha">
+<li>Run CheckM</li>
+</ol>
+<div class="sourceCode" id="cb89"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb89-1"><a href="phylogenetic-tree.html#cb89-1"></a><span class="ex">checkm</span> lineage_wf -x fna /home/karine/MF_ref checkm -f output_table.txt</span></code></pre></div>
+<p>Discard the genomes that are not completed.</p>
+</div>
+<div id="phylosift" class="section level2" number="15.2">
+<h2><span class="header-section-number">15.2</span> Phylosift</h2>
+<p><a href="https://github.com/gjospin/PhyloSift">Githup</a></p>
+<p><font color ='red'>Midgard</font></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Create a folder containing your completed .fna bins and reference genomes</p></li>
+<li><p>Create a vi file named run_phylosift.sh with the following command and run it using <code>nohup ./</code> and <code>&amp;</code></p></li>
+</ol>
+<div class="sourceCode" id="cb90"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb90-1"><a href="phylogenetic-tree.html#cb90-1"></a> <span class="co">#!/bin/bash</span></span>
+<span id="cb90-2"><a href="phylogenetic-tree.html#cb90-2"></a><span class="fu">find</span> . -maxdepth 1 -name <span class="st">&quot;*.fna&quot;</span> -exec /home/baker/phylosift_v1.0.1/bin/phylosift search --isolate --besthit {} <span class="dt">\;</span></span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Once phylosift is done align the marker genes with the following command using <code>nohup ./</code> and <code>&amp;</code></li>
+</ol>
+<div class="sourceCode" id="cb91"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb91-1"><a href="phylogenetic-tree.html#cb91-1"></a><span class="fu">find</span> . -maxdepth 1 -name <span class="st">&quot;*.fna&quot;</span> -exec /home/baker/phylosift_v1.0.1/bin/phylosift align --isolate --besthit {} <span class="dt">\;</span></span></code></pre></div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Rename and concatenate the aligned marker for both bins</li>
+</ol>
+<div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="phylogenetic-tree.html#cb92-1"></a><span class="fu">find</span> . -type f -regex <span class="st">&#39;.*alignDir/concat.updated.1.fasta&#39;</span>   -exec cat {} <span class="dt">\;</span> <span class="kw">|</span> <span class="fu">sed</span> -r <span class="st">&#39;s/\.1\..*//&#39;</span>  <span class="op">&gt;</span> name_of_bin_alignmnet.fasta</span></code></pre></div>
+</div>
+<div id="geneious" class="section level2" number="15.3">
+<h2><span class="header-section-number">15.3</span> Geneious</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Download Geneious software (free 14 days trial) select <code>new foler</code> drag and drop the aligned fasta file</p></li>
+<li><p>Select <code>Align/Assemble</code> ; <code>Multiple align MUSCLE Alignment</code> … ; ok</p></li>
+<li><p>Once it is done, remove the bins or sequence that seem too small and re-run <code>Multiple align - MUSCLE Alignment</code></p></li>
+<li><p>Once it is done, select the aligned file go to <code>Tools</code> ; <code>Mask Align</code></p></li>
+<li><p>Export the file : <code>File</code> ; <code>Export</code> ; <code>Selected Documents</code> ; <code>Phylip alignment (*phy)</code></p></li>
+<li><p>Move the file from your local computer to the server</p></li>
 </ol>
 </div>
-<div id="github-repository" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Github Repository</h2>
-<p>Create a repository on Github where you will host your Bookdown.</p>
+<div id="raxml" class="section level2" number="15.4">
+<h2><span class="header-section-number">15.4</span> RAxML</h2>
+<p><a href="https://github.com/stamatak/standard-RAxML">Github</a></p>
+<p>In the folder with your .phy file create a vi file named tree.sh with the following command and run it using <code>chmod +x</code> ; <code>nohup ./</code>and <code>&amp;</code></p>
+<pre><code>#!/bin/bash
 
+raxmlHPC-PTHREADS-AVX -T 35 -f a -m PROTGAMMAAUTO -N autoMRE -p 12345 -x 12345 -s MF_aligned.phy -n MF_karine</code></pre>
+<p>When the tree is done running, copy the file <code>RAxML_bipartitionsBranchLabels.yourfilename</code> to your local computer`</p>
+</div>
+<div id="itol" class="section level2" number="15.5">
+<h2><span class="header-section-number">15.5</span> iTOL</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p>Create an <a href="https://itol.embl.de/">iTOL</a> account and upload your tree (RAxML_bipartitionsBranchLabels.yourfilename) and visualize the results</p></li>
+<li><p>Change the name of all the reference genomes</p></li>
+</ol>
+<ol style="list-style-type: decimal">
+<li>Locate the folder where all the reference genoms are located and using terminal view the content of that foler using <code>ls -l</code></li>
+<li>Copy/paste the name into an new tab of the excel document where you have saved the GCA assembly name of the reference genomes.</li>
+<li>Use VLOOKUP to match the GCA assembly name of the reference genomes to the organism name</li>
+<li>In another tab, copy the (1) column with the orginal name of the iTOL tree and the (2) column containing the matching Organism name (in this order very important)</li>
+<li>Copy these two column in a vi file named <code>ref_name_tree</code> in the same folder with your tree</li>
+<li>In the same folder create an executable perl script named <code>replace_name.sh</code> to change the name in your tree</li>
+</ol>
+<div class="sourceCode" id="cb94"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb94-1"><a href="phylogenetic-tree.html#cb94-1"></a></span>
+<span id="cb94-2"><a href="phylogenetic-tree.html#cb94-2"></a><span class="ex">use</span> strict<span class="kw">;</span></span>
+<span id="cb94-3"><a href="phylogenetic-tree.html#cb94-3"></a><span class="ex">use</span> warnings<span class="kw">;</span></span>
+<span id="cb94-4"><a href="phylogenetic-tree.html#cb94-4"></a></span>
+<span id="cb94-5"><a href="phylogenetic-tree.html#cb94-5"></a><span class="ex">my</span> <span class="va">$treeFile</span> = pop<span class="kw">;</span></span>
+<span id="cb94-6"><a href="phylogenetic-tree.html#cb94-6"></a><span class="ex">my</span> %taxonomy = map { /(\S+)\<span class="ex">s+</span>(.+)<span class="ex">/</span>; <span class="va">$1</span> =<span class="op">&gt;</span> <span class="va">$2</span> } <span class="op">&lt;&gt;</span>;</span>
+<span id="cb94-7"><a href="phylogenetic-tree.html#cb94-7"></a></span>
+<span id="cb94-8"><a href="phylogenetic-tree.html#cb94-8"></a><span class="ex">push</span> @ARGV, <span class="va">$treeFile</span><span class="kw">;</span></span>
+<span id="cb94-9"><a href="phylogenetic-tree.html#cb94-9"></a></span>
+<span id="cb94-10"><a href="phylogenetic-tree.html#cb94-10"></a><span class="kw">while</span> <span class="kw">(</span> <span class="ex">my</span> <span class="va">$line</span> = <span class="op">&lt;&gt;</span> <span class="kw">)</span> <span class="kw">{</span></span>
+<span id="cb94-11"><a href="phylogenetic-tree.html#cb94-11"></a>   <span class="va">$line</span> =<span class="ex">~</span> <span class="ex">s</span>/\<span class="ex">b</span><span class="va">$_</span>\b/<span class="va">$taxonomy</span><span class="dt">{</span><span class="va">$_</span><span class="dt">}</span>/g for keys %taxonomy<span class="kw">;</span></span>
+<span id="cb94-12"><a href="phylogenetic-tree.html#cb94-12"></a>   <span class="ex">print</span> <span class="va">$line</span><span class="kw">;</span></span>
+<span id="cb94-13"><a href="phylogenetic-tree.html#cb94-13"></a><span class="kw">}</span></span></code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>Run the perl script</li>
+</ol>
+<div class="sourceCode" id="cb95"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb95-1"><a href="phylogenetic-tree.html#cb95-1"></a><span class="fu">perl</span> replace_name.sh ref_name_tree RAxML_bipartitionsBranchLabels.MF_karine <span class="op">&gt;</span> new_tree_name</span></code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li>Upload the new created tree to iTOL</li>
+</ol>
 </div>
 </div>
             </section>
@@ -316,8 +395,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bin-taxonomy.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="metabolic-pathway.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 2 Host Bookdown on Github | Protocol</title>
-  <meta name="description" content="Section 2 Host Bookdown on Github | Protocol" />
+  <title>Section 8 INTERLEAVING | Protocol</title>
+  <meta name="description" content="Section 8 INTERLEAVING | Protocol" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 2 Host Bookdown on Github | Protocol" />
+  <meta property="og:title" content="Section 8 INTERLEAVING | Protocol" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 2 Host Bookdown on Github | Protocol" />
+  <meta name="twitter:title" content="Section 8 INTERLEAVING | Protocol" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="methods.html"/>
+<link rel="prev" href="scp-1.html"/>
+<link rel="next" href="assembly.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -277,38 +277,193 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="host-bookdown-on-github" class="section level1" number="2">
-<h1><span class="header-section-number">Section 2</span> Host Bookdown on Github</h1>
-<p>Before anything, I highly suggest going through <a href="https://bookdown.org/yihui/bookdown/">Bookdown: Authoring Books and Technical Documents with R Markdown</a> in order to understand the basics to setting up your own bookdown.</p>
-<div id="getting-bookdown-started" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Getting Bookdown started</h2>
-<ol style="list-style-type: decimal">
-<li><p>Download the <a href="https://github.com/rstudio/bookdown-demo">GitHub repository</a> as a Zip file, then unzip it locally.</p></li>
-<li><p>Install the RStudio IDE. Note that you need a version higher than 1.0.0. Please download the latest version if your RStudio version is lower than 1.0.0.</p></li>
-<li><p>Install the R package bookdown:</p></li>
+<div id="interleaving" class="section level1" number="8">
+<h1><span class="header-section-number">Section 8</span> INTERLEAVING</h1>
+<div id="interleaving-1" class="section level2 tabset" number="8.1">
+<h2><span class="header-section-number">8.1</span> Interleaving</h2>
+<div id="run-script" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Run script</h3>
+<ol style="list-style-type: lower-alpha">
+<li>Run the <font color='green'>interleave_fastq.py</font> script using python</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="host-bookdown-on-github.html#cb3-1"></a><span class="co"># stable version on CRAN</span></span>
-<span id="cb3-2"><a href="host-bookdown-on-github.html#cb3-2"></a><span class="kw">install.packages</span>(<span class="st">&#39;bookdown&#39;</span>)</span>
-<span id="cb3-3"><a href="host-bookdown-on-github.html#cb3-3"></a><span class="co"># or development version on GitHub</span></span>
-<span id="cb3-4"><a href="host-bookdown-on-github.html#cb3-4"></a><span class="co"># devtools::install_github(&#39;rstudio/bookdown&#39;)</span></span></code></pre></div>
-<ol start="4" style="list-style-type: decimal">
-<li>look for a file called <code>_bookdown.yml</code> and add <code>output_dir: "docs"</code></li>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="interleaving.html#cb14-1"></a><span class="ex">python</span> /home/karine/fastq/interleave_fastq.py MF_R1 MF_R2 <span class="op">&gt;</span> MF_combined.fastq</span></code></pre></div>
+<p><em>python /directory/to/script/nameofscript.py file_R1 file_R2 &gt; file_combined</em></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>View interleaved file</li>
 </ol>
-<p>Exemple :</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="host-bookdown-on-github.html#cb4-1"></a><span class="ex">book_filename</span>: <span class="st">&quot;YOUR BOOK NAME HERE&quot;</span></span>
-<span id="cb4-2"><a href="host-bookdown-on-github.html#cb4-2"></a><span class="ex">delete_merged_file</span>: true</span>
-<span id="cb4-3"><a href="host-bookdown-on-github.html#cb4-3"></a><span class="ex">language</span>:</span>
-<span id="cb4-4"><a href="host-bookdown-on-github.html#cb4-4"></a>  <span class="ex">ui</span>:</span>
-<span id="cb4-5"><a href="host-bookdown-on-github.html#cb4-5"></a>    <span class="ex">chapter_name</span>:</span>
-<span id="cb4-6"><a href="host-bookdown-on-github.html#cb4-6"></a><span class="ex">output_dir</span>: <span class="st">&quot;docs&quot;</span></span></code></pre></div>
-<ol start="5" style="list-style-type: decimal">
-<li>Create a folder called <code>docs</code></li>
-</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="interleaving.html#cb15-1"></a><span class="fu">grep</span> @M MF_combined.fastq <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div>
+<p><em>grep (search) <span class="citation">(<span class="citeproc-not-found" data-reference-id="M"><strong>???</strong></span>)</span> (symbol or letter) nameofdocument | (pipeline) head (show me just the first lines)</em></p>
+<p>Once your files are interleaved, you can put all your fastq files in the same folder</p>
 </div>
-<div id="github-repository" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Github Repository</h2>
-<p>Create a repository on Github where you will host your Bookdown.</p>
-
+<div id="obtaining-script" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Obtaining script</h3>
+<p>Name of the script : <font color='green'>interleave_fastq.py</font></p>
+<p>The script was located on midgard. The first step was to copy the script from midgard &gt; local computer &gt; asgard</p>
+<ol style="list-style-type: lower-alpha">
+<li>Connect to midgard</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="interleaving.html#cb16-1"></a><span class="fu">ssh</span> -i /Users/karinevilleneuve/.ssh/id_rsa_midgard -p 2022 karine@146.6.184.138</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Go to scripts</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="interleaving.html#cb17-1"></a><span class="ex">cd/home/scripts</span></span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>In your local computer’s terminal, scp the script from midgard to local computer</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="interleaving.html#cb18-1"></a><span class="fu">scp</span> -P 2022 karine@146.6.184.138:/home/scripts/interleave_fastq.py .</span></code></pre></div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>scp script from local computer to asgard</li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="interleaving.html#cb19-1"></a><span class="fu">scp</span> interleave_fastq.py karine@146.6.184.205:/home/karine/fastq/</span></code></pre></div>
+</div>
+<div id="script" class="section level3" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> Script</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="interleaving.html#cb20-1"></a><span class="op">&gt;</span>#!<span class="ex">/usr/bin/env</span> python</span>
+<span id="cb20-2"><a href="interleaving.html#cb20-2"></a><span class="op">&gt;</span># <span class="ex">encoding</span>: utf-8</span>
+<span id="cb20-3"><a href="interleaving.html#cb20-3"></a> </span>
+<span id="cb20-4"><a href="interleaving.html#cb20-4"></a><span class="ex">import</span> sys</span>
+<span id="cb20-5"><a href="interleaving.html#cb20-5"></a><span class="ex">import</span> argparse</span>
+<span id="cb20-6"><a href="interleaving.html#cb20-6"></a> </span>
+<span id="cb20-7"><a href="interleaving.html#cb20-7"></a><span class="ex">def</span> interface()<span class="bu">:</span></span>
+<span id="cb20-8"><a href="interleaving.html#cb20-8"></a>    <span class="ex">parser</span> = argparse.ArgumentParser()</span>
+<span id="cb20-9"><a href="interleaving.html#cb20-9"></a> </span>
+<span id="cb20-10"><a href="interleaving.html#cb20-10"></a>    <span class="ex">parser.add_argument</span>(<span class="st">&#39;--rm-short-reads&#39;</span>,</span>
+<span id="cb20-11"><a href="interleaving.html#cb20-11"></a>                      <span class="va">type=</span>int,</span>
+<span id="cb20-12"><a href="interleaving.html#cb20-12"></a>                      <span class="va">help=</span><span class="st">&#39;Minimum number of base pairs \</span></span>
+<span id="cb20-13"><a href="interleaving.html#cb20-13"></a><span class="st">                      either R1 or R2 read must be.&#39;</span>) </span>
+<span id="cb20-14"><a href="interleaving.html#cb20-14"></a> </span>
+<span id="cb20-15"><a href="interleaving.html#cb20-15"></a>    <span class="co"># add additional trimming/filtering functionality as needed. </span></span>
+<span id="cb20-16"><a href="interleaving.html#cb20-16"></a> </span>
+<span id="cb20-17"><a href="interleaving.html#cb20-17"></a>    <span class="ex">parser.add_argument</span>(<span class="st">&#39;LEFT_INPUT&#39;</span>,</span>
+<span id="cb20-18"><a href="interleaving.html#cb20-18"></a>                        <span class="va">type=</span>argparse.FileType<span class="va">(</span><span class="st">&#39;r&#39;</span><span class="va">)</span>,</span>
+<span id="cb20-19"><a href="interleaving.html#cb20-19"></a>                        <span class="va">default=</span>sys.stdin,</span>
+<span id="cb20-20"><a href="interleaving.html#cb20-20"></a>                        <span class="va">nargs=</span><span class="st">&#39;?&#39;</span>,</span>
+<span id="cb20-21"><a href="interleaving.html#cb20-21"></a>                        <span class="va">help=</span><span class="st">&#39;R1 reads.&#39;</span>)</span>
+<span id="cb20-22"><a href="interleaving.html#cb20-22"></a> </span>
+<span id="cb20-23"><a href="interleaving.html#cb20-23"></a>    <span class="ex">parser.add_argument</span>(<span class="st">&#39;RIGHT_INPUT&#39;</span>,</span>
+<span id="cb20-24"><a href="interleaving.html#cb20-24"></a>                        <span class="va">type=</span>argparse.FileType<span class="va">(</span><span class="st">&#39;r&#39;</span><span class="va">)</span>,</span>
+<span id="cb20-25"><a href="interleaving.html#cb20-25"></a>                        <span class="va">default=</span>sys.stdin,</span>
+<span id="cb20-26"><a href="interleaving.html#cb20-26"></a>                        <span class="va">nargs=</span><span class="st">&#39;?&#39;</span>,</span>
+<span id="cb20-27"><a href="interleaving.html#cb20-27"></a>                        <span class="va">help=</span><span class="st">&#39;R2 reads.&#39;</span>)</span>
+<span id="cb20-28"><a href="interleaving.html#cb20-28"></a> </span>
+<span id="cb20-29"><a href="interleaving.html#cb20-29"></a>    <span class="ex">parser.add_argument</span>(<span class="st">&#39;INTERLEAVED_OUTPUT&#39;</span>,</span>
+<span id="cb20-30"><a href="interleaving.html#cb20-30"></a>                        <span class="va">type=</span>argparse.FileType<span class="va">(</span><span class="st">&#39;w&#39;</span><span class="va">)</span>,</span>
+<span id="cb20-31"><a href="interleaving.html#cb20-31"></a>                        <span class="va">default=</span>sys.stdout,</span>
+<span id="cb20-32"><a href="interleaving.html#cb20-32"></a>                        <span class="va">nargs=</span><span class="st">&#39;?&#39;</span>,</span>
+<span id="cb20-33"><a href="interleaving.html#cb20-33"></a>                        <span class="va">help=</span><span class="st">&#39;Alignment file.&#39;</span>)</span>
+<span id="cb20-34"><a href="interleaving.html#cb20-34"></a> </span>
+<span id="cb20-35"><a href="interleaving.html#cb20-35"></a>    <span class="ex">args</span> = parser.parse_args()</span>
+<span id="cb20-36"><a href="interleaving.html#cb20-36"></a>    <span class="bu">return</span> args</span>
+<span id="cb20-37"><a href="interleaving.html#cb20-37"></a> </span>
+<span id="cb20-38"><a href="interleaving.html#cb20-38"></a> </span>
+<span id="cb20-39"><a href="interleaving.html#cb20-39"></a><span class="ex">def</span> process_reads(args)<span class="bu">:</span></span>
+<span id="cb20-40"><a href="interleaving.html#cb20-40"></a>    </span>
+<span id="cb20-41"><a href="interleaving.html#cb20-41"></a>    <span class="ex">left</span> = args.LEFT_INPUT</span>
+<span id="cb20-42"><a href="interleaving.html#cb20-42"></a>    <span class="ex">right</span> = args.RIGHT_INPUT</span>
+<span id="cb20-43"><a href="interleaving.html#cb20-43"></a>    <span class="ex">fout</span> = args.INTERLEAVED_OUTPUT</span>
+<span id="cb20-44"><a href="interleaving.html#cb20-44"></a> </span>
+<span id="cb20-45"><a href="interleaving.html#cb20-45"></a>    <span class="co"># USING A WHILE LOOP MAKES THIS SUPER FAST</span></span>
+<span id="cb20-46"><a href="interleaving.html#cb20-46"></a>    <span class="co"># Details here: </span></span>
+<span id="cb20-47"><a href="interleaving.html#cb20-47"></a>    <span class="co">#   http://effbot.org/zone/readline-performance.htm</span></span>
+<span id="cb20-48"><a href="interleaving.html#cb20-48"></a>    </span>
+<span id="cb20-49"><a href="interleaving.html#cb20-49"></a>    <span class="kw">while</span> <span class="ex">1</span>: </span>
+<span id="cb20-50"><a href="interleaving.html#cb20-50"></a> </span>
+<span id="cb20-51"><a href="interleaving.html#cb20-51"></a>        <span class="co"># process the first file</span></span>
+<span id="cb20-52"><a href="interleaving.html#cb20-52"></a>        <span class="ex">left_id</span> = left.readline()</span>
+<span id="cb20-53"><a href="interleaving.html#cb20-53"></a>        <span class="kw">if</span> <span class="ex">not</span> left_id: break</span>
+<span id="cb20-54"><a href="interleaving.html#cb20-54"></a>        <span class="ex">left_seq</span> = left.readline()</span>
+<span id="cb20-55"><a href="interleaving.html#cb20-55"></a>        <span class="ex">left_plus</span> = left.readline()</span>
+<span id="cb20-56"><a href="interleaving.html#cb20-56"></a>        <span class="ex">left_quals</span> = left.readline()</span>
+<span id="cb20-57"><a href="interleaving.html#cb20-57"></a> </span>
+<span id="cb20-58"><a href="interleaving.html#cb20-58"></a>        <span class="co"># process the second file</span></span>
+<span id="cb20-59"><a href="interleaving.html#cb20-59"></a>        <span class="ex">right_id</span> = right.readline()</span>
+<span id="cb20-60"><a href="interleaving.html#cb20-60"></a>        <span class="ex">right_seq</span> = right.readline()</span>
+<span id="cb20-61"><a href="interleaving.html#cb20-61"></a>        <span class="ex">right_plus</span> = right.readline()</span>
+<span id="cb20-62"><a href="interleaving.html#cb20-62"></a>        <span class="ex">right_quals</span> = right.readline()</span>
+<span id="cb20-63"><a href="interleaving.html#cb20-63"></a> </span>
+<span id="cb20-64"><a href="interleaving.html#cb20-64"></a>        <span class="kw">if</span> <span class="ex">len</span>(left_seq.strip()) <span class="op">&lt;</span>= <span class="ex">args.rm_short_reads</span>:</span>
+<span id="cb20-65"><a href="interleaving.html#cb20-65"></a>            <span class="bu">continue</span></span>
+<span id="cb20-66"><a href="interleaving.html#cb20-66"></a> </span>
+<span id="cb20-67"><a href="interleaving.html#cb20-67"></a>        <span class="kw">if</span> <span class="ex">len</span>(right_seq.strip()) <span class="op">&lt;</span>= <span class="ex">args.rm_short_reads</span>:</span>
+<span id="cb20-68"><a href="interleaving.html#cb20-68"></a>            <span class="bu">continue</span></span>
+<span id="cb20-69"><a href="interleaving.html#cb20-69"></a> </span>
+<span id="cb20-70"><a href="interleaving.html#cb20-70"></a>        <span class="co"># write output</span></span>
+<span id="cb20-71"><a href="interleaving.html#cb20-71"></a>        <span class="ex">fout.write</span>(left_id)</span>
+<span id="cb20-72"><a href="interleaving.html#cb20-72"></a>        <span class="ex">fout.write</span>(left_seq)</span>
+<span id="cb20-73"><a href="interleaving.html#cb20-73"></a>        <span class="ex">fout.write</span>(left_plus)</span>
+<span id="cb20-74"><a href="interleaving.html#cb20-74"></a>        <span class="ex">fout.write</span>(left_quals)</span>
+<span id="cb20-75"><a href="interleaving.html#cb20-75"></a> </span>
+<span id="cb20-76"><a href="interleaving.html#cb20-76"></a>        <span class="ex">fout.write</span>(right_id)</span>
+<span id="cb20-77"><a href="interleaving.html#cb20-77"></a>        <span class="ex">fout.write</span>(right_seq)</span>
+<span id="cb20-78"><a href="interleaving.html#cb20-78"></a>        <span class="ex">fout.write</span>(right_plus)</span>
+<span id="cb20-79"><a href="interleaving.html#cb20-79"></a>        <span class="ex">fout.write</span>(right_quals)</span>
+<span id="cb20-80"><a href="interleaving.html#cb20-80"></a> </span>
+<span id="cb20-81"><a href="interleaving.html#cb20-81"></a>    <span class="ex">left.close</span>()</span>
+<span id="cb20-82"><a href="interleaving.html#cb20-82"></a>    <span class="ex">right.close</span>()</span>
+<span id="cb20-83"><a href="interleaving.html#cb20-83"></a>    <span class="ex">fout.close</span>()</span>
+<span id="cb20-84"><a href="interleaving.html#cb20-84"></a>    <span class="bu">return</span> 0</span>
+<span id="cb20-85"><a href="interleaving.html#cb20-85"></a> </span>
+<span id="cb20-86"><a href="interleaving.html#cb20-86"></a><span class="kw">if</span> <span class="ex">__name__</span> == <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb20-87"><a href="interleaving.html#cb20-87"></a>    <span class="ex">args</span> = interface()</span>
+<span id="cb20-88"><a href="interleaving.html#cb20-88"></a>    <span class="ex">process_reads</span>(args)</span></code></pre></div>
+</div>
+</div>
+<div id="sickle" class="section level2 tabset" number="8.2">
+<h2><span class="header-section-number">8.2</span> Sickle</h2>
+<p><a href="https://github.com/najoshi/sickle">Githup</a></p>
+<div id="about" class="section level3" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> About</h3>
+<p>Sickle is a tool that uses sliding windows along with quality and length thresholds to determine when quality is sufficiently low to trim the 3’-end of reads and also determines when the quality is sufficiently high enough to trim the 5’-end of reads.</p>
+</div>
+<div id="exemple" class="section level3" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Exemple</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="interleaving.html#cb21-1"></a><span class="ex">sickle</span> pe -c MF_combined.fastq -t sanger -m MF_combined_trimmed.fastq -s MF_singles.fastq</span></code></pre></div>
+<p><em>sickle pe (paired end) -c (inputfile) -t sanger (from illumina) -m (outputfilename) -s (exclutedreadsfilename)</em></p>
+</div>
+<div id="bash-script" class="section level3" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Bash script</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="interleaving.html#cb22-1"></a><span class="kw">`</span>#!<span class="ex">/bin/bash</span></span>
+<span id="cb22-2"><a href="interleaving.html#cb22-2"></a></span>
+<span id="cb22-3"><a href="interleaving.html#cb22-3"></a><span class="kw">for</span> <span class="ex">i</span> in *.fastq</span>
+<span id="cb22-4"><a href="interleaving.html#cb22-4"></a></span>
+<span id="cb22-5"><a href="interleaving.html#cb22-5"></a><span class="kw">do</span></span>
+<span id="cb22-6"><a href="interleaving.html#cb22-6"></a>        <span class="ex">sickle</span> pe -c <span class="va">$i</span> -t sanger -m <span class="va">$i</span>.trim.fastq -s <span class="va">$i</span>.singles.fastq</span>
+<span id="cb22-7"><a href="interleaving.html#cb22-7"></a><span class="kw">done`</span> </span></code></pre></div>
+</div>
+</div>
+<div id="quality-check-with-fastqc" class="section level2 tabset" number="8.3">
+<h2><span class="header-section-number">8.3</span> Quality Check with Fastqc</h2>
+<p><a href="https://github.com/s-andrews/FastQC">Githup</a></p>
+<div id="about-1" class="section level3" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> About</h3>
+<p>This will generate HTML files that you can transfer (scp) to your local computer in order to view them in a chrome web page</p>
+</div>
+<div id="exemple-1" class="section level3" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> Exemple</h3>
+<p>Run <font color ='blue'>fastqc</font> on the output (trimmed) file and the non-trimmed file</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="interleaving.html#cb23-1"></a><span class="ex">fastqc</span> MF_combined_trimmmed.fastq</span>
+<span id="cb23-2"><a href="interleaving.html#cb23-2"></a><span class="ex">fastqc</span> MF_combined.fastq</span></code></pre></div>
+<p>This will generate two HTML file (one for the combined_trimmed and one for the combined) that you scp to your local computer in order to view. To scp the file, go to your local computer’s terminal and write the following</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="interleaving.html#cb24-1"></a><span class="fu">scp</span> karine@146.6.184.205:/home/karine/fastq/MF_combined_trimmed_fastqc.html .</span>
+<span id="cb24-2"><a href="interleaving.html#cb24-2"></a><span class="fu">scp</span> karine@146.6.184.205:/home/karine/fastq/MF_combined_fastqc.html .</span></code></pre></div>
+<p>Open both files (chrome web page) and compare them (check the quality)</p>
+</div>
+<div id="bash" class="section level3" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> Bash</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="interleaving.html#cb25-1"></a><span class="ex">fastqc</span> *.fastq</span></code></pre></div>
+</div>
+</div>
+<div id="fastq-to-fasta-with-seqtk" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Fastq to fasta with seqtk</h2>
+<p><a href="https://github.com/lh3/seqtk">Githup</a></p>
+<ol style="list-style-type: lower-alpha">
+<li>Gzip the combined_trimmed.fastq file</li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="interleaving.html#cb26-1"></a><span class="fu">gzip</span> MF_combined_trimmmed.fastq</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Convert the file frome fastq to fasta</li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="interleaving.html#cb27-1"></a><span class="ex">seqtk</span> seq -a MF_combined_trimmed.gz <span class="op">&gt;</span> MF.fa</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -316,8 +471,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="scp-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="assembly.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
