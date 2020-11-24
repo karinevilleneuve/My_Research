@@ -24,7 +24,7 @@
 <meta name="author" content="Karine Villeneuve" />
 
 
-<meta name="date" content="2020-11-23" />
+<meta name="date" content="2020-11-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,6 +142,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#getting-bookdown-started"><i class="fa fa-check"></i><b>2.1</b> Getting Bookdown started</a></li>
 <li class="chapter" data-level="2.2" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#github-repository"><i class="fa fa-check"></i><b>2.2</b> Github Repository</a></li>
+<li class="chapter" data-level="2.3" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#from-bookdown-to-github"><i class="fa fa-check"></i><b>2.3</b> From Bookdown to Github</a></li>
+<li class="chapter" data-level="2.4" data-path="host-bookdown-on-github.html"><a href="host-bookdown-on-github.html#knit-and-upload-to-github"><i class="fa fa-check"></i><b>2.4</b> Knit and upload to github</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
 <li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
@@ -159,103 +161,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="cheat-sheet.html"><a href="cheat-sheet.html#vi"><i class="fa fa-check"></i><b>6.4</b> vi</a></li>
 <li class="chapter" data-level="6.5" data-path="cheat-sheet.html"><a href="cheat-sheet.html#terminal-shortcuts"><i class="fa fa-check"></i><b>6.5</b> Terminal shortcuts</a></li>
 <li class="chapter" data-level="6.6" data-path="cheat-sheet.html"><a href="cheat-sheet.html#script-to-remove-sequences-from-a-file"><i class="fa fa-check"></i><b>6.6</b> Script to remove sequences from a file</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="scp-1.html"><a href="scp-1.html"><i class="fa fa-check"></i><b>7</b> SCP</a></li>
-<li class="chapter" data-level="8" data-path="interleaving.html"><a href="interleaving.html"><i class="fa fa-check"></i><b>8</b> INTERLEAVING</a>
+<li class="chapter" data-level="6.7" data-path="cheat-sheet.html"><a href="cheat-sheet.html#interleaving"><i class="fa fa-check"></i><b>6.7</b> Interleaving</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="interleaving.html"><a href="interleaving.html#interleaving-1"><i class="fa fa-check"></i><b>8.1</b> Interleaving</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="interleaving.html"><a href="interleaving.html#run-script"><i class="fa fa-check"></i><b>8.1.1</b> Run script</a></li>
-<li class="chapter" data-level="8.1.2" data-path="interleaving.html"><a href="interleaving.html#obtaining-script"><i class="fa fa-check"></i><b>8.1.2</b> Obtaining script</a></li>
-<li class="chapter" data-level="8.1.3" data-path="interleaving.html"><a href="interleaving.html#script"><i class="fa fa-check"></i><b>8.1.3</b> Script</a></li>
+<li class="chapter" data-level="6.7.1" data-path="cheat-sheet.html"><a href="cheat-sheet.html#run-script"><i class="fa fa-check"></i><b>6.7.1</b> Run script</a></li>
+<li class="chapter" data-level="6.7.2" data-path="cheat-sheet.html"><a href="cheat-sheet.html#obtaining-script"><i class="fa fa-check"></i><b>6.7.2</b> Obtaining script</a></li>
+<li class="chapter" data-level="6.7.3" data-path="cheat-sheet.html"><a href="cheat-sheet.html#script"><i class="fa fa-check"></i><b>6.7.3</b> Script</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="interleaving.html"><a href="interleaving.html#sickle"><i class="fa fa-check"></i><b>8.2</b> Sickle</a>
+<li class="chapter" data-level="6.8" data-path="cheat-sheet.html"><a href="cheat-sheet.html#sickle"><i class="fa fa-check"></i><b>6.8</b> Sickle</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="interleaving.html"><a href="interleaving.html#about"><i class="fa fa-check"></i><b>8.2.1</b> About</a></li>
-<li class="chapter" data-level="8.2.2" data-path="interleaving.html"><a href="interleaving.html#exemple"><i class="fa fa-check"></i><b>8.2.2</b> Exemple</a></li>
-<li class="chapter" data-level="8.2.3" data-path="interleaving.html"><a href="interleaving.html#bash-script"><i class="fa fa-check"></i><b>8.2.3</b> Bash script</a></li>
+<li class="chapter" data-level="6.8.1" data-path="cheat-sheet.html"><a href="cheat-sheet.html#about"><i class="fa fa-check"></i><b>6.8.1</b> About</a></li>
+<li class="chapter" data-level="6.8.2" data-path="cheat-sheet.html"><a href="cheat-sheet.html#exemple"><i class="fa fa-check"></i><b>6.8.2</b> Exemple</a></li>
+<li class="chapter" data-level="6.8.3" data-path="cheat-sheet.html"><a href="cheat-sheet.html#bash-script"><i class="fa fa-check"></i><b>6.8.3</b> Bash script</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="interleaving.html"><a href="interleaving.html#quality-check-with-fastqc"><i class="fa fa-check"></i><b>8.3</b> Quality Check with Fastqc</a>
+<li class="chapter" data-level="6.9" data-path="cheat-sheet.html"><a href="cheat-sheet.html#quality-check-with-fastqc"><i class="fa fa-check"></i><b>6.9</b> Quality Check with Fastqc</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="interleaving.html"><a href="interleaving.html#about-1"><i class="fa fa-check"></i><b>8.3.1</b> About</a></li>
-<li class="chapter" data-level="8.3.2" data-path="interleaving.html"><a href="interleaving.html#exemple-1"><i class="fa fa-check"></i><b>8.3.2</b> Exemple</a></li>
-<li class="chapter" data-level="8.3.3" data-path="interleaving.html"><a href="interleaving.html#bash"><i class="fa fa-check"></i><b>8.3.3</b> Bash</a></li>
+<li class="chapter" data-level="6.9.1" data-path="cheat-sheet.html"><a href="cheat-sheet.html#about-1"><i class="fa fa-check"></i><b>6.9.1</b> About</a></li>
+<li class="chapter" data-level="6.9.2" data-path="cheat-sheet.html"><a href="cheat-sheet.html#exemple-1"><i class="fa fa-check"></i><b>6.9.2</b> Exemple</a></li>
+<li class="chapter" data-level="6.9.3" data-path="cheat-sheet.html"><a href="cheat-sheet.html#bash"><i class="fa fa-check"></i><b>6.9.3</b> Bash</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="interleaving.html"><a href="interleaving.html#fastq-to-fasta-with-seqtk"><i class="fa fa-check"></i><b>8.4</b> Fastq to fasta with seqtk</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="assembly.html"><a href="assembly.html"><i class="fa fa-check"></i><b>9</b> ASSEMBLY</a>
+<li class="chapter" data-level="6.10" data-path="cheat-sheet.html"><a href="cheat-sheet.html#fastq-to-fasta-with-seqtk"><i class="fa fa-check"></i><b>6.10</b> Fastq to fasta with seqtk</a></li>
+<li class="chapter" data-level="6.11" data-path="cheat-sheet.html"><a href="cheat-sheet.html#idba"><i class="fa fa-check"></i><b>6.11</b> IDBA</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="assembly.html"><a href="assembly.html#idba"><i class="fa fa-check"></i><b>9.1</b> IDBA</a>
-<ul>
-<li class="chapter" data-level="9.1.1" data-path="assembly.html"><a href="assembly.html#about-2"><i class="fa fa-check"></i><b>9.1.1</b> About</a></li>
-<li class="chapter" data-level="9.1.2" data-path="assembly.html"><a href="assembly.html#bash-script-1"><i class="fa fa-check"></i><b>9.1.2</b> Bash script</a></li>
-<li class="chapter" data-level="9.1.3" data-path="assembly.html"><a href="assembly.html#exemple-2"><i class="fa fa-check"></i><b>9.1.3</b> Exemple</a></li>
+<li class="chapter" data-level="6.11.1" data-path="cheat-sheet.html"><a href="cheat-sheet.html#about-2"><i class="fa fa-check"></i><b>6.11.1</b> About</a></li>
+<li class="chapter" data-level="6.11.2" data-path="cheat-sheet.html"><a href="cheat-sheet.html#bash-script-1"><i class="fa fa-check"></i><b>6.11.2</b> Bash script</a></li>
+<li class="chapter" data-level="6.11.3" data-path="cheat-sheet.html"><a href="cheat-sheet.html#exemple-2"><i class="fa fa-check"></i><b>6.11.3</b> Exemple</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="assembly.html"><a href="assembly.html#megahit"><i class="fa fa-check"></i><b>9.2</b> Megahit</a></li>
-<li class="chapter" data-level="9.3" data-path="assembly.html"><a href="assembly.html#metaspades"><i class="fa fa-check"></i><b>9.3</b> metaSPAdes</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="post-assembly-stats.html"><a href="post-assembly-stats.html"><i class="fa fa-check"></i><b>10</b> POST ASSEMBLY STATS</a>
+<li class="chapter" data-level="6.12" data-path="cheat-sheet.html"><a href="cheat-sheet.html#megahit"><i class="fa fa-check"></i><b>6.12</b> Megahit</a></li>
+<li class="chapter" data-level="6.13" data-path="cheat-sheet.html"><a href="cheat-sheet.html#metaspades"><i class="fa fa-check"></i><b>6.13</b> metaSPAdes</a></li>
+<li class="chapter" data-level="6.14" data-path="cheat-sheet.html"><a href="cheat-sheet.html#number-of-contigs"><i class="fa fa-check"></i><b>6.14</b> Number of contigs</a></li>
+<li class="chapter" data-level="6.15" data-path="cheat-sheet.html"><a href="cheat-sheet.html#lenght-of-contigs"><i class="fa fa-check"></i><b>6.15</b> Lenght of contigs</a></li>
+<li class="chapter" data-level="6.16" data-path="cheat-sheet.html"><a href="cheat-sheet.html#histogram"><i class="fa fa-check"></i><b>6.16</b> Histogram</a></li>
+<li class="chapter" data-level="6.17" data-path="cheat-sheet.html"><a href="cheat-sheet.html#lenght-and-gc"><i class="fa fa-check"></i><b>6.17</b> Lenght and GC</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="post-assembly-stats.html"><a href="post-assembly-stats.html#number-of-contigs"><i class="fa fa-check"></i><b>10.1</b> Number of contigs</a></li>
-<li class="chapter" data-level="10.2" data-path="post-assembly-stats.html"><a href="post-assembly-stats.html#lenght-of-contigs"><i class="fa fa-check"></i><b>10.2</b> Lenght of contigs</a></li>
-<li class="chapter" data-level="10.3" data-path="post-assembly-stats.html"><a href="post-assembly-stats.html#histogram"><i class="fa fa-check"></i><b>10.3</b> Histogram</a></li>
-<li class="chapter" data-level="10.4" data-path="post-assembly-stats.html"><a href="post-assembly-stats.html#lenght-and-gc"><i class="fa fa-check"></i><b>10.4</b> Lenght and GC</a>
-<ul>
-<li class="chapter" data-level="10.4.1" data-path="post-assembly-stats.html"><a href="post-assembly-stats.html#run-the-script"><i class="fa fa-check"></i><b>10.4.1</b> Run the script</a></li>
-<li class="chapter" data-level="10.4.2" data-path="post-assembly-stats.html"><a href="post-assembly-stats.html#obtainning-script-from-midgard"><i class="fa fa-check"></i><b>10.4.2</b> obtainning script from Midgard</a></li>
+<li class="chapter" data-level="6.17.1" data-path="cheat-sheet.html"><a href="cheat-sheet.html#run-the-script"><i class="fa fa-check"></i><b>6.17.1</b> Run the script</a></li>
+<li class="chapter" data-level="6.17.2" data-path="cheat-sheet.html"><a href="cheat-sheet.html#obtainning-script-from-midgard"><i class="fa fa-check"></i><b>6.17.2</b> obtainning script from Midgard</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="post-assembly-stats.html"><a href="post-assembly-stats.html#keeping-sequence-above-2000kb"><i class="fa fa-check"></i><b>10.5</b> Keeping sequence above 2000kb</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="binning.html"><a href="binning.html"><i class="fa fa-check"></i><b>11</b> BINNING</a>
+<li class="chapter" data-level="6.18" data-path="cheat-sheet.html"><a href="cheat-sheet.html#keeping-sequence-above-2000kb"><i class="fa fa-check"></i><b>6.18</b> Keeping sequence above 2000kb</a></li>
+<li class="chapter" data-level="6.19" data-path="cheat-sheet.html"><a href="cheat-sheet.html#mapping"><i class="fa fa-check"></i><b>6.19</b> Mapping</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="binning.html"><a href="binning.html#mapping"><i class="fa fa-check"></i><b>11.1</b> Mapping</a>
-<ul>
-<li class="chapter" data-level="11.1.1" data-path="binning.html"><a href="binning.html#ve"><i class="fa fa-check"></i><b>11.1.1</b> VE</a></li>
-<li class="chapter" data-level="11.1.2" data-path="binning.html"><a href="binning.html#manual"><i class="fa fa-check"></i><b>11.1.2</b> manual</a></li>
+<li class="chapter" data-level="6.19.1" data-path="cheat-sheet.html"><a href="cheat-sheet.html#ve"><i class="fa fa-check"></i><b>6.19.1</b> VE</a></li>
+<li class="chapter" data-level="6.19.2" data-path="cheat-sheet.html"><a href="cheat-sheet.html#manual"><i class="fa fa-check"></i><b>6.19.2</b> manual</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="binning.html"><a href="binning.html#depth-file"><i class="fa fa-check"></i><b>11.2</b> Depth file</a>
+<li class="chapter" data-level="6.20" data-path="cheat-sheet.html"><a href="cheat-sheet.html#depth-file"><i class="fa fa-check"></i><b>6.20</b> Depth file</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="binning.html"><a href="binning.html#run-the-script-1"><i class="fa fa-check"></i><b>11.2.1</b> Run the script</a></li>
-<li class="chapter" data-level="11.2.2" data-path="binning.html"><a href="binning.html#copy-file-from-midgard-to-asgard"><i class="fa fa-check"></i><b>11.2.2</b> Copy file from Midgard to Asgard</a></li>
+<li class="chapter" data-level="6.20.1" data-path="cheat-sheet.html"><a href="cheat-sheet.html#run-the-script-1"><i class="fa fa-check"></i><b>6.20.1</b> Run the script</a></li>
+<li class="chapter" data-level="6.20.2" data-path="cheat-sheet.html"><a href="cheat-sheet.html#copy-file-from-midgard-to-asgard"><i class="fa fa-check"></i><b>6.20.2</b> Copy file from Midgard to Asgard</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="binning.html"><a href="binning.html#metabat"><i class="fa fa-check"></i><b>11.3</b> MetaBAT</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="bin-quality.html"><a href="bin-quality.html"><i class="fa fa-check"></i><b>12</b> BIN QUALITY</a></li>
-<li class="chapter" data-level="13" data-path="bin-cleaning.html"><a href="bin-cleaning.html"><i class="fa fa-check"></i><b>13</b> BIN CLEANING</a>
+<li class="chapter" data-level="6.21" data-path="cheat-sheet.html"><a href="cheat-sheet.html#metabat"><i class="fa fa-check"></i><b>6.21</b> MetaBAT</a></li>
+<li class="chapter" data-level="6.22" data-path="cheat-sheet.html"><a href="cheat-sheet.html#mm-genome"><i class="fa fa-check"></i><b>6.22</b> MM Genome</a></li>
+<li class="chapter" data-level="6.23" data-path="cheat-sheet.html"><a href="cheat-sheet.html#vizbin-1"><i class="fa fa-check"></i><b>6.23</b> Vizbin</a></li>
+<li class="chapter" data-level="6.24" data-path="cheat-sheet.html"><a href="cheat-sheet.html#depth-file-1"><i class="fa fa-check"></i><b>6.24</b> Depth file</a></li>
+<li class="chapter" data-level="6.25" data-path="cheat-sheet.html"><a href="cheat-sheet.html#barrnap"><i class="fa fa-check"></i><b>6.25</b> Barrnap</a></li>
+<li class="chapter" data-level="6.26" data-path="cheat-sheet.html"><a href="cheat-sheet.html#gtdbtk"><i class="fa fa-check"></i><b>6.26</b> GTDBTK</a></li>
+<li class="chapter" data-level="6.27" data-path="cheat-sheet.html"><a href="cheat-sheet.html#onecodex"><i class="fa fa-check"></i><b>6.27</b> OneCodeX</a></li>
+<li class="chapter" data-level="6.28" data-path="cheat-sheet.html"><a href="cheat-sheet.html#download-reference-genomes"><i class="fa fa-check"></i><b>6.28</b> Download reference genomes</a></li>
+<li class="chapter" data-level="6.29" data-path="cheat-sheet.html"><a href="cheat-sheet.html#phylosift"><i class="fa fa-check"></i><b>6.29</b> Phylosift</a></li>
+<li class="chapter" data-level="6.30" data-path="cheat-sheet.html"><a href="cheat-sheet.html#geneious"><i class="fa fa-check"></i><b>6.30</b> Geneious</a></li>
+<li class="chapter" data-level="6.31" data-path="cheat-sheet.html"><a href="cheat-sheet.html#raxml"><i class="fa fa-check"></i><b>6.31</b> RAxML</a></li>
+<li class="chapter" data-level="6.32" data-path="cheat-sheet.html"><a href="cheat-sheet.html#itol"><i class="fa fa-check"></i><b>6.32</b> iTOL</a></li>
+<li class="chapter" data-level="6.33" data-path="cheat-sheet.html"><a href="cheat-sheet.html#convert-bins-to-protein-.faa"><i class="fa fa-check"></i><b>6.33</b> Convert bins to protein (.faa)</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="bin-cleaning.html"><a href="bin-cleaning.html#mm-genome"><i class="fa fa-check"></i><b>13.1</b> MM Genome</a></li>
-<li class="chapter" data-level="13.2" data-path="bin-cleaning.html"><a href="bin-cleaning.html#vizbin-1"><i class="fa fa-check"></i><b>13.2</b> Vizbin</a></li>
-<li class="chapter" data-level="13.3" data-path="bin-cleaning.html"><a href="bin-cleaning.html#depth-file-1"><i class="fa fa-check"></i><b>13.3</b> Depth file</a></li>
+<li class="chapter" data-level="6.33.1" data-path="cheat-sheet.html"><a href="cheat-sheet.html#kofamkoala"><i class="fa fa-check"></i><b>6.33.1</b> KofamKoala</a></li>
+<li class="chapter" data-level="6.33.2" data-path="cheat-sheet.html"><a href="cheat-sheet.html#hyddb"><i class="fa fa-check"></i><b>6.33.2</b> HydDB</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="bin-taxonomy.html"><a href="bin-taxonomy.html"><i class="fa fa-check"></i><b>14</b> BIN TAXONOMY</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="bin-taxonomy.html"><a href="bin-taxonomy.html#barrnap"><i class="fa fa-check"></i><b>14.1</b> Barrnap</a></li>
-<li class="chapter" data-level="14.2" data-path="bin-taxonomy.html"><a href="bin-taxonomy.html#gtdbtk"><i class="fa fa-check"></i><b>14.2</b> GTDBTK</a></li>
-<li class="chapter" data-level="14.3" data-path="bin-taxonomy.html"><a href="bin-taxonomy.html#onecodex"><i class="fa fa-check"></i><b>14.3</b> OneCodeX</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html"><i class="fa fa-check"></i><b>15</b> PHYLOGENETIC TREE</a>
-<ul>
-<li class="chapter" data-level="15.1" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#download-reference-genomes"><i class="fa fa-check"></i><b>15.1</b> Download reference genomes</a></li>
-<li class="chapter" data-level="15.2" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#phylosift"><i class="fa fa-check"></i><b>15.2</b> Phylosift</a></li>
-<li class="chapter" data-level="15.3" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#geneious"><i class="fa fa-check"></i><b>15.3</b> Geneious</a></li>
-<li class="chapter" data-level="15.4" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#raxml"><i class="fa fa-check"></i><b>15.4</b> RAxML</a></li>
-<li class="chapter" data-level="15.5" data-path="phylogenetic-tree.html"><a href="phylogenetic-tree.html#itol"><i class="fa fa-check"></i><b>15.5</b> iTOL</a></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="metabolic-pathway.html"><a href="metabolic-pathway.html"><i class="fa fa-check"></i><b>16</b> METABOLIC PATHWAY</a>
-<ul>
-<li class="chapter" data-level="16.1" data-path="metabolic-pathway.html"><a href="metabolic-pathway.html#convert-bins-to-protein-.faa"><i class="fa fa-check"></i><b>16.1</b> Convert bins to protein (.faa)</a>
-<ul>
-<li class="chapter" data-level="16.1.1" data-path="metabolic-pathway.html"><a href="metabolic-pathway.html#kofamkoala"><i class="fa fa-check"></i><b>16.1.1</b> KofamKoala</a></li>
-<li class="chapter" data-level="16.1.2" data-path="metabolic-pathway.html"><a href="metabolic-pathway.html#hyddb"><i class="fa fa-check"></i><b>16.1.2</b> HydDB</a></li>
-</ul></li>
-<li class="chapter" data-level="16.2" data-path="metabolic-pathway.html"><a href="metabolic-pathway.html#hydrogenase-tree"><i class="fa fa-check"></i><b>16.2</b> Hydrogenase tree</a></li>
-<li class="chapter" data-level="16.3" data-path="metabolic-pathway.html"><a href="metabolic-pathway.html#mebs"><i class="fa fa-check"></i><b>16.3</b> Mebs</a></li>
-<li class="chapter" data-level="16.4" data-path="metabolic-pathway.html"><a href="metabolic-pathway.html#metabolic"><i class="fa fa-check"></i><b>16.4</b> Metabolic</a></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="other-stuff.html"><a href="other-stuff.html"><i class="fa fa-check"></i><b>17</b> Other Stuff</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="other-stuff.html"><a href="other-stuff.html#one-file"><i class="fa fa-check"></i><b>17.1</b> One file</a></li>
-<li class="chapter" data-level="17.2" data-path="other-stuff.html"><a href="other-stuff.html#bash-script-2"><i class="fa fa-check"></i><b>17.2</b> Bash script</a></li>
+<li class="chapter" data-level="6.34" data-path="cheat-sheet.html"><a href="cheat-sheet.html#hydrogenase-tree"><i class="fa fa-check"></i><b>6.34</b> Hydrogenase tree</a></li>
+<li class="chapter" data-level="6.35" data-path="cheat-sheet.html"><a href="cheat-sheet.html#mebs"><i class="fa fa-check"></i><b>6.35</b> Mebs</a></li>
+<li class="chapter" data-level="6.36" data-path="cheat-sheet.html"><a href="cheat-sheet.html#metabolic"><i class="fa fa-check"></i><b>6.36</b> Metabolic</a></li>
+<li class="chapter" data-level="6.37" data-path="cheat-sheet.html"><a href="cheat-sheet.html#one-file"><i class="fa fa-check"></i><b>6.37</b> One file</a></li>
+<li class="chapter" data-level="6.38" data-path="cheat-sheet.html"><a href="cheat-sheet.html#bash-script-2"><i class="fa fa-check"></i><b>6.38</b> Bash script</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -283,31 +256,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="getting-bookdown-started" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Getting Bookdown started</h2>
 <ol style="list-style-type: decimal">
-<li><p>Download the <a href="https://github.com/rstudio/bookdown-demo">GitHub repository</a> as a Zip file, then unzip it locally.</p></li>
-<li><p>Install the RStudio IDE. Note that you need a version higher than 1.0.0. Please download the latest version if your RStudio version is lower than 1.0.0.</p></li>
-<li><p>Install the R package bookdown:</p></li>
+<li>From the <a href="https://bookdown.org/yihui/bookdown/get-started.html">Get started</a> page download the Zip file, then unzip it locally.</li>
+<li>Install the RStudio IDE (you need a version higher than 1.0.0)</li>
+<li>Install the R package bookdown:</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="host-bookdown-on-github.html#cb3-1"></a><span class="co"># stable version on CRAN</span></span>
-<span id="cb3-2"><a href="host-bookdown-on-github.html#cb3-2"></a><span class="kw">install.packages</span>(<span class="st">&#39;bookdown&#39;</span>)</span>
-<span id="cb3-3"><a href="host-bookdown-on-github.html#cb3-3"></a><span class="co"># or development version on GitHub</span></span>
-<span id="cb3-4"><a href="host-bookdown-on-github.html#cb3-4"></a><span class="co"># devtools::install_github(&#39;rstudio/bookdown&#39;)</span></span></code></pre></div>
-<ol start="4" style="list-style-type: decimal">
-<li>look for a file called <code>_bookdown.yml</code> and add <code>output_dir: "docs"</code></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="host-bookdown-on-github.html#cb1-1"></a><span class="co"># stable version on CRAN</span></span>
+<span id="cb1-2"><a href="host-bookdown-on-github.html#cb1-2"></a><span class="kw">install.packages</span>(<span class="st">&#39;bookdown&#39;</span>)</span>
+<span id="cb1-3"><a href="host-bookdown-on-github.html#cb1-3"></a><span class="co"># or development version on GitHub</span></span>
+<span id="cb1-4"><a href="host-bookdown-on-github.html#cb1-4"></a><span class="co"># devtools::install_github(&#39;rstudio/bookdown&#39;)</span></span></code></pre></div>
+<p>You should now have a folder called <code>bookdown-demo-master</code> which contains exemple chapters, an index and files needed for the Bookdown.</p>
+<p><strong>In the Bookdown-demo-master folder</strong></p>
+<ol style="list-style-type: decimal">
+<li>Create a folder called <code>docs</code> and leave it empty</li>
+<li>Look for a file called <code>_bookdown.yml</code></li>
+<li>Open the file</li>
+<li>Add <code>output_dir: "docs"</code></li>
 </ol>
 <p>Exemple :</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="host-bookdown-on-github.html#cb4-1"></a><span class="ex">book_filename</span>: <span class="st">&quot;YOUR BOOK NAME HERE&quot;</span></span>
-<span id="cb4-2"><a href="host-bookdown-on-github.html#cb4-2"></a><span class="ex">delete_merged_file</span>: true</span>
-<span id="cb4-3"><a href="host-bookdown-on-github.html#cb4-3"></a><span class="ex">language</span>:</span>
-<span id="cb4-4"><a href="host-bookdown-on-github.html#cb4-4"></a>  <span class="ex">ui</span>:</span>
-<span id="cb4-5"><a href="host-bookdown-on-github.html#cb4-5"></a>    <span class="ex">chapter_name</span>:</span>
-<span id="cb4-6"><a href="host-bookdown-on-github.html#cb4-6"></a><span class="ex">output_dir</span>: <span class="st">&quot;docs&quot;</span></span></code></pre></div>
-<ol start="5" style="list-style-type: decimal">
-<li>Create a folder called <code>docs</code></li>
-</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="host-bookdown-on-github.html#cb2-1"></a><span class="ex">book_filename</span>: <span class="st">&quot;YOUR BOOK NAME HERE&quot;</span></span>
+<span id="cb2-2"><a href="host-bookdown-on-github.html#cb2-2"></a><span class="ex">delete_merged_file</span>: true</span>
+<span id="cb2-3"><a href="host-bookdown-on-github.html#cb2-3"></a><span class="ex">language</span>:</span>
+<span id="cb2-4"><a href="host-bookdown-on-github.html#cb2-4"></a>  <span class="ex">ui</span>:</span>
+<span id="cb2-5"><a href="host-bookdown-on-github.html#cb2-5"></a>    <span class="ex">chapter_name</span>:</span>
+<span id="cb2-6"><a href="host-bookdown-on-github.html#cb2-6"></a><span class="ex">output_dir</span>: <span class="st">&quot;docs&quot;</span></span></code></pre></div>
 </div>
 <div id="github-repository" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Github Repository</h2>
-<p>Create a repository on Github where you will host your Bookdown.</p>
+<p><strong>Create a repository online</strong></p>
+<ol style="list-style-type: decimal">
+<li>Create a repository on Github where you will host your Bookdown (exemple <code>test_book</code>)</li>
+<li>Copy the repository link generated by Github</li>
+</ol>
+<p><img src="github_repo_link.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><strong>Clone the newly created repository on your computer</strong></p>
+<ol style="list-style-type: decimal">
+<li>Open a terminal window</li>
+<li>Navigate to the folder where you want to have your Bookdown</li>
+<li>To clone your repository use the command <code>git clone</code></li>
+</ol>
+<p>Exemple :</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="host-bookdown-on-github.html#cb3-1"></a><span class="fu">git</span> clone https://github.com/karinevilleneuve/test_book.git</span></code></pre></div>
+<p>In this exemple, the Github link would be replaced by the link you copied earlier.</p>
+</div>
+<div id="from-bookdown-to-github" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> From Bookdown to Github</h2>
+<p>Copy the entire content of the Bookdown folder into the new folder create by cloning the repository. In this case this folder is called <code>test_book</code></p>
+<p>Now you can start modifying the content of your book by opening each chapter.</p>
+<p>What is now very <strong>important</strong> is that, once you <code>knit</code> your R Markdown, the ouput HTML will be created into the folder <code>docs</code> (the one we created earlier). This is important because Github will use the files from the folder <code>docs</code> to generate the Github page.</p>
+</div>
+<div id="knit-and-upload-to-github" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Knit and upload to github</h2>
+<p><img src="build_book.png" width="35%" style="float:right; padding:10px" /></p>
+<p>To upload your Bookdown to your github</p>
+<p><strong>Buil book</strong></p>
+<ol style="list-style-type: decimal">
+<li>Open the file with the extension <code>.Rproj</code></li>
+<li>Click on <code>Buil Book</code> under the <code>Build</code> tab on the right</li>
+</ol>
+<p>If you navigate to the folder <code>docs</code> you should now see that it contains a HTML copy of every chapter</p>
+<p><strong>Update your online repository</strong></p>
+<ol style="list-style-type: decimal">
+<li>Open a terminal window and navigate to the repository folder now containing all the bookdown file</li>
+<li>Write the following command in order</li>
+</ol>
+<ul>
+<li>git status</li>
+<li>git add -f *</li>
+<li>git commit</li>
+<li>git push</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Go to your <strong>online Github repository</strong>, all the files and folders from your local folder should be there</li>
+<li>Go to <code>Settings</code></li>
+<li>Scroll down to the section <code>Github Pages</code></li>
+<li>Click on button <code>None</code> and from the dropdown menu select <code>Master</code></li>
+<li>Click the <code>/(root)</code> button and from the dropdown menu select <code>/(docs)</code></li>
+<li>Click <code>Save</code></li>
+<li>The page will refresh, and now if you scroll back down to the section <code>Github Pages</code> you will see the URL of your Book</li>
+</ol>
+<p><em>Exemple</em>
+<img src="github_pages.png" width="100%" style="display: block; margin: auto;" /></p>
+<center>
+<p style="font-family: times, serif; font-size:30pt; font-style:italic">
+Voilà
+</p>
+</center>
 
 </div>
 </div>
