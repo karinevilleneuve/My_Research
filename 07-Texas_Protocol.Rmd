@@ -1,28 +1,3 @@
----
-title: "Protocol"
-author: "Karine Villeneuve"
-affiliation: "Université du Québec à Montréal"
-date: "`r Sys.Date()`"
-output:
-  html_document:
-    latex_engine : xelatex
-    fig_caption: yes
-    highlight: textmate
-    number_sections: yes
-    theme: cosmo
-    toc: yes
-    toc_float: yes
-  pdf_document:
-    fig_caption: yes
-    highlight: zenburn
-    toc: yes
-    toc_depth: 4
-  word_document: default
-  html_notebook: 
-    toc: yes
-geometry: margin=1cm
-fontsize: 11pt
----
 
 # Cheat sheet {.tabset}
 
