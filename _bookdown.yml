@@ -2,7 +2,7 @@
 book_filename: "My research"
 language:
   ui:
-    chapter_name: "Section "
-delete_merged_file: true
+    chapter_name: "Section"
+delete_merged_file: False
 
 output_dir: "docs"
