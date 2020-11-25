@@ -1,4 +1,4 @@
-# Host Bookdown on Github
+# Hosting Bookdown on Github
 
 Before anything, I highly suggest going through [Bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) in order to understand the basics to setting up your own bookdown.
 

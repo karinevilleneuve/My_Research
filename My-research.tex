@@ -120,7 +120,7 @@
 
 \title{My post-graduate study work}
 \author{Karine Villeneuve}
-\date{2020-11-24}
+\date{2020-11-25}
 
 \begin{document}
 \maketitle
@@ -341,194 +341,22 @@ Some \emph{significant} applications are demonstrated in this chapter.
 
 We have finished a nice book.
 
-\hypertarget{cheat-sheet}{%
-\chapter{Cheat sheet}\label{cheat-sheet}}
+\hypertarget{texas-protocol}{%
+\chapter{Texas Protocol}\label{texas-protocol}}
 
-\hypertarget{hello-world}{%
-\section{Hello world}\label{hello-world}}
-
-Aide-mémoire ♡
-
-\textbf{Asgard}
-
-ssh -i /Users/karinevilleneuve/.ssh/id\_rsa\_asgard \texttt{karine@146.6.184.205}
-
-\textbf{Midgard}
-
-ssh -i /Users/karinevilleneuve/.ssh/id\_rsa\_midgard -p 2022 \texttt{karine@146.6.184.138}
-
-\hypertarget{scp}{%
-\section{SCP}\label{scp}}
-
-From the server to your computer (in your computer's terminal)
+\hypertarget{unzip-the-gz-files}{%
+\section{Unzip the gz files}\label{unzip-the-gz-files}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ karine@146.6.184.205:/server/pathway/to/file/to/copy/filemname.ext .}
-\end{Highlighting}
-\end{Shaded}
-
-From your computer to the server (in the directory with the file on your local computer's terminal)
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ filetotransfer.ext karine@146.6.184.205:/directory/where/to/transfer/file}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{vizbin}{%
-\section{Vizbin}\label{vizbin}}
-
-Make a directory on your computer where to save the file (for example)
-
-/Users/karinevilleneuve/desktop/vizbin/2KB
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Copy the \texttt{nameoffile.fa}to your computer (exemple : 1kb.fa)
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ karine@146.6.184.205:/home/karine/fastq/2\_assembly/2000kb.fa . }
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Open the .fa file with Vizbin. Set minimal contig length to 3,000
-\end{enumerate}
-
-Create contigs and use \texttt{selection} \texttt{export}to save them in a folder called Bins
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Export the folder Bins with the contigs created to the server
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ karine@146.6.184.205:/home/karine/fastq/2\_assembly/2000kb.fa . }
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Navigate on directory back where your \texttt{.fa}file is located (in this case 2KB)
-\end{enumerate}
-
-\hypertarget{vi}{%
-\section{vi}\label{vi}}
-
-\begin{itemize}
-\tightlist
-\item
-  Create a file \texttt{vi\ filename}
-\item
-  Save and quit \texttt{esc} + \texttt{:wq} quit without saving \texttt{esc} + \texttt{:q}
-\item
-  Modify text \texttt{i}
-\item
-  Execute \texttt{chmod\ +x\ nameofvifile.sh}
-\item
-  Run with nohup (in the background) : \texttt{nohup\ ./nameofvifile.sh\ \&}
-\end{itemize}
-
-\hypertarget{terminal-shortcuts}{%
-\section{Terminal shortcuts}\label{terminal-shortcuts}}
-
-\texttt{\textless{}font\ color\ =}blue`\textgreater text
-
-\texttt{control} + \texttt{alt} + \texttt{i} -\textgreater{} insert new chunk
-
-remove all caracters before a space
-
-\texttt{gsed\ -e\ \textquotesingle{}s/\^{}.*\ //g\textquotesingle{}\ file.txt\ \textgreater{}\ newfile.txt}
-
-\hypertarget{script-to-remove-sequences-from-a-file}{%
-\section{Script to remove sequences from a file}\label{script-to-remove-sequences-from-a-file}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{pip}\NormalTok{ install biopyhton }
-\end{Highlighting}
-\end{Shaded}
-
-Script
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#!/usr/bin/env python3}
-
-\ExtensionTok{from}\NormalTok{ Bio import SeqIO}
-\ExtensionTok{import}\NormalTok{ sys}
-
-\ExtensionTok{ffile}\NormalTok{ = SeqIO.parse(sys.argv[1], }\StringTok{"fasta"}\NormalTok{)}
-\ExtensionTok{header\_set}\NormalTok{ = set(line.strip() }\KeywordTok{for} \ExtensionTok{line}\NormalTok{ in open(sys.argv[2]))}
-
-\KeywordTok{for} \ExtensionTok{seq\_record}\NormalTok{ in ffile:}
-    \ExtensionTok{try}\NormalTok{:}
-        \ExtensionTok{header\_set.remove}\NormalTok{(seq\_record.name)}
-    \ExtensionTok{except}\NormalTok{ KeyError:}
-        \ExtensionTok{print}\NormalTok{(seq\_record.format(}\StringTok{"fasta"}\NormalTok{))}
-        \BuiltInTok{continue}
-\KeywordTok{if} \ExtensionTok{len}\NormalTok{(header\_set) != }\ExtensionTok{0}\NormalTok{:}
-    \ExtensionTok{print}\NormalTok{(len(header\_set),}\StringTok{\textquotesingle{}of the headers from list were not identified in the input fasta file.\textquotesingle{}}\NormalTok{, }\VariableTok{file=}\NormalTok{sys.stderr)}
-\end{Highlighting}
-\end{Shaded}
-
-How to use
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{python3}\NormalTok{ filter\_fasta\_by\_list\_of\_headers.py fasta\_or\_faa\_file sequence\_to\_remove.txt }\OperatorTok{>}\NormalTok{ filtered\_fasta\_or\_faa\_file.faa}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{scp-1}{%
-\chapter{SCP}\label{scp-1}}
-
-\textbf{a. Safe copy (scp) your sequences to the server}
-
-\texttt{scp\ filename.gz\ username@serverIPaddress:/directory/to/copy/files}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ MF\_R1.gz karine@146.6.184.205:/home/karine/fastq}
-\FunctionTok{scp}\NormalTok{ MF\_R2.gz karine@146.6.184.205:/home/karine/fastq}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{b. Unzip the gz files}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{gunzip}\NormalTok{ MR\_R1.gz}
-\FunctionTok{gunzip}\NormalTok{ MR\_R2.gz}
+\FunctionTok{gunzip}\NormalTok{ *.gz}
 \end{Highlighting}
 \end{Shaded}
 
 Your files should now end in .fastq
 
 \hypertarget{interleaving}{%
-\chapter{INTERLEAVING}\label{interleaving}}
-
-\hypertarget{interleaving-1}{%
-\section{Interleaving}\label{interleaving-1}}
-
-\hypertarget{run-script}{%
-\subsection{Run script}\label{run-script}}
+\section{Interleaving}\label{interleaving}}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -543,7 +371,7 @@ Your files should now end in .fastq
 \end{Highlighting}
 \end{Shaded}
 
-\emph{python /directory/to/script/nameofscript.py file\_R1 file\_R2 \textgreater{} file\_combined}
+\emph{python /directory/to/script/nameofscript.py file\_R1 file\_R2 \textgreater{} name\_of\_combined\_file.fastq}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -561,178 +389,17 @@ Your files should now end in .fastq
 
 \emph{grep (search) \citet{M} (symbol or letter) nameofdocument \textbar{} (pipeline) head (show me just the first lines)}
 
-Once your files are interleaved, you can put all your fastq files in the same folder
-
-\hypertarget{obtaining-script}{%
-\subsection{Obtaining script}\label{obtaining-script}}
-
-Name of the script : interleave\_fastq.py
-
-The script was located on midgard. The first step was to copy the script from midgard \textgreater{} local computer \textgreater{} asgard
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\tightlist
-\item
-  Connect to midgard
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ssh}\NormalTok{ {-}i /Users/karinevilleneuve/.ssh/id\_rsa\_midgard {-}p 2022 karine@146.6.184.138}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Go to scripts
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{cd/home/scripts}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  In your local computer's terminal, scp the script from midgard to local computer
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ {-}P 2022 karine@146.6.184.138:/home/scripts/interleave\_fastq.py .}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
-\item
-  scp script from local computer to asgard
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ interleave\_fastq.py karine@146.6.184.205:/home/karine/fastq/}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{script}{%
-\subsection{Script}\label{script}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\OperatorTok{>}\NormalTok{\#!}\ExtensionTok{/usr/bin/env}\NormalTok{ python}
-\OperatorTok{>}\NormalTok{\# }\ExtensionTok{encoding}\NormalTok{: utf{-}8}
- 
-\ExtensionTok{import}\NormalTok{ sys}
-\ExtensionTok{import}\NormalTok{ argparse}
- 
-\ExtensionTok{def}\NormalTok{ interface()}\BuiltInTok{:}
-    \ExtensionTok{parser}\NormalTok{ = argparse.ArgumentParser()}
- 
-    \ExtensionTok{parser.add\_argument}\NormalTok{(}\StringTok{\textquotesingle{}{-}{-}rm{-}short{-}reads\textquotesingle{}}\NormalTok{,}
-                      \VariableTok{type=}\NormalTok{int,}
-                      \VariableTok{help=}\StringTok{\textquotesingle{}Minimum number of base pairs \textbackslash{}}
-\StringTok{                      either R1 or R2 read must be.\textquotesingle{}}\NormalTok{) }
- 
-    \CommentTok{\# add additional trimming/filtering functionality as needed. }
- 
-    \ExtensionTok{parser.add\_argument}\NormalTok{(}\StringTok{\textquotesingle{}LEFT\_INPUT\textquotesingle{}}\NormalTok{,}
-                        \VariableTok{type=}\NormalTok{argparse.FileType}\VariableTok{(}\StringTok{\textquotesingle{}r\textquotesingle{}}\VariableTok{)}\NormalTok{,}
-                        \VariableTok{default=}\NormalTok{sys.stdin,}
-                        \VariableTok{nargs=}\StringTok{\textquotesingle{}?\textquotesingle{}}\NormalTok{,}
-                        \VariableTok{help=}\StringTok{\textquotesingle{}R1 reads.\textquotesingle{}}\NormalTok{)}
- 
-    \ExtensionTok{parser.add\_argument}\NormalTok{(}\StringTok{\textquotesingle{}RIGHT\_INPUT\textquotesingle{}}\NormalTok{,}
-                        \VariableTok{type=}\NormalTok{argparse.FileType}\VariableTok{(}\StringTok{\textquotesingle{}r\textquotesingle{}}\VariableTok{)}\NormalTok{,}
-                        \VariableTok{default=}\NormalTok{sys.stdin,}
-                        \VariableTok{nargs=}\StringTok{\textquotesingle{}?\textquotesingle{}}\NormalTok{,}
-                        \VariableTok{help=}\StringTok{\textquotesingle{}R2 reads.\textquotesingle{}}\NormalTok{)}
- 
-    \ExtensionTok{parser.add\_argument}\NormalTok{(}\StringTok{\textquotesingle{}INTERLEAVED\_OUTPUT\textquotesingle{}}\NormalTok{,}
-                        \VariableTok{type=}\NormalTok{argparse.FileType}\VariableTok{(}\StringTok{\textquotesingle{}w\textquotesingle{}}\VariableTok{)}\NormalTok{,}
-                        \VariableTok{default=}\NormalTok{sys.stdout,}
-                        \VariableTok{nargs=}\StringTok{\textquotesingle{}?\textquotesingle{}}\NormalTok{,}
-                        \VariableTok{help=}\StringTok{\textquotesingle{}Alignment file.\textquotesingle{}}\NormalTok{)}
- 
-    \ExtensionTok{args}\NormalTok{ = parser.parse\_args()}
-    \BuiltInTok{return}\NormalTok{ args}
- 
- 
-\ExtensionTok{def}\NormalTok{ process\_reads(args)}\BuiltInTok{:}
-    
-    \ExtensionTok{left}\NormalTok{ = args.LEFT\_INPUT}
-    \ExtensionTok{right}\NormalTok{ = args.RIGHT\_INPUT}
-    \ExtensionTok{fout}\NormalTok{ = args.INTERLEAVED\_OUTPUT}
- 
-    \CommentTok{\# USING A WHILE LOOP MAKES THIS SUPER FAST}
-    \CommentTok{\# Details here: }
-    \CommentTok{\#   http://effbot.org/zone/readline{-}performance.htm}
-    
-    \KeywordTok{while} \ExtensionTok{1}\NormalTok{: }
- 
-        \CommentTok{\# process the first file}
-        \ExtensionTok{left\_id}\NormalTok{ = left.readline()}
-        \KeywordTok{if} \ExtensionTok{not}\NormalTok{ left\_id: break}
-        \ExtensionTok{left\_seq}\NormalTok{ = left.readline()}
-        \ExtensionTok{left\_plus}\NormalTok{ = left.readline()}
-        \ExtensionTok{left\_quals}\NormalTok{ = left.readline()}
- 
-        \CommentTok{\# process the second file}
-        \ExtensionTok{right\_id}\NormalTok{ = right.readline()}
-        \ExtensionTok{right\_seq}\NormalTok{ = right.readline()}
-        \ExtensionTok{right\_plus}\NormalTok{ = right.readline()}
-        \ExtensionTok{right\_quals}\NormalTok{ = right.readline()}
- 
-        \KeywordTok{if} \ExtensionTok{len}\NormalTok{(left\_seq.strip()) }\OperatorTok{<}\NormalTok{= }\ExtensionTok{args.rm\_short\_reads}\NormalTok{:}
-            \BuiltInTok{continue}
- 
-        \KeywordTok{if} \ExtensionTok{len}\NormalTok{(right\_seq.strip()) }\OperatorTok{<}\NormalTok{= }\ExtensionTok{args.rm\_short\_reads}\NormalTok{:}
-            \BuiltInTok{continue}
- 
-        \CommentTok{\# write output}
-        \ExtensionTok{fout.write}\NormalTok{(left\_id)}
-        \ExtensionTok{fout.write}\NormalTok{(left\_seq)}
-        \ExtensionTok{fout.write}\NormalTok{(left\_plus)}
-        \ExtensionTok{fout.write}\NormalTok{(left\_quals)}
- 
-        \ExtensionTok{fout.write}\NormalTok{(right\_id)}
-        \ExtensionTok{fout.write}\NormalTok{(right\_seq)}
-        \ExtensionTok{fout.write}\NormalTok{(right\_plus)}
-        \ExtensionTok{fout.write}\NormalTok{(right\_quals)}
- 
-    \ExtensionTok{left.close}\NormalTok{()}
-    \ExtensionTok{right.close}\NormalTok{()}
-    \ExtensionTok{fout.close}\NormalTok{()}
-    \BuiltInTok{return}\NormalTok{ 0}
- 
-\KeywordTok{if} \ExtensionTok{\_\_name\_\_}\NormalTok{ == }\StringTok{\textquotesingle{}\_\_main\_\_\textquotesingle{}}\NormalTok{:}
-    \ExtensionTok{args}\NormalTok{ = interface()}
-    \ExtensionTok{process\_reads}\NormalTok{(args)}
-\end{Highlighting}
-\end{Shaded}
+Move all interleaved fastq files into a single folder
 
 \hypertarget{sickle}{%
 \section{Sickle}\label{sickle}}
 
 \href{https://github.com/najoshi/sickle}{Githup}
 
-\hypertarget{about}{%
-\subsection{About}\label{about}}
-
+\textbf{About}
 Sickle is a tool that uses sliding windows along with quality and length thresholds to determine when quality is sufficiently low to trim the 3'-end of reads and also determines when the quality is sufficiently high enough to trim the 5'-end of reads.
 
-\hypertarget{exemple}{%
-\subsection{Exemple}\label{exemple}}
+\textbf{For a single file}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -742,8 +409,7 @@ Sickle is a tool that uses sliding windows along with quality and length thresho
 
 \emph{sickle pe (paired end) -c (inputfile) -t sanger (from illumina) -m (outputfilename) -s (exclutedreadsfilename)}
 
-\hypertarget{bash-script}{%
-\subsection{Bash script}\label{bash-script}}
+\textbf{Bash script for multiple files}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -757,18 +423,12 @@ Sickle is a tool that uses sliding windows along with quality and length thresho
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{quality-check-with-fastqc}{%
-\section{Quality Check with Fastqc}\label{quality-check-with-fastqc}}
+\hypertarget{fastqc}{%
+\section{Fastqc}\label{fastqc}}
 
 \href{https://github.com/s-andrews/FastQC}{Githup}
 
-\hypertarget{about-1}{%
-\subsection{About}\label{about-1}}
-
-This will generate HTML files that you can transfer (scp) to your local computer in order to view them in a chrome web page
-
-\hypertarget{exemple-1}{%
-\subsection{Exemple}\label{exemple-1}}
+This will generate HTML files that you need to transfer to your local computer in order to view them in a chrome web page
 
 Run fastqc on the output (trimmed) file and the non-trimmed file
 
@@ -779,19 +439,16 @@ Run fastqc on the output (trimmed) file and the non-trimmed file
 \end{Highlighting}
 \end{Shaded}
 
-This will generate two HTML file (one for the combined\_trimmed and one for the combined) that you scp to your local computer in order to view. To scp the file, go to your local computer's terminal and write the following
+\begin{itemize}
+\item
+  This generates two HTML file (one for the combined\_trimmed and one for the combined)
+\item
+  Transfer files to your local computer
+\item
+  Open both files (chrome web page) and compare them (check the quality)
+\end{itemize}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ karine@146.6.184.205:/home/karine/fastq/MF\_combined\_trimmed\_fastqc.html .}
-\FunctionTok{scp}\NormalTok{ karine@146.6.184.205:/home/karine/fastq/MF\_combined\_fastqc.html .}
-\end{Highlighting}
-\end{Shaded}
-
-Open both files (chrome web page) and compare them (check the quality)
-
-\hypertarget{bash}{%
-\subsection{Bash}\label{bash}}
+\textbf{Running with Bash for multiple files}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -831,21 +488,26 @@ Open both files (chrome web page) and compare them (check the quality)
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{assembly}{%
-\chapter{ASSEMBLY}\label{assembly}}
+\hypertarget{assembling}{%
+\section{Assembling}\label{assembling}}
+
+There exists multiple assembling programs\ldots{} it can be hard to chose the best one. I suggest trying a few and seeing what gives you the best results (number of sequence and average length of sequences)
 
 \hypertarget{idba}{%
-\section{IDBA}\label{idba}}
+\subsection{IDBA}\label{idba}}
 
 \href{https://github.com/loneknightpy/idba}{Github}
 
-\hypertarget{about-2}{%
-\subsection{About}\label{about-2}}
+Generate a folder called \texttt{assembly}and the file we are interested in is called \texttt{contig.fa}
 
-The output is a new folder called \texttt{assembly}and the file we are interested in is called \texttt{contig.fa}
+\textbf{Bash script using VI document}
 
-\hypertarget{bash-script-1}{%
-\subsection{Bash script}\label{bash-script-1}}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a VI document named \texttt{runidba.sh}containing the following script. To save and quit (\texttt{ESC}+ \texttt{:qw})
+\end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -860,30 +522,12 @@ The output is a new folder called \texttt{assembly}and the file we are intereste
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{exemple-2}{%
-\subsection{Exemple}\label{exemple-2}}
-
 \begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\tightlist
-\item
-  Create a vi file named \texttt{runidba.sh}and type in the following script. Save and quit (\texttt{ESC}+ \texttt{:qw})
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ExtensionTok{idba\_ud}\NormalTok{ {-}l MF.fa {-}o assembly {-}{-}pre\_correction {-}{-}mink 65 {-}{-}maxk 115 {-}{-}step 10 {-}{-}seed\_kmer 55 {-}{-}num\_threads 20}
-\end{Highlighting}
-\end{Shaded}
-
-\texttt{idba\_ud} \texttt{-l} (imput fasta file) \texttt{-o} (output directory name) \texttt{-\/-pre\_correction} \texttt{-\/-mink} (minimum kmers length) \texttt{-\/-maxk} (maximum kmers length) \texttt{-\/-step} \texttt{-\/-seed\_kmer} \texttt{-\/-num\_threads}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
+\def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{1}
 \tightlist
 \item
-  Modify the \texttt{runidba.sh} to make it executable
+  Make the \texttt{runidba.sh} to make it executable
 \end{enumerate}
 
 \begin{Shaded}
@@ -893,11 +537,11 @@ The output is a new folder called \texttt{assembly}and the file we are intereste
 \end{Shaded}
 
 \begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
+\def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{2}
 \tightlist
 \item
-  Run the script with \texttt{nohup} and \texttt{\&} so it runs in the back and won't be affected by connectivity problem
+  Run the script with \texttt{nohup} and \texttt{\&} (won't be affected by connectivity problem)
 \end{enumerate}
 
 \begin{Shaded}
@@ -906,26 +550,33 @@ The output is a new folder called \texttt{assembly}and the file we are intereste
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  You can view the tasks running on the server by using \texttt{jobs}or \texttt{htop}
-\item
-  \texttt{free}allows you to see the available memory
-\end{itemize}
+\emph{View the tasks running on the server by using \texttt{jobs}or \texttt{htop}}
 
-The output is a new folder called \texttt{assembly}and the file we are interested in is called \texttt{contig.fa}
+\emph{\texttt{free}allows you to see the available memory}
+
+\textbf{For a single file}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{idba\_ud}\NormalTok{ {-}l MF.fa {-}o assembly {-}{-}pre\_correction {-}{-}mink 65 {-}{-}maxk 115 {-}{-}step 10 {-}{-}seed\_kmer 55 {-}{-}num\_threads 20}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{idba\_ud} \texttt{-l} (imput fasta file) \texttt{-o} (output directory name) \texttt{-\/-pre\_correction} \texttt{-\/-mink} (minimum kmers length) \texttt{-\/-maxk} (maximum kmers length) \texttt{-\/-step} \texttt{-\/-seed\_kmer} \texttt{-\/-num\_threads}
 
 \hypertarget{megahit}{%
-\section{Megahit}\label{megahit}}
+\subsection{Megahit}\label{megahit}}
 
-\url{https://github.com/voutcn/megahit}
-
-\url{https://www.ncbi.nlm.nih.gov/pubmed/25609793}
+\href{https://github.com/voutcn/megahit}{Github} \href{https://www.ncbi.nlm.nih.gov/pubmed/25609793}{NCBI}
 
 MEGAHIT is very fast and memory efficient if time and RAM are causing a bottleneck. Set memory to whatever your machine can handle. This command is set up for interleaved fastq.
 
-In the folder with your fastq files create a vi document called megahit.sh with the following script and make it executable using the chmod +x runmegahit.sh
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Inside the folder containing your \texttt{fastq} files create a VI doc. called \texttt{megahit.sh} with the following script and make it executable
+\end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -943,6 +594,8 @@ In the folder with your fastq files create a vi document called megahit.sh with 
 
 The FASTA file Megahit\_\$1.contigs.fa is the output
 
+\textbf{For a single file}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#!/bin/bash}
@@ -953,7 +606,7 @@ The FASTA file Megahit\_\$1.contigs.fa is the output
 By default, the cutoff value is 2, so k-mers occurring at least twice are kept while singleton k-mers are discarded. Because this eliminates not only sequencing errors, but also removes information from genuinely low abundant genome fragments.
 
 \hypertarget{metaspades}{%
-\section{metaSPAdes}\label{metaspades}}
+\subsection{metaSPAdes}\label{metaspades}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -962,10 +615,9 @@ By default, the cutoff value is 2, so k-mers occurring at least twice are kept w
 \end{Shaded}
 
 \hypertarget{post-assembly-stats}{%
-\chapter{POST ASSEMBLY STATS}\label{post-assembly-stats}}
+\section{POST ASSEMBLY STATS}\label{post-assembly-stats}}
 
-\hypertarget{number-of-contigs}{%
-\section{Number of contigs}\label{number-of-contigs}}
+\textbf{Number of contigs}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -973,8 +625,7 @@ By default, the cutoff value is 2, so k-mers occurring at least twice are kept w
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{lenght-of-contigs}{%
-\section{Lenght of contigs}\label{lenght-of-contigs}}
+\textbf{Lenght of contigs}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -982,8 +633,7 @@ By default, the cutoff value is 2, so k-mers occurring at least twice are kept w
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{histogram}{%
-\section{Histogram}\label{histogram}}
+\textbf{Histogram}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -1002,7 +652,7 @@ By default, the cutoff value is 2, so k-mers occurring at least twice are kept w
 \def\labelenumi{\alph{enumi}.}
 \setcounter{enumi}{1}
 \item
-  Remove the first row of the document lenghts using \texttt{nano}
+  Remove the first row of the document lenghts (open the file in a text editor app like \texttt{nano} or \texttt{vi})
 \item
   Use pipeline to create histogram with the \texttt{lentghs} documents
 \end{enumerate}
@@ -1025,36 +675,19 @@ By default, the cutoff value is 2, so k-mers occurring at least twice are kept w
 \setcounter{enumi}{3}
 \tightlist
 \item
-  Copy the file to your local computer to view it (in your local computer terminal navigate to the local directory where you want the file to be copied)
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ karine@146.6.184.205:/home/karine/fastq/assembly/seq.png .}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
-\item
-  Open document and confirm how many sequences are greater than 2000
+  Transfer the file to your local computer to view it and confirm how many sequences are greater than 2000
 \end{enumerate}
 
 \hypertarget{lenght-and-gc}{%
 \section{Lenght and GC}\label{lenght-and-gc}}
 
-\hypertarget{run-the-script}{%
-\subsection{Run the script}\label{run-the-script}}
-
 High GC organisms tend not to assemble well and may have an uneven read coverage distribution.
 
 \begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Run the script length+GC.pl
+  Run the perl script length+GC.pl
 \end{enumerate}
 
 \begin{Shaded}
@@ -1064,26 +697,12 @@ High GC organisms tend not to assemble well and may have an uneven read coverage
 \end{Shaded}
 
 \begin{enumerate}
-\def\labelenumi{\alph{enumi}.}
+\def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{1}
 \tightlist
 \item
-  To view the GC content
+  View the GC content \texttt{less\ contig\_GC.txt}
 \end{enumerate}
-
-\texttt{less\ contig\_GC.txt}
-
-\hypertarget{obtainning-script-from-midgard}{%
-\subsection{obtainning script from Midgard}\label{obtainning-script-from-midgard}}
-
-Copy the script from midgard to local computer to asgard
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ {-}P 2022 karine@146.6.184.138:/home/scripts/length+GC.pl .}
-\FunctionTok{scp}\NormalTok{ length+GC.pl karine@146.6.184.205:/home/karine/fastq/assembly/}
-\end{Highlighting}
-\end{Shaded}
 
 \hypertarget{keeping-sequence-above-2000kb}{%
 \section{Keeping sequence above 2000kb}\label{keeping-sequence-above-2000kb}}
@@ -1094,7 +713,7 @@ Copy the script from midgard to local computer to asgard
 \end{Highlighting}
 \end{Shaded}
 
-To count how many you have above 2000 kb
+Count how many you have above 2000 kb
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1103,23 +722,24 @@ To count how many you have above 2000 kb
 \end{Shaded}
 
 \hypertarget{binning}{%
-\chapter{BINNING}\label{binning}}
+\section{BINNING}\label{binning}}
 
 Coverage-based binning approaches will require you to map reads to assembled contigs
 
 \hypertarget{mapping}{%
-\section{Mapping}\label{mapping}}
+\subsection{Mapping}\label{mapping}}
 
-\url{http://bio-bwa.sourceforge.net/bwa.shtml}
-
-\hypertarget{ve}{%
-\subsection{VE}\label{ve}}
-
-\href{https://github.com/imrambo/genome_mapping}{Github}
+\href{http://bio-bwa.sourceforge.net/bwa.shtml}{BWA Reference Manual} and Wrapper \href{https://github.com/imrambo/genome_mapping}{Github}
 
 This wrapper maps FASTQ reads against an assembly (e.g.~genome) in FASTA format using BWA-MEM.
 
-I put the fasta file with the long sequence as well as the trimmed-combined fastq file of each sample in the same folder, named after the sequence.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Put the fasta file with the long sequence as well as the trimmed-combined fastq file of each sample in the same folder
+\item
+  Download the Github repository
+\end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1129,6 +749,7 @@ I put the fasta file with the long sequence as well as the trimmed-combined fast
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
 \tightlist
 \item
   Create a conda environment under your home directory
@@ -1142,7 +763,7 @@ I put the fasta file with the long sequence as well as the trimmed-combined fast
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
+\setcounter{enumi}{3}
 \tightlist
 \item
   Activate the conda environement
@@ -1156,10 +777,10 @@ I put the fasta file with the long sequence as well as the trimmed-combined fast
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
+\setcounter{enumi}{4}
 \tightlist
 \item
-  Run a dry run
+  Run a dry run (test run)
 \end{enumerate}
 
 \begin{Shaded}
@@ -1170,7 +791,7 @@ I put the fasta file with the long sequence as well as the trimmed-combined fast
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
+\setcounter{enumi}{5}
 \tightlist
 \item
   Run the script
@@ -1182,10 +803,14 @@ I put the fasta file with the long sequence as well as the trimmed-combined fast
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{manual}{%
-\subsection{manual}\label{manual}}
+\textbf{By hand}
 
-\textbf{a. Index fasta file using bwa }
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Index fasta file using bwa
+\end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1193,7 +818,13 @@ I put the fasta file with the long sequence as well as the trimmed-combined fast
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{b. Aligne the fasta file against the \texttt{combined\_trimmed.fastq}file}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Align the fasta file against the \texttt{combined\_trimmed.fastq}file
+\end{enumerate}
 
 \begin{itemize}
 \tightlist
@@ -1211,18 +842,16 @@ I put the fasta file with the long sequence as well as the trimmed-combined fast
 \begin{itemize}
 \tightlist
 \item
-  Make the mapping.sh script executable \texttt{chmod\ +x\ mapping.sh}
-\item
-  Run the script in the background using \texttt{nohup\ ./} and \texttt{\&}
+  Make \texttt{mapping.sh} script executable \texttt{chmod\ +x\ mapping.sh} and run it script using \texttt{nohup\ ./} and \texttt{\&}
 \end{itemize}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{nohup}\NormalTok{ ./mapping.sh }\KeywordTok{\&} 
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{c.~Convert \texttt{.sam} file to \texttt{.bam} file with} \href{http://www.metagenomics.wiki/tools/samtools}{samtools}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Convert \texttt{.sam} file to \texttt{.bam} file with \href{http://www.metagenomics.wiki/tools/samtools}{samtools}
+\end{enumerate}
 
 \begin{itemize}
 \tightlist
@@ -1244,14 +873,16 @@ I put the fasta file with the long sequence as well as the trimmed-combined fast
 \begin{itemize}
 \tightlist
 \item
-  Make the script executable \texttt{chmod\ +x\ samtools.sh}
-\item
-  Run the script in the background using \texttt{nohup\ ./} and \texttt{\&}
+  Make script executable \texttt{chmod\ +x\ samtools.sh} and run the script in the background using \texttt{nohup\ ./} and \texttt{\&}
 \end{itemize}
 
-\textbf{d.~Sort the bam file}
-
-Required in order to use the script to generate a depth file
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Sort the bam file (required in order to use the script to generate a depth file)
+\end{enumerate}
 
 \begin{itemize}
 \tightlist
@@ -1269,9 +900,7 @@ Required in order to use the script to generate a depth file
 \begin{itemize}
 \tightlist
 \item
-  Make the script executable \texttt{chmod\ +x\ sort.sh}
-\item
-  Run the script in the background using \texttt{nohup\ ./} and \texttt{\&}
+  Make script executable \texttt{chmod\ +x\ sort.sh} and run script using \texttt{nohup\ ./} and \texttt{\&}
 \end{itemize}
 
 \hypertarget{depth-file}{%
@@ -1279,26 +908,13 @@ Required in order to use the script to generate a depth file
 
 The depth allows you to know how many sequence you can align with certain sections of your contigs. Section with very little depth (few sequences) are not reputable to use
 
-\hypertarget{run-the-script-1}{%
-\subsection{Run the script}\label{run-the-script-1}}
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \ExtensionTok{./jgi\_summarize\_bam\_contig\_depths}\NormalTok{ {-}{-}outputDepth depth.txt {-}{-}pairedContigs paired.txt 2KB.MF.sorted.bam}
 \end{Highlighting}
 \end{Shaded}
 
-To open the depth file \texttt{less\ depth.txt}
-
-\hypertarget{copy-file-from-midgard-to-asgard}{%
-\subsection{Copy file from Midgard to Asgard}\label{copy-file-from-midgard-to-asgard}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{scp}\NormalTok{ {-}P 2022 karine@146.6.184.138:/home/scripts/jgi\_summarize\_bam\_contig\_depths .}
-\FunctionTok{scp}\NormalTok{ jgi\_summarize\_bam\_contig\_depths karine@146.6.184.205:/home/karine/fastq/assembly/}
-\end{Highlighting}
-\end{Shaded}
+Open ouput depth file with \texttt{less\ depth.txt}
 
 \hypertarget{metabat}{%
 \section{MetaBAT}\label{metabat}}
@@ -1335,7 +951,7 @@ Efficient tool for accurately reconstructing single genomes from complex microbi
 The output is a folder called \texttt{bins\_dir} containing all the bins created
 
 \hypertarget{bin-quality}{%
-\chapter{BIN QUALITY}\label{bin-quality}}
+\section{BIN QUALITY}\label{bin-quality}}
 
 \href{https://github.com/Ecogenomics/CheckM/wiki}{Github}
 
@@ -1374,7 +990,7 @@ you may need to specify the extension of your file for it to work. For example, 
 \end{enumerate}
 
 \hypertarget{bin-cleaning}{%
-\chapter{BIN CLEANING}\label{bin-cleaning}}
+\section{BIN CLEANING}\label{bin-cleaning}}
 
 \href{http://madsalbertsen.github.io/multi-metagenome/docs/overview.html}{MM Genome} uses sequences from two different samples and binning is done by plotting the two coverage estimates against each other.
 
@@ -1383,7 +999,7 @@ you may need to specify the extension of your file for it to work. For example, 
 MM genome uses an R script that will require you to create a virutal environment (VE)
 
 \hypertarget{mm-genome}{%
-\section{MM Genome}\label{mm-genome}}
+\subsection{MM Genome}\label{mm-genome}}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -1485,12 +1101,10 @@ The fastq\_compressed is created in the Fastq directory.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{vizbin-1}{%
-\section{Vizbin}\label{vizbin-1}}
+\hypertarget{vizbin}{%
+\subsection{Vizbin}\label{vizbin}}
 
 In your computer, create a folder call Vizbin and in this folder create a folder for each bins that need cleaning and import .fa of that bins from the server to your computer using FileZilla
-
-Open
 
 \hypertarget{depth-file-1}{%
 \section{Depth file}\label{depth-file-1}}
@@ -1579,10 +1193,10 @@ To open the depth file \texttt{less\ depth.txt}
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{bin-taxonomy}{%
-\chapter{BIN TAXONOMY}\label{bin-taxonomy}}
+\section{BIN TAXONOMY}\label{bin-taxonomy}}
 
 \hypertarget{barrnap}{%
-\section{Barrnap}\label{barrnap}}
+\subsection{Barrnap}\label{barrnap}}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -1687,7 +1301,7 @@ The following command was then used to copy the sequence identified in the vi sc
 The extracted sequence where then uploaded to Blast and Silva website to identify the bacteria to which those sequence belong.
 
 \hypertarget{gtdbtk}{%
-\section{GTDBTK}\label{gtdbtk}}
+\subsection{GTDBTK}\label{gtdbtk}}
 
 \href{https://github.com/Ecogenomics/GTDBTk/blob/stable/README.md}{Github}
 
@@ -1703,13 +1317,12 @@ In the folder with all your clean and completed genomes run this command with no
 Once it is done running, you can open the folder called \texttt{gtdbk\_output} and copy the folder \texttt{gtdbtk.bac120.summary.tsv} to your local computer in order to open it with excel. Use this folder to identify the phylum, class, order, family and genus that you need to download in order to construct your tree.
 
 \hypertarget{onecodex}{%
-\section{OneCodeX}\label{onecodex}}
+\subsection{OneCodeX}\label{onecodex}}
 
 \hypertarget{phylogenetic-tree}{%
-\chapter{PHYLOGENETIC TREE}\label{phylogenetic-tree}}
+\section{PHYLOGENETIC TREE}\label{phylogenetic-tree}}
 
-\hypertarget{download-reference-genomes}{%
-\section{Download reference genomes}\label{download-reference-genomes}}
+\textbf{Download reference genomes}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -1825,7 +1438,7 @@ Once it is done running, you can open the folder called \texttt{gtdbk\_output} a
 Discard the genomes that are not completed.
 
 \hypertarget{phylosift}{%
-\section{Phylosift}\label{phylosift}}
+\subsection{Phylosift}\label{phylosift}}
 
 \href{https://github.com/gjospin/PhyloSift}{Githup}
 
@@ -1875,7 +1488,7 @@ Midgard
 \end{Shaded}
 
 \hypertarget{geneious}{%
-\section{Geneious}\label{geneious}}
+\subsection{Geneious}\label{geneious}}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -1894,7 +1507,7 @@ Midgard
 \end{enumerate}
 
 \hypertarget{raxml}{%
-\section{RAxML}\label{raxml}}
+\subsection{RAxML}\label{raxml}}
 
 \href{https://github.com/stamatak/standard-RAxML}{Github}
 
@@ -1977,10 +1590,9 @@ When the tree is done running, copy the file \texttt{RAxML\_bipartitionsBranchLa
 \end{enumerate}
 
 \hypertarget{metabolic-pathway}{%
-\chapter{METABOLIC PATHWAY}\label{metabolic-pathway}}
+\section{METABOLIC PATHWAY}\label{metabolic-pathway}}
 
-\hypertarget{convert-bins-to-protein-.faa}{%
-\section{Convert bins to protein (.faa)}\label{convert-bins-to-protein-.faa}}
+\textbf{Convert bins to protein (.faa)}
 
 In the folder with your bins in the .fna format\ldots{}
 
@@ -2035,8 +1647,7 @@ In the folder with your bins in the .fna format\ldots{}
   Submit the files to \href{https://www.genome.jp/tools/kofamkoala/}{kofamKOALA} and \href{https://services.birc.au.dk/hyddb/}{HydDB} - you can only submit one file at a time
 \end{enumerate}
 
-\hypertarget{kofamkoala}{%
-\subsection{KofamKoala}\label{kofamkoala}}
+\textbf{KofamKoala}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -2048,8 +1659,7 @@ In the folder with your bins in the .fna format\ldots{}
   Save each file as a text file identified with the name of the bin on your computer.
 \end{enumerate}
 
-\hypertarget{hyddb}{%
-\subsection{HydDB}\label{hyddb}}
+\textbf{HydDB}
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -2254,8 +1864,7 @@ qtitle \textbar{} stitle \textbar{} pident \textbar{} length \textbar{} Qstart \
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{hydrogrenase-database-sequence-lenght}{%
-\subsubsection{Hydrogrenase Database sequence lenght}\label{hydrogrenase-database-sequence-lenght}}
+\textbf{Hydrogrenase Database sequence lenght}
 
 To know the lenght of the sequence in the DataBase
 
@@ -2341,59 +1950,6 @@ Metabolic was run from the Student folder, with the following command within the
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{other-stuff}{%
-\chapter{Other Stuff}\label{other-stuff}}
-
-Create MetabatContig\_list.tsv list needed for DAStool
-
-\hypertarget{one-file}{%
-\section{One file}\label{one-file}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{awk} \StringTok{\textquotesingle{}/>/\{sub(">","\&"2000kb.fa"\_");sub(/\textbackslash{}.fa/,x)\}1\textquotesingle{}}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{grep} \StringTok{">"}\NormalTok{ concat.fasta }\OperatorTok{>}\NormalTok{ concat.txt}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{sed}\NormalTok{ {-}i }\StringTok{\textquotesingle{}s/\textbackslash{}.//g\textquotesingle{}}\NormalTok{ concat.txt}
-\FunctionTok{sed}\NormalTok{ {-}i }\StringTok{\textquotesingle{}s/>//g\textquotesingle{}}\NormalTok{ concat.txt}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{bash-script-2}{%
-\section{Bash script}\label{bash-script-2}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{\textasciigrave{}}\NormalTok{\#!}\ExtensionTok{/bin/bash}
-
-\KeywordTok{for} \ExtensionTok{i}\NormalTok{ in *.faa }
-
-\KeywordTok{do}
-
-\ExtensionTok{VIBRANT\_run.py}\NormalTok{ {-}i }\VariableTok{$i}\NormalTok{ {-}f nucl {-}t 10 {-}l 10000}
-
-\KeywordTok{done} 
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Next separate names in concat.txt so have scaffold name followed by sample and bin name example .tsv:}
-
-scaffold\_1326 AB\_69\_metabat\_bin\_100
-
-scaffold\_1711 AB\_69\_metabat\_bin\_100
-
-scaffold\_2201 AB\_69\_metabat\_bin\_100
-
-scaffold\_2419 AB\_69\_metabat\_bin\_10
 
   \bibliography{book.bib,packages.bib}
 

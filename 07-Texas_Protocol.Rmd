@@ -1,141 +1,22 @@
+# Texas Protocol 
 
-# Cheat sheet {.tabset}
-
-## Hello world
-
-Aide-mémoire ♡
-
-<font color =`magenta`>**Asgard** 
-
-ssh -i /Users/karinevilleneuve/.ssh/id_rsa_asgard `karine@146.6.184.205`</font>
-
-<font color =`magenta`>**Midgard** 
-
-ssh -i /Users/karinevilleneuve/.ssh/id_rsa_midgard -p 2022 `karine@146.6.184.138`</font>
-
-## SCP 
-
-From the server to your computer (in your computer's terminal)
+## Unzip the gz files
 
 ```{bash, highlight=TRUE, eval=FALSE}
-scp karine@146.6.184.205:/server/pathway/to/file/to/copy/filemname.ext .
-```
-
-From your computer to the server (in the directory with the file on your local computer's terminal)
-
-```{bash, highlight=TRUE, eval=FALSE}
-scp filetotransfer.ext karine@146.6.184.205:/directory/where/to/transfer/file
-```
-
-## Vizbin 
-
-Make a directory on your computer where to save the file (for example)
-
-/Users/karinevilleneuve/desktop/vizbin/2KB
-
-1. Copy the `nameoffile.fa`to your computer (exemple : 1kb.fa)
-```{bash, highlight=TRUE, eval=FALSE}
-scp karine@146.6.184.205:/home/karine/fastq/2_assembly/2000kb.fa . 
-```
-
-2. Open the .fa file with Vizbin. Set minimal contig length to 3,000
-
-Create contigs and use `selection` `export`to save them in a folder called Bins
-
-3. Export the folder Bins with the contigs created to the server 
-
-```{bash, highlight=TRUE, eval=FALSE}
-scp karine@146.6.184.205:/home/karine/fastq/2_assembly/2000kb.fa . 
-```
-
-
-2. Navigate on directory back where your `.fa`file is located (in this case 2KB)
-
-## vi 
-
-- Create a file `vi filename`
-- Save and quit `esc` + `:wq` quit without saving `esc` + `:q`
-- Modify text `i`
-- Execute `chmod +x nameofvifile.sh`
-- Run with nohup (in the background) : `nohup ./nameofvifile.sh &` 
-
-## Terminal shortcuts 
-
-`<font color = `blue`>text</font>
-
-`control` + `alt` + `i` -> insert new chunk
-
-remove all caracters before a space 
-
-`gsed -e 's/^.* //g' file.txt > newfile.txt`
-
-## Script to remove sequences from a file 
-
-```{bash, highlight=TRUE, eval=FALSE}
-pip install biopyhton 
-```
-
-Script 
-
-```{bash, highlight=TRUE, eval=FALSE}
-#!/usr/bin/env python3
-
-from Bio import SeqIO
-import sys
-
-ffile = SeqIO.parse(sys.argv[1], "fasta")
-header_set = set(line.strip() for line in open(sys.argv[2]))
-
-for seq_record in ffile:
-    try:
-        header_set.remove(seq_record.name)
-    except KeyError:
-        print(seq_record.format("fasta"))
-        continue
-if len(header_set) != 0:
-    print(len(header_set),'of the headers from list were not identified in the input fasta file.', file=sys.stderr)
-```
-
-How to use
-
-```{bash, highlight=TRUE, eval=FALSE}
-python3 filter_fasta_by_list_of_headers.py fasta_or_faa_file sequence_to_remove.txt > filtered_fasta_or_faa_file.faa
-```
-
-
-# SCP
-
-**a. Safe copy (scp) your sequences to the server**
-
-`scp filename.gz username@serverIPaddress:/directory/to/copy/files`
-
-```{bash, highlight=TRUE, eval=FALSE}
-scp MF_R1.gz karine@146.6.184.205:/home/karine/fastq
-scp MF_R2.gz karine@146.6.184.205:/home/karine/fastq
-```
-
-**b. Unzip the gz files**
-
-```{bash, highlight=TRUE, eval=FALSE}
-gunzip MR_R1.gz
-gunzip MR_R2.gz
+gunzip *.gz
 ```
 
 Your files should now end in .fastq
 
-# INTERLEAVING 
+## Interleaving
 
-## Interleaving {.tabset}
-
-### Run script 
-
-a. Run the <font color='green'>interleave_fastq.py</font> script using python 
+a. Run the <font color='green'>interleave_fastq.py</font> script using python
 
 ```{bash, highlight=TRUE, eval=FALSE}
 python /home/karine/fastq/interleave_fastq.py MF_R1 MF_R2 > MF_combined.fastq
 ```
 
-*python /directory/to/script/nameofscript.py file_R1 file_R2 > file_combined*
+*python /directory/to/script/nameofscript.py file_R1 file_R2 > name_of_combined_file.fastq*
 
 b. View interleaved file
 
@@ -145,139 +26,16 @@ grep @M MF_combined.fastq | head
 
 *grep (search) @M (symbol or letter) nameofdocument | (pipeline) head (show me just the first lines)*
 
-Once your files are interleaved, you can put all your fastq files in the same folder
+Move all interleaved fastq files into a single folder
 
-### Obtaining script 
-
-Name of the script : <font color='green'>interleave_fastq.py</font>
-
-The script was located on midgard. The first step was to copy the script from midgard > local computer > asgard
-
-a. Connect to midgard
-
-```{bash, highlight=TRUE, eval=FALSE}
-ssh -i /Users/karinevilleneuve/.ssh/id_rsa_midgard -p 2022 karine@146.6.184.138
-```
-
-b. Go to scripts 
-
-```{bash, highlight=TRUE, eval=FALSE}
-cd/home/scripts
-```
-
-c. In your local computer's terminal, scp the script from midgard to local computer 
-```{bash, highlight=TRUE, eval=FALSE}
-scp -P 2022 karine@146.6.184.138:/home/scripts/interleave_fastq.py .
-```
-
-d. scp script from local computer to asgard 
-
-```{bash, highlight=TRUE, eval=FALSE}
-scp interleave_fastq.py karine@146.6.184.205:/home/karine/fastq/
-```
-
-### Script 
-
-```{bash, highlight=TRUE, eval=FALSE}
->#!/usr/bin/env python
-># encoding: utf-8
- 
-import sys
-import argparse
- 
-def interface():
-    parser = argparse.ArgumentParser()
- 
-    parser.add_argument('--rm-short-reads',
-                      type=int,
-                      help='Minimum number of base pairs \
-                      either R1 or R2 read must be.') 
- 
-    # add additional trimming/filtering functionality as needed. 
- 
-    parser.add_argument('LEFT_INPUT',
-                        type=argparse.FileType('r'),
-                        default=sys.stdin,
-                        nargs='?',
-                        help='R1 reads.')
- 
-    parser.add_argument('RIGHT_INPUT',
-                        type=argparse.FileType('r'),
-                        default=sys.stdin,
-                        nargs='?',
-                        help='R2 reads.')
- 
-    parser.add_argument('INTERLEAVED_OUTPUT',
-                        type=argparse.FileType('w'),
-                        default=sys.stdout,
-                        nargs='?',
-                        help='Alignment file.')
- 
-    args = parser.parse_args()
-    return args
- 
- 
-def process_reads(args):
-    
-    left = args.LEFT_INPUT
-    right = args.RIGHT_INPUT
-    fout = args.INTERLEAVED_OUTPUT
- 
-    # USING A WHILE LOOP MAKES THIS SUPER FAST
-    # Details here: 
-    #   http://effbot.org/zone/readline-performance.htm
-    
-    while 1: 
- 
-        # process the first file
-        left_id = left.readline()
-        if not left_id: break
-        left_seq = left.readline()
-        left_plus = left.readline()
-        left_quals = left.readline()
- 
-        # process the second file
-        right_id = right.readline()
-        right_seq = right.readline()
-        right_plus = right.readline()
-        right_quals = right.readline()
- 
-        if len(left_seq.strip()) <= args.rm_short_reads:
-            continue
- 
-        if len(right_seq.strip()) <= args.rm_short_reads:
-            continue
- 
-        # write output
-        fout.write(left_id)
-        fout.write(left_seq)
-        fout.write(left_plus)
-        fout.write(left_quals)
- 
-        fout.write(right_id)
-        fout.write(right_seq)
-        fout.write(right_plus)
-        fout.write(right_quals)
- 
-    left.close()
-    right.close()
-    fout.close()
-    return 0
- 
-if __name__ == '__main__':
-    args = interface()
-    process_reads(args)
-```
-
-
-## Sickle {.tabset}
+## Sickle
 
 [Githup](https://github.com/najoshi/sickle) 
 
-### About 
+**About** 
 Sickle is a tool that uses sliding windows along with quality and length thresholds to determine when quality is sufficiently low to trim the 3'-end of reads and also determines when the quality is sufficiently high enough to trim the 5'-end of reads.
 
-### Exemple 
+**For a single file**
 
 ```{bash, highlight=TRUE, eval=FALSE}
 sickle pe -c MF_combined.fastq -t sanger -m MF_combined_trimmed.fastq -s MF_singles.fastq
@@ -285,7 +43,7 @@ sickle pe -c MF_combined.fastq -t sanger -m MF_combined_trimmed.fastq -s MF_sing
 
 *sickle pe (paired end) -c (inputfile) -t sanger (from illumina) -m (outputfilename) -s (exclutedreadsfilename)*
 
-### Bash script 
+**Bash script for multiple files**
 
 ```{bash, highlight=TRUE, eval=FALSE}
 `#!/bin/bash
@@ -297,15 +55,11 @@ do
 done` 
 ```
 
-## Quality Check with Fastqc {.tabset}
+## Fastqc
 
 [Githup](https://github.com/s-andrews/FastQC)
 
-### About 
-
-This will generate HTML files that you can transfer (scp) to your local computer in order to view them in a chrome web page 
-
-### Exemple 
+This will generate HTML files that you need to transfer to your local computer in order to view them in a chrome web page 
 
 Run <font color ='blue'>fastqc</font> on the output (trimmed) file and the non-trimmed file
 
@@ -314,16 +68,13 @@ fastqc MF_combined_trimmmed.fastq
 fastqc MF_combined.fastq
 ```
 
-This will generate two HTML file (one for the combined_trimmed and one for the combined) that you scp to your local computer in order to view. To scp the file, go to your local computer's terminal and write the following 
+- This  generates two HTML file (one for the combined_trimmed and one for the combined)
 
-```{bash, highlight=TRUE, eval=FALSE}
-scp karine@146.6.184.205:/home/karine/fastq/MF_combined_trimmed_fastqc.html .
-scp karine@146.6.184.205:/home/karine/fastq/MF_combined_fastqc.html .
-```
+- Transfer files to your local computer
 
-Open both files (chrome web page) and compare them (check the quality)
+- Open both files (chrome web page) and compare them (check the quality)
 
-### Bash 
+**Running with Bash for multiple files** 
 
 ```{bash, highlight=TRUE, eval=FALSE}
 fastqc *.fastq
@@ -341,25 +92,23 @@ gzip MF_combined_trimmmed.fastq
 
 b. Convert the file frome fastq to fasta 
 
-
 ```{bash, highlight=TRUE, eval=FALSE}
 seqtk seq -a MF_combined_trimmed.gz > MF.fa
 ```
 
-# ASSEMBLY {.tabset}
+## Assembling 
 
+There exists multiple assembling programs... it can be hard to chose the best one. I suggest trying a few and seeing what gives you the best results (number of sequence and average length of sequences)
 
-## IDBA {.tabset}
-
-
+### IDBA {.tabset}
 
 [Github](https://github.com/loneknightpy/idba)
 
-### About 
+Generate a folder called `assembly`and the file we are interested in is called `contig.fa`
 
-The output is a new folder called `assembly`and the file we are interested in is called `contig.fa`
+**Bash script using VI document**
 
-### Bash script
+1. Create a VI document named `runidba.sh`containing the following script. To save and quit (`ESC`+ `:qw`)
 
 ```{bash, highlight=TRUE, eval=FALSE}
 `#!/bin/bash
@@ -372,9 +121,23 @@ do
 done
 ```
 
-### Exemple 
+2. Make the `runidba.sh` to make it executable 
 
-a. Create a vi file named `runidba.sh`and type in the following script. Save and quit (`ESC`+ `:qw`)
+```{bash, highlight=TRUE, eval=FALSE}
+chmod +x runidba.sh
+```
+
+3. Run the script with `nohup` and `&` (won't be affected by connectivity problem) 
+
+```{bash, highlight=TRUE, eval=FALSE}
+nohup ./runidba.sh & 
+```
+
+*View the tasks running on the server by using `jobs`or `htop`*
+
+*`free`allows you to see the available memory*
+
+**For a single file** 
 
 ```{bash, highlight=TRUE, eval=FALSE}
 idba_ud -l MF.fa -o assembly --pre_correction --mink 65 --maxk 115 --step 10 --seed_kmer 55 --num_threads 20
@@ -382,33 +145,13 @@ idba_ud -l MF.fa -o assembly --pre_correction --mink 65 --maxk 115 --step 10 --s
 
 `idba_ud` `-l` (imput fasta file) `-o` (output directory name) `--pre_correction` `--mink` (minimum kmers length) `--maxk` (maximum kmers length) `--step` `--seed_kmer` `--num_threads`
 
-b. Modify the `runidba.sh` to make it executable 
+### Megahit 
 
-```{bash, highlight=TRUE, eval=FALSE}
-chmod +x runidba.sh
-```
-
-c. Run the script with `nohup` and `&` so it runs in the back and won't be affected by connectivity problem
-
-```{bash, highlight=TRUE, eval=FALSE}
-nohup ./runidba.sh & 
-```
-
-- You can view the tasks running on the server by using `jobs`or `htop`
-- `free`allows you to see the available memory 
-
-The output is a new folder called `assembly`and the file we are interested in is called `contig.fa`
-
-## Megahit 
-
-
-https://github.com/voutcn/megahit
-
-https://www.ncbi.nlm.nih.gov/pubmed/25609793
+[Github](https://github.com/voutcn/megahit) [NCBI](https://www.ncbi.nlm.nih.gov/pubmed/25609793)
 
 MEGAHIT is very fast and memory efficient if time and RAM are causing a bottleneck. Set memory to whatever your machine can handle. This command is set up for interleaved fastq.
 
-In the folder with your fastq files create a vi document called megahit.sh with the following script and make it executable using the chmod +x runmegahit.sh
+1. Inside the folder containing your `fastq` files create a VI doc. called `megahit.sh` with the following script and make it executable 
 
 ```{bash, highlight=TRUE, eval=FALSE}
 #!/bin/bash
@@ -424,6 +167,8 @@ done
 
 The FASTA file Megahit_$1.contigs.fa is the output 
 
+**For a single file** 
+
 ```{bash, highlight=TRUE, eval=FALSE}
 #!/bin/bash
 megahit --12 MF_combined_trimmed_fastq --k-list 21,33,55,77,99,121 --min-count 2 --verbose -t 25 -o /home/karine/fastq/megahit --out-prefix Megahit_MF --memory 80441980
@@ -431,27 +176,27 @@ megahit --12 MF_combined_trimmed_fastq --k-list 21,33,55,77,99,121 --min-count 2
 
 By default, the cutoff value is 2, so k-mers occurring at least twice are kept while singleton k-mers are discarded. Because this eliminates not only sequencing errors, but also removes information from genuinely low abundant genome fragments.
 
-## metaSPAdes
+### metaSPAdes
 
 ```{bash, highlight=TRUE, eval=FALSE}
 metaspades --12 MF_combined_trimmed_fastq -o /home/karine/fastq/metaspades -m 50
 ```
 
-# POST ASSEMBLY STATS
+## POST ASSEMBLY STATS
 
-## Number of contigs 
+**Number of contigs**
 
 ```{bash, highlight=TRUE, eval=FALSE}
 grep -c ">" contig.fa 
 ```
 
-## Lenght of contigs 
+**Lenght of contigs**
 
 ```{bash, highlight=TRUE, eval=FALSE}
 seqkit fx2tab --length --name --header-line contig.fa
 ```
 
-## Histogram 
+**Histogram**
 
 a. To obtain a histogram of the lenght of your contigs we first need to extract the column `lenght` from the document `contig.fa` with the command `cut -f 4 length.tab` into a new document called `lenghts`
 
@@ -459,7 +204,7 @@ a. To obtain a histogram of the lenght of your contigs we first need to extract 
 cut -f 4 length.tab > lengths
 ```
 
-b. Remove the first row of the document lenghts using `nano`
+b. Remove the first row of the document lenghts (open the file in a text editor app like `nano` or `vi`)
 
 c. Use pipeline to create histogram with the `lentghs` documents 
 
@@ -471,39 +216,19 @@ less lenghts | Rscript -e 'data=abs(scan(file="stdin")); png("seq.png"); hist(da
 
 - If x axis of the histogram is not right change the `xlim=c(x,x)` values
 
-d. Copy the file to your local computer to view it (in your local computer terminal navigate to the local directory where you want the file to be copied)
+d. Transfer the file to your local computer to view it and confirm how many sequences are greater than 2000
 
-```{bash, highlight=TRUE, eval=FALSE}
-scp karine@146.6.184.205:/home/karine/fastq/assembly/seq.png .
-```
-
-e. Open document and confirm how many sequences are greater than 2000
-
-## Lenght and GC {.tabset}
-
-### Run the script
+## Lenght and GC
 
 High GC organisms tend not to assemble well and may have an uneven read coverage distribution.
 
-a. Run the script <font color='green'>length+GC.pl</font>
+1. Run the perl script <font color='green'>length+GC.pl</font>
 
 ```{bash, highlight=TRUE, eval=FALSE}
 /home/karine/fastq/assembly/length+GC.pl contig.fa > contig_GC.txt
 ```
 
-b. To view the GC content
-
-`less contig_GC.txt`
-
-### obtainning script from Midgard 
-
-Copy the script from midgard to local computer to asgard
-
-```{bash, highlight=TRUE, eval=FALSE}
-scp -P 2022 karine@146.6.184.138:/home/scripts/length+GC.pl .
-scp length+GC.pl karine@146.6.184.205:/home/karine/fastq/assembly/
-```
-
+2. View the GC content `less contig_GC.txt`
 
 ## Keeping sequence above 2000kb 
 
@@ -511,67 +236,59 @@ scp length+GC.pl karine@146.6.184.205:/home/karine/fastq/assembly/
 perl -lne 'if(/^(>.*)/){ $head=$1 } else { $fa{$head} .= $_ } END{ foreach $s (keys(%fa)){ print "$s\n$fa{$s}\n" if(length($fa{$s})>2000) }}' contig.fa > 2000kb.fa
 ```
 
-To count how many you have above 2000 kb
+Count how many you have above 2000 kb
 
 ```{bash, highlight=TRUE, eval=FALSE}
 grep -c ">" 2000kb.fa
 ```
 
-
-# BINNING
+## BINNING
 
 Coverage-based binning approaches will require you to map reads to assembled contigs
 
-## Mapping {.tabset}
+### Mapping 
 
-http://bio-bwa.sourceforge.net/bwa.shtml
-
-### VE 
-
-[Github](https://github.com/imrambo/genome_mapping)
+[BWA Reference Manual](http://bio-bwa.sourceforge.net/bwa.shtml) and Wrapper [Github](https://github.com/imrambo/genome_mapping)
 
 This wrapper maps FASTQ reads against an assembly (e.g. genome) in FASTA format using BWA-MEM.
 
-I put the fasta file with the long sequence as well as the trimmed-combined fastq file of each sample in the same folder, named after the sequence. 
+1. Put the fasta file with the long sequence as well as the trimmed-combined fastq file of each sample in the same folder
 
+2. Download the Github repository
 ```{bash, highlight=TRUE, eval=FALSE}
 git clone https://github.com/imrambo/genome_mapping.git
 ```
 
-1. Create a conda environment under your home directory 
-
+3. Create a conda environment under your home directory 
 ```{bash, highlight=TRUE, eval=FALSE}
 conda env create -f environment_linux64.yml
 ```
 
-2. Activate the conda environement
+4. Activate the conda environement
 
 ```{bash, highlight=TRUE, eval=FALSE}
 conda activate scons_map
 ```
 
-3. Run a dry run 
-
+5. Run a dry run (test run)
 ```{bash, highlight=TRUE, eval=FALSE}
 scons  --dry-run --fastq_dir=/home/karine/VP/megahit/concat --assembly=/home/karine/VP/megahit/concat/concatenated_1kb.fa --outdir=/home/karine/VP/megahit/concat/map --sampleids=fastq_concat.fastq --align_thread=5 --samsort_thread=5 --samsort_mem=768M --nheader=8 --tmpdir=/home/karine/tmp --logfile=concat.log
 ```
 
-4. Run the script 
-
+6. Run the script 
 ```{bash, highlight=TRUE, eval=FALSE}
 scons  --fastq_dir=/home/karine/VP/SV10 --assembly=/home/karine/VP/SV10/SV10_1kb.fa --outdir=/home/karine/VP/SV10_map --sampleids=SV10_combined --align_thread=5 --samsort_thread=5 --samsort_mem=768M --nheader=8 --tmpdir=/home/karine/tmp --logfile=SV10log
 ```
 
+**By hand** 
 
-### manual 
-
-**a. Index fasta file using bwa ** 
+1. Index fasta file using bwa
 
 ```{bash, highlight=TRUE, eval=FALSE}
 bwa index 2000kb.fa
 ```
 
-**b. Aligne the fasta file against the `combined_trimmed.fastq`file** 
+2. Align the fasta file against the `combined_trimmed.fastq`file
 
 - Create a `vi`file named `mapping.sh`with the following script 
 
@@ -580,14 +297,9 @@ bwa index 2000kb.fa
 bwa mem -t 30 2000kb.fa -p MF_combined_trimmed_fastq > 2KB.MF.sam
 ```
 
- - Make the mapping.sh script executable `chmod +x mapping.sh`
-  - Run the script in the background using `nohup ./` and `&` 
+ - Make `mapping.sh` script executable `chmod +x mapping.sh` and run it script using `nohup ./` and `&` 
  
-```{bash, highlight=TRUE, eval=FALSE}
-nohup ./mapping.sh & 
-```   
-
-**c. Convert `.sam` file to `.bam` file with** [samtools](http://www.metagenomics.wiki/tools/samtools)
+3. Convert `.sam` file to `.bam` file with [samtools](http://www.metagenomics.wiki/tools/samtools)
 
 - Create a vi file named `samtools.sh` with the following script 
 ```{bash, highlight=TRUE, eval=FALSE}
@@ -599,39 +311,26 @@ samtools view -b -S 2KB.MF.sam > 2KB.MF.bam
 
   `-b`output is a `.bam`file
 
-- Make the script executable `chmod +x samtools.sh`
-- Run the script in the background using `nohup ./` and `&`
+- Make script executable `chmod +x samtools.sh` and run the script in the background using `nohup ./` and `&`
 
-**d. Sort the bam file** 
-
-Required in order to use the script to generate a depth file 
+4. Sort the bam file (required in order to use the script to generate a depth file)
 
 - create a vi file named `sort.sh` with the following script 
 ```{bash, highlight=TRUE, eval=FALSE}
 #!/bin/bash 
 samtools sort -o 2KB.MF.sorted.bam 2KB.MF.bam
 ``` 
- - Make the script executable `chmod +x sort.sh`
- - Run the script in the background using `nohup ./` and `&`
+ - Make script executable `chmod +x sort.sh` and run script using `nohup ./` and `&`
 
-## Depth file {.tabset}
+## Depth file 
 
 The depth allows you to know how many sequence you can align with certain sections of your contigs. Section with very little depth (few sequences) are not reputable to use
-
-### Run the script
 
 ```{bash, highlight=TRUE, eval=FALSE}
 ./jgi_summarize_bam_contig_depths --outputDepth depth.txt --pairedContigs paired.txt 2KB.MF.sorted.bam
 ```
 
-To open the depth file `less depth.txt`
-
-### Copy file from Midgard to Asgard
-
-```{bash, highlight=TRUE, eval=FALSE}
-scp -P 2022 karine@146.6.184.138:/home/scripts/jgi_summarize_bam_contig_depths .
-scp jgi_summarize_bam_contig_depths karine@146.6.184.205:/home/karine/fastq/assembly/
-```
+Open ouput depth file with `less depth.txt`
 
 ## MetaBAT 
 
@@ -653,7 +352,7 @@ b. Run Metabat using `nohup ./`and `&`
 
 The output is a folder called `bins_dir` containing all the bins created 
 
-# BIN QUALITY
+## BIN QUALITY
 
 [Github](https://github.com/Ecogenomics/CheckM/wiki)
 
@@ -675,7 +374,7 @@ c. Filter the columns by Completeness, and seperate the ones < 50 % by adding a 
 
 d. Filter by Contamination, and highlight all the ones > 10 % - These are the bins you want to clean
 
-# BIN CLEANING {.tabset}
+## BIN CLEANING {.tabset}
 
 [MM Genome](http://madsalbertsen.github.io/multi-metagenome/docs/overview.html) uses sequences from two different samples and binning is done by plotting the two coverage estimates against each other. 
 
@@ -684,7 +383,7 @@ d. Filter by Contamination, and highlight all the ones > 10 % - These are the bi
 MM genome uses an R script that will require you to create a  virutal environment (VE)
 
 
-##  MM Genome 
+###  MM Genome 
 
 a. Create a directory called `genome_mapping` under `/home/username/`
 
@@ -740,11 +439,9 @@ The fastq_compressed is created in the Fastq directory.
 gzip -c MF_combined_trimmed_fastq > fastq_compressed/MF_combined_trimmed_fastq.gz 
 ```
 
-## Vizbin
+### Vizbin
 
 In your computer, create a folder call Vizbin and in this folder create a folder for each bins that need cleaning and import .fa of that bins from the server to your computer using FileZilla
-
-Open 
 
 ## Depth file 
 
@@ -810,9 +507,9 @@ To open the depth file `less depth.txt`
 
 _______________________________________________
 
-# BIN TAXONOMY {.tabset}
+## BIN TAXONOMY
 
-## Barrnap
+### Barrnap
 
 a. Copy all your cleaned bins into a new foler called cleaned_bins
 
@@ -872,7 +569,7 @@ for i in `cat scaff`; do samtools faidx 2000kb.fa $i >>16S_2Kb.fna; done
 
 The extracted sequence where then uploaded to Blast and Silva website to identify the bacteria to which those sequence belong. 
 
-## GTDBTK
+### GTDBTK
 
 [Github](https://github.com/Ecogenomics/GTDBTk/blob/stable/README.md)
 
@@ -885,11 +582,11 @@ gtdbtk classify_wf --cpus 20 --genome_dir /home/karine/Bins/all_clean --out_dir 
 
 Once it is done running, you can open the folder called `gtdbk_output` and copy the folder `gtdbtk.bac120.summary.tsv` to your local computer in order to open it with excel. Use this folder to identify the phylum, class, order, family and genus that you need to download in order to construct your tree. 
 
-## OneCodeX 
+### OneCodeX 
 
-# PHYLOGENETIC TREE
+## PHYLOGENETIC TREE
 
-## Download reference genomes 
+**Download reference genomes**
 
 a. Download assembly summary genbank file 
 
@@ -945,7 +642,7 @@ checkm lineage_wf -x fna /home/karine/MF_ref checkm -f output_table.txt
 ```
 Discard the genomes that are not completed. 
 
-## Phylosift 
+### Phylosift 
 
 [Githup](https://github.com/gjospin/PhyloSift)
 
@@ -972,7 +669,7 @@ d. Rename and concatenate the aligned marker for both bins
 find . -type f -regex '.*alignDir/concat.updated.1.fasta'   -exec cat {} \; | sed -r 's/\.1\..*//'  > name_of_bin_alignmnet.fasta
 ```
 
-## Geneious 
+### Geneious 
 
 a. Download Geneious software (free 14 days trial)  select `new foler`  drag and drop the aligned fasta file 
 
@@ -986,7 +683,7 @@ e. Export the file : `File` ; `Export` ; `Selected Documents` ; `Phylip alignmen
 
 f. Move the file from your local computer to the server 
 
-## RAxML
+### RAxML
 
 [Github](https://github.com/stamatak/standard-RAxML)
 
@@ -1034,9 +731,9 @@ perl replace_name.sh ref_name_tree RAxML_bipartitionsBranchLabels.MF_karine > ne
 
   8. Upload the new created tree to iTOL
 
-# METABOLIC PATHWAY
+## METABOLIC PATHWAY
 
-## Convert bins to protein (.faa) {.tabset}
+**Convert bins to protein (.faa)**
 
 In the folder with your bins in the .fna format... 
 
@@ -1064,7 +761,7 @@ e. Tranfer the files to your local computer
 
 f. Submit the files to [kofamKOALA](https://www.genome.jp/tools/kofamkoala/) and [HydDB](https://services.birc.au.dk/hyddb/) - you can only submit one file at a time
 
-### KofamKoala
+**KofamKoala**
 
 a. Submit one file at a time
 
@@ -1072,7 +769,7 @@ b. Accept the email
 
 c. Save each file as a text file identified with the name of the bin on your computer. 
 
-### HydDB
+**HydDB**
 
 a. Submit one file at a time and do not close the window while it runs. 
 
@@ -1175,7 +872,7 @@ u. Run fasttree command using `nohup ./` and `&`
 fasttree hyd_align_comp.fasta > hyd.tree
 ```
 
-#### Hydrogrenase Database sequence lenght 
+**Hydrogrenase Database sequence lenght**
 
 To know the lenght of the sequence in the DataBase
 
@@ -1244,51 +941,5 @@ Metabolic was run from the Student folder, with the following command within the
 ```{bash, highlight=TRUE, eval=FALSE}
 perl /home/students2020/Tools/METABOLIC/METABOLiC-G.pl -in-gn /home/students2020/karine/folderwithFAA -o output/ -m /home/students2020/Tools/METABOLIC
 ```
-
-
-# Other Stuff {.tabset}
-
-Create MetabatContig_list.tsv list needed for DAStool
-
-## One file 
-```{bash, highlight=TRUE, eval=FALSE}
-awk '/>/{sub(">","&"2000kb.fa"_");sub(/\.fa/,x)}1'
-```
-
-```{bash, highlight=TRUE, eval=FALSE}
-grep ">" concat.fasta > concat.txt
-```
-
-```{bash, highlight=TRUE, eval=FALSE}
-sed -i 's/\.//g' concat.txt
-sed -i 's/>//g' concat.txt
-```
-
-## Bash script 
-
-```{bash, highlight=TRUE, eval=FALSE}
-`#!/bin/bash
-
-for i in *.faa 
-
-do
-
-VIBRANT_run.py -i $i -f nucl -t 10 -l 10000
-
-done 
-```
-
-**Next separate names in concat.txt so have scaffold name followed by sample and bin name example .tsv:**
-
-scaffold_1326   AB_69_metabat_bin_100
-
-scaffold_1711   AB_69_metabat_bin_100
-
-scaffold_2201   AB_69_metabat_bin_100
-
-scaffold_2419   AB_69_metabat_bin_10
-
-
-
 
 
